@@ -2762,10 +2762,33 @@ async def chat_completion(
     try:
         body = await request.body()
         body_str = body.decode()
+        print(f"request body: {body_str}")
         try:
             data = ast.literal_eval(body_str)
         except:
             data = json.loads(body_str)
+
+        if data.get("model", "") == "workday_gateway":
+            from litellm.proxy.external.workday_gateway import call_workday_gateway
+            return await call_workday_gateway(data)
+
+        # set user api keys from vault
+        if "user_id" in data:
+            print(f"getting api keys for user: {data['user_id']}")
+            import litellm.proxy.vault as vault
+            vault_secrets = vault.get_api_keys(data['user_id'])
+            if data["model"].startswith("gpt"):
+                data["api_key"] = vault_secrets.get("OPENAI_API_KEY", "abcd")
+            elif data["model"].startswith("azure"):
+                data["api_key"] = vault_secrets.get("AZURE_API_KEY", "abcd")
+                data["api_base"] = vault_secrets.get("AZURE_API_BASE", "abcd")
+                data["api_version"] = vault_secrets.get("AZURE_API_VERSION", "abcd")
+            elif data["model"].startswith("groq"):
+                data["api_key"] = vault_secrets.get("GROQ_API_KEY", "abcd")
+            elif data["model"].startswith("gemini"):
+                data["api_key"] = vault_secrets.get("GEMINI_API_KEY", "abcd")
+
+            del data["user_id"]
 
         verbose_proxy_logger.debug(
             "Request received by LiteLLM:\n{}".format(json.dumps(data, indent=4)),
@@ -2837,6 +2860,7 @@ async def chat_completion(
         router_model_names = llm_router.model_names if llm_router is not None else []
         # skip router if user passed their key
         if "api_key" in data:
+
             tasks.append(litellm.acompletion(**data))
         elif "," in data["model"] and llm_router is not None:
             if (
