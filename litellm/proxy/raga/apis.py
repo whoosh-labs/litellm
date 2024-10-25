@@ -1,9 +1,10 @@
+import json
 from dataclasses import dataclass
 from typing import Generic, List, Optional, TypeVar
 
 from fastapi import APIRouter, HTTPException, Request
 
-import litellm as lm
+from .data import get_params, provider_data
 
 T = TypeVar("T")
 
@@ -20,31 +21,54 @@ router = APIRouter(prefix="/raga/internal")
 
 @router.get("/providers")
 async def get_providers() -> RagaApiResponse:
-    return RagaApiResponse(True, {"providers": list(lm.models_by_provider.keys())}, None)
+    return RagaApiResponse(True, {"providers": list(provider_data.keys())}, None)
 
 
-@router.get("/providers/{provider}/models")
-async def get_model_by_provider(request: Request) -> RagaApiResponse:
-    provider_name = request.path_params.get("provider")
+@router.post("/providers/keys")
+async def get_keys_by_provider(request: Request) -> RagaApiResponse:
+    body = json.loads((await request.body()).decode())
+    provider_name = body.get("provider")
     if provider_name is None:
         raise HTTPException(status_code=400, detail="provider is required")
 
-    model_list = lm.models_by_provider.get(provider_name)
-    if model_list is None:
+    if provider_name not in provider_data:
         raise HTTPException(status_code=400, detail="provider not supported")
-    return RagaApiResponse(True, {"models": model_list}, None)
+
+    return RagaApiResponse(True, {"keys": provider_data.get(provider_name, {}).get("keys")}, None)
 
 
-@router.get("/providers/{provider}/models/{model}/params")
-async def get_model_params_by_model(request: Request) -> RagaApiResponse:
-    provider_name = request.path_params.get("provider")
+@router.post("/providers/models")
+async def get_model_by_provider(request: Request) -> RagaApiResponse:
+    body = json.loads((await request.body()).decode())
+    provider_name = body.get("provider")
     if provider_name is None:
         raise HTTPException(status_code=400, detail="provider is required")
-    model_name = request.path_params.get("model")
+
+    if provider_name not in provider_data:
+        raise HTTPException(status_code=400, detail="provider not supported")
+
+    return RagaApiResponse(True, {"models": list(provider_data.get(provider_name, {}).get("models").keys())}, None)
+
+
+@router.post("/providers/models/params")
+async def get_model_params_by_model(request: Request) -> RagaApiResponse:
+    body = json.loads((await request.body()).decode())
+    provider_name = body.get("provider")
+    if provider_name is None:
+        raise HTTPException(status_code=400, detail="provider is required")
+
+    if provider_name not in provider_data:
+        raise HTTPException(status_code=400, detail="provider not supported")
+
+    model_name = body.get("model")
     if model_name is None:
         raise HTTPException(status_code=400, detail="model is required")
-    if model_name not in lm.models_by_provider.get(provider_name, []):
+
+    model_dict = provider_data.get(provider_name, {}).get("models")
+    if provider_name != 'azure' and model_name not in model_dict:
         raise HTTPException(status_code=400, detail="model is not valid")
 
-    param_list = lm.get_supported_openai_params(model=f"{provider_name}/{model_name}")
-    return RagaApiResponse(True, {"params": param_list}, None)
+    params = provider_data.get(provider_name, {}).get("models").get(model_name)
+    if params is None:
+        params = get_params(provider_name, model_name)
+    return RagaApiResponse(True, {"params": params}, None)
