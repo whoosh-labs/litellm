@@ -4,7 +4,7 @@ from typing import Generic, List, Optional, TypeVar
 
 from fastapi import APIRouter, HTTPException, Request
 
-from .data import get_params, provider_data
+from .data import get_params, provider_data, raw_data
 
 T = TypeVar("T")
 
@@ -65,10 +65,21 @@ async def get_model_params_by_model(request: Request) -> RagaApiResponse:
         raise HTTPException(status_code=400, detail="model is required")
 
     model_dict = provider_data.get(provider_name, {}).get("models")
-    if provider_name != 'azure' and model_name not in model_dict:
+    if provider_name != "azure" and model_name not in model_dict:
         raise HTTPException(status_code=400, detail="model is not valid")
 
     params = provider_data.get(provider_name, {}).get("models").get(model_name)
     if params is None:
         params = get_params(provider_name, model_name)
     return RagaApiResponse(True, {"params": params}, None)
+
+
+@router.post("/providers/models/params/values")
+async def get_model_params_values(request: Request) -> RagaApiResponse:
+    body = json.loads((await request.body()).decode())
+
+    model_name = body.get("model")
+    if model_name is None:
+        raise HTTPException(status_code=400, detail="model is required")
+    params_values = raw_data.get(model_name, {})
+    return RagaApiResponse(True, {"paramsValues": params_values}, None)

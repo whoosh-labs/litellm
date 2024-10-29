@@ -6,17 +6,21 @@ import litellm as lm
 
 def get_params(provider_name: str, model_name: str):
     if provider_name == "azure":
-        return lm.get_supported_openai_params(model='', custom_llm_provider='azure')
+        return lm.get_supported_openai_params(model="", custom_llm_provider="azure")
 
     return lm.get_supported_openai_params(model=f"{provider_name}/{model_name}")
 
 
+raw_data = {}
 provider_data: Dict[str, Any] = {}
 with open("model_prices_and_context_window.json", "r") as f:
-    data: dict = json.loads(f.read())
-    data.pop("sample_spec")
-    for model_name, model_data in data.items():
-        provider_name: str = model_data.get("litellm_provider")
+    raw_data: dict = json.loads(f.read())
+    raw_data.pop("sample_spec", None)
+    for model_name, model_data in raw_data.items():
+        if model_data.pop("mode", "chat") != "chat":
+            continue
+
+        provider_name: str = model_data.pop("litellm_provider", None)
         if provider_name is None:
             continue
 
