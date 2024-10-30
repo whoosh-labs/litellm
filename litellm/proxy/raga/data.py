@@ -1,4 +1,5 @@
 import json
+from functools import cache
 from typing import Any, Dict
 
 import litellm as lm
@@ -11,6 +12,18 @@ def get_params(provider_name: str, model_name: str):
     return lm.get_supported_openai_params(model=f"{provider_name}/{model_name}")
 
 
+@cache
+def get_supported_providers():
+    import yaml
+
+    with open("litellm/proxy/raga/model_config.yaml", "r") as f:
+        config = yaml.safe_load(f)
+    providers = []
+    for item in config.get("model_list"):
+        providers.append(item.get("litellm_params").get("model").split("/")[0])
+    return providers
+
+
 raw_data = {}
 provider_data: Dict[str, Any] = {}
 with open("model_prices_and_context_window.json", "r") as f:
@@ -21,7 +34,7 @@ with open("model_prices_and_context_window.json", "r") as f:
             continue
 
         provider_name: str = model_data.pop("litellm_provider", None)
-        if provider_name is None:
+        if provider_name is None or provider_name not in get_supported_providers():
             continue
 
         if provider_name not in provider_data:

@@ -77,6 +77,12 @@ async def get_model_params_by_model(request: Request) -> RagaApiResponse:
 @router.post("/providers/models/params/values")
 async def get_model_params_values(request: Request) -> RagaApiResponse:
     body = json.loads((await request.body()).decode())
+    provider_name = body.get("provider")
+    if provider_name is None:
+        raise HTTPException(status_code=400, detail="provider is required")
+
+    if provider_name not in provider_data:
+        raise HTTPException(status_code=400, detail="provider not supported")
 
     model_name = body.get("model")
     if model_name is None:
