@@ -1,3 +1,2743 @@
 
 2.1.3-24-10-24 / 2024-10-24 10:23:34
 No new changes in the release
+
+2.1.4-24-11-04 / 2024-11-04 04:53:20
+use litellm with user id
+read readme
+move custom code raga and sync changes to raga.Dockerfile
+move custom code to raga folder
+minor change to keep the changes in sync with remote
+test: cleanup codestral tests - backend api unavailable
+fix linting - remove # noqa PLR0915 from fixed function
+def test_text_completion_with_echo(stream): (#6401)
+Revert "(refactor) litellm.Router client initialization utils  (#6394)" (#6403)
+(fix) Langfuse key based logging  (#6372)
+(refactor) litellm.Router client initialization utils  (#6394)
+(refactor) move convert dict to model response to llm_response_utils/ (#6393)
+(docs + testing) Correctly document the timeout value used by litellm proxy is 6000 seconds + add to best practices for prod  (#6339)
+build(deps): bump http-proxy-middleware in /docs/my-website (#6395)
+bump: version 1.50.2 → 1.50.3
+Litellm dev 10 22 2024 (#6384)
+(feat) Arize - Allow using Arize HTTP endpoint  (#6364)
+test(test_alangfuse.py): handle flaky langfuse test better
+test(skip-flaky-google-context-caching-test): google is not reliable. their sample code is also not working
+Add claude 3 5 sonnet 20241022 models for all provides (#6380)
+add new 35 mode lcard (#6378)
+Revert "(fix) standard logging metadata + add unit testing  (#6366)" (#6381)
+(fix) standard logging metadata + add unit testing  (#6366)
+fix docs configs.md
+(refactor) remove berrispendLogger - unused logging integration  (#6363)
+Refactor: apply early return (#6369)
+langfuse use helper for get_langfuse_logging_config
+bump: version 1.50.1 → 1.50.2
+docs(sidebars.js): add jina ai to left nav
+docs(sidebars.js): add jina ai embedding to docs
+feat(proxy_cli.py): add new 'log_config' cli param (#6352)
+refactor(redis_cache.py): use a default cache value when writing to r… (#6358)
+fix(proxy_server.py): add 'admin' user to db (#6223)
+fix(litellm-helm): correctly use dbReadyImage and dbReadyTag values (#6336)
+(fix) get_response_headers for Azure OpenAI  (#6344)
+bump: version 1.50.0 → 1.50.1
+(testing) add test coverage for init custom logger class  (#6341)
+working test for init custom logger
+fix init logger tests
+add unit tests for init callbacks
+fix - unhandled jsonDecodeError in `convert_to_model_response_object`  (#6338)
+feat(custom_logger.py): expose new `async_dataset_hook` for modifying… (#6331)
+LiteLLM Minor Fixes & Improvements (10/18/2024) (#6320)
+Litellm openai audio streaming (#6325)
+(refactor) `get_cache_key` to be under 100 LOC function (#6327)
+ doc - using gpt-4o-audio-preview (#6326)
+bump: version 1.49.7 → 1.50.0
+(feat) - allow using os.environ/ vars for any value on config.yaml  (#6276)
+(feat) Support audio param in responses streaming (#6312)
+(feat) Support `audio`,  `modalities` params (#6304)
+doc fix Turn on / off caching per Key. (#6297)
+(code quality) add ruff check PLR0915 for `too-many-statements`  (#6309)
+add gpt-4o-audio models to model cost map (#6306)
+bump: version 1.49.6 → 1.49.7
+docs(argilla.md): add sampling rate to argilla calls
+docs(argilla.md): add doc on argilla logging
+docs(user_keys.md): add regex doc for clientside auth params
+LiteLLM Minor Fixes & Improvements (10/17/2024)  (#6293)
+Revert "fix(ui_sso.py): fix faulty admin check"
+fix(ui_sso.py): fix faulty admin check
+(testing) add unit tests for LLMCachingHandler Class (#6279)
+test_awesome_otel_with_message_logging_off
+(testing) add test coverage for LLM OTEL logging (#6227)
+fix otel tests
+Revert "(perf) move s3 logging to Batch logging + async [94% faster p… (#6275)
+bump: version 1.49.5 → 1.49.6
+LiteLLM Minor Fixes & Improvements (10/16/2024)  (#6265)
+remove ask mode (#6271)
+Litellm router code coverage 3 (#6274)
+(testing) add router unit testing for `send_llm_exception_alert` , `router_cooldown_event_callback` , cooldown utils (#6258)
+(testing) Router add testing coverage (#6253)
+LiteLLM Minor Fixes & Improvements (10/15/2024)  (#6242)
+(router testing) Add testing coverage for `run_async_fallback` and `run_sync_fallback`  (#6256)
+(refactor) - caching use separate files for each cache class (#6251)
+(refactor) sync caching - use `LLMCachingHandler` class for get_cache (#6249)
+(testing - litellm.Router ) add unit test coverage for pattern matching / wildcard routing  (#6250)
+fix RerankResponse make meta optional (#6248)
+bump: version 1.49.4 → 1.49.5
+(refactor) caching - use _sync_set_cache  (#6224)
+Bump hono from 4.5.8 to 4.6.5 in /litellm-js/spend-logs (#6245)
+fix arize handle optional params (#6243)
+(fix) prompt caching cost calculation OpenAI, Azure OpenAI  (#6231)
+(refactor) OTEL - use safe_set_attribute for setting attributes (#6226)
+(refactor) use helper function `_assemble_complete_response_from_streaming_chunks` to assemble complete responses in caching and logging callbacks (#6220)
+bump: version 1.49.3 → 1.49.4
+test(router_code_coverage.py): check if all router functions are dire… (#6186)
+Litellm dev 10 14 2024 (#6221)
+fix importing Cache from litellm (#6219)
+(refactor router.py ) - PR 3 - Ensure all functions under 100 lines (#6181)
+fix code cov components
+bump: version 1.49.2 → 1.49.3
+(refactor caching) use common `_retrieve_from_cache` helper  (#6212)
+add coverage for proxy auth
+fix config.yml ci/cd
+add caching component to code cov
+fix config.yml
+update code cov yaml
+bump (#6187)
+(refactor caching) use LLMCachingHandler for caching streaming responses  (#6210)
+fix config.yml
+fix prom testing
+(feat) prometheus have well defined latency buckets (#6211)
+(refactor) caching use LLMCachingHandler for async_get_cache and set_cache  (#6208)
+run ci/cd again
+fix codecov.yaml
+aded codecov yml (#6207)
+docs: make it easier to find anthropic/openai prompt caching doc
+docs(configs.md): document all environment variables (#6185)
+ci(config.yml): add further testing coverage to codecov (#6184)
+ci(config.yml): add local_testing tests to codecov coverage check (#6183)
+ci(config.yml): run all router tests
+build(config.yml): add codecov to repo (#6172)
+Litellm Minor Fixes & Improvements (10/12/2024)  (#6179)
+bump: version 1.49.1 → 1.49.2
+(fix) provider wildcard routing - when models specificed without provider prefix  (#6173)
+(fix) batch_completion fails with bedrock due to extraneous [max_workers] key   (#6176)
+LiteLLM Minor Fixes & Improvements (10/10/2024)  (#6158)
+add azure/gpt-4o-2024-05-13 (#6174)
+Revert "(perf) move s3 logging to Batch logging + async [94% faster perf under 100 RPS on 1 litellm instance] (#6165)"
+(perf) move s3 logging to Batch logging + async [94% faster perf under 100 RPS on 1 litellm instance] (#6165)
+docs fix
+Feat: Add Langtrace integration (#5341)
+update (#6160)
+Add literalai in the sidebar observability category (#6163)
+fix pattern match router
+bump: version 1.49.0 → 1.49.1
+drop imghdr (#5736) (#6153)
+fix typing on opik.py
+fix _opik logger
+fix opik types
+[Feat] Observability integration - Opik by Comet (#6062)
+(feat) use regex pattern matching for wildcard routing  (#6150)
+LiteLLM Minor Fixes & Improvements (10/09/2024)  (#6139)
+docs(configs.md): add litellm config / s3 bucket object info in configs.md
+doc onboarding orgs
+docs rbac
+fix rbac doc
+ui new build
+uo fixes for default team (#6134)
+bump: version 1.48.20 → 1.49.0
+fix get_all_team_memberships
+remove unused file from root
+doc - move rbac under auth
+fix schema.prisma change
+fix literal ai typing errors
+(feat proxy) [beta] add support for organization role based access controls  (#6112)
+build: bump version
+LiteLLM Minor Fixes & Improvements (10/08/2024)  (#6119)
+Fix: Literal AI llm completion logging (#6096)
+(fix) Fix Groq pricing for llama3.1 (#6114)
+trigger ci/cd run
+(fix) clean up root repo - move entrypoint.sh and build_admin_ui to /docker  (#6110)
+docs(azure.md): add o1 model support to config
+bump: version 1.48.18 → 1.48.19
+LiteLLM Minor Fixes & Improvements (10/07/2024)  (#6101)
+fix using Dockerfile
+fix config.yml
+(clean up) move docker files from root to `docker` folder (#6109)
+(docs) add remaining litellm settings on configs.md doc  (#6108)
+(docs) key based callbacks (#6107)
+fix links due to broken list (#6103)
+bump: version 1.48.17 → 1.48.18
+Update readme.md
+Update readme.md
+(feat proxy) add v2 maintained LiteLLM grafana dashboard (#6098)
+(bug fix) TTL not being set for embedding caching requests  (#6095)
+ui new build
+(proxy ui sso flow) - fix invite user sso flow  (#6093)
+(proxy ui) - fix view user pagination (#6094)
+ui - fix view user pagination
+Proxy: include customer budget in responses (#5977)
+docs key logging
+correct use of healthy / unhealthy
+fix(utils.py): fix  fix pydantic obj to schema creation for vertex en… (#6071)
+bump: version 1.48.16 → 1.48.17
+Litellm expose disable schema update flag (#6085)
+LiteLLM Minor Fixes & Improvements (10/05/2024)  (#6083)
+Add pyright to ci/cd + Fix remaining type-checking errors (#6082)
+bump: version 1.48.15 → 1.48.16
+(code clean up) use a folder for gcs bucket logging + add readme in folder  (#6080)
+docs fix
+openrouter/openai's litellm_provider should be openrouter, not openai (#6079)
+(feat) add azure openai cost tracking for prompt caching (#6077)
+linting error fix
+(docs) reference router settings general settings etc (#6078)
+docs routing config table
+add o-1 to Azure docs
+(feat) add cost tracking for OpenAI prompt caching  (#6055)
+add azure o1 models to model cost map (#6075)
+(feat) add /key/health endpoint to test key based logging (#6073)
+fix(gcs_bucket.py): show error response text in exception (#6072)
+bump: version 1.48.14 → 1.48.15
+LiteLLM Minor Fixes & Improvements (10/04/2024)  (#6064)
+(feat)  OpenAI prompt caching models to model cost map (#6063)
+(docs) router settings - on litellm config  (#6037)
+update load test doc
+bump: version 1.48.13 → 1.48.14
+ci/cd run again
+bump: version 1.48.12 → 1.48.13
+(fixes) docs + qa - gcs key based logging  (#6061)
+(docs) add 1k rps load test doc  (#6059)
+fix prometheus track cooldown events on custom logger (#6060)
+fix handle case when key based logging vars are set as os.environ/ vars
+(fixes)  gcs bucket key based logging  (#6044)
+docs(realtime.md): add new /v1/realtime endpoint
+fix(utils.py): return openai streaming prompt caching tokens (#6051)
+build: version bump
+🔧 (model_prices_and_context_window.json): rename gemini-pro-flash to gemini-flash-experimental to reflect updated naming convention (#5980)
+Litellm Minor Fixes & Improvements (10/03/2024) (#6049)
+OpenAI `/v1/realtime` api support  (#6047)
+bump: version 1.48.10 → 1.48.11
+(feat) openai prompt caching (non streaming) - add prompt_tokens_details in usage response  (#6039)
+fix(factory.py): bedrock:  merge consecutive tool + user messages (#6028)
+(contributor PRs) oct 3rd, 2024  (#6034)
+(feat) add nvidia nim embeddings  (#6032)
+docs prometheus metrics
+(feat proxy) add key based logging for GCS bucket  (#6031)
+(load testing) add vertex_ai embeddings load test  (#6004)
+(azure): Enable stream_options for Azure OpenAI. (#6024) (#6029)
+bump: version 1.48.9 → 1.48.10
+LiteLLM Minor Fixes & Improvements (10/02/2024)  (#6023)
+(testing): Enable testing us.anthropic.claude-3-haiku-20240307-v1:0. (#6018)
+docs(code_quality.md): add doc on litellm code qa
+bump: version 1.48.8 → 1.48.9
+Litellm ruff linting enforcement (#5992)
+build(custom_guardrail.py): include missing file
+bump: version 1.48.7 → 1.48.8
+(performance improvement - vertex embeddings)  ~111.11% faster  (#6000)
+docs(data_security.md): cleanup docs
+docs(data_security.md): update faq doc
+(feat proxy slack alerting) - allow opting in to getting key / internal user alerts  (#5990)
+Fix: skip slack alert if there was no spend (#5998)
+(docs) prometheus metrics document all prometheus metrics  (#5989)
+add Azure OpenAI entrata id docs (#5985)
+add docs on privacy policy
+fix grammar on health check docs (#5984)
+docs(response_headers.md): add response headers to docs
+Fixed minor typo in bash command to prevent overwriting .env file (#5902)
+bump: version 1.48.6 → 1.48.7
+Litellm Minor Fixes & Improvements (09/24/2024) (#5963)
+ci/cd run again
+ci/cd run again
+(feat prometheus proxy) track remaining team and key alias in deployment failure metrics (#5967)
+fix(parallel_request_limiter.py): only update hidden params, don't set new (can lead to errors for responses where attribute can't be set)
+test: run test first
+test: refactor test
+fix(parallel_request_limiter.py): make sure hidden params is dict before dereferencing
+fix(caching.py): cleanup print_stack()
+docs(reliability.md): add tutorial on setting wildcard models as fallbacks
+fix(router.py): skip setting model_group response headers for now
+fix(utils.py): fix updating hidden params
+fix(router.py): handle setting response headers during retries
+fix(azure): return response headers for sync embedding calls
+fix(utils.py): guarantee openai-compatible headers always exist in response
+fix(return-openai-compatible-headers): v0 is openai, azure, anthropic
+fix(parallel_request_limiter.py): return remaining tpm/rpm in openai-compatible way
+build(config.yml): fix build_and_test part of tests
+refactor(test_stream_chunk_builder.py): fix import
+refactor: fix imports
+refactor: move all testing to top-level of repo
+refactor(test_proxy_utils.py): place at root level test folder
+fix(litellm_logging.py): fix linting error
+fix(batch_redis_get.py): handle custom namespace
+ci/cd run again
+add sentry sdk to litellm docker (#5965)
+ci/cd run again
+fix sso sign in tests
+bump: version 1.48.5 → 1.48.6
+(feat prometheus proxy) track remaining team and key alias in deployment failure metrics (#5967)
+(proxy prometheus) track api key and team in latency metrics (#5966)
+(feat proxy prometheus) track virtual key, key alias, error code, error code class on prometheus  (#5968)
+docs clean up langfuse.md
+[Feat Proxy] Allow using hypercorn for http v2  (#5950)
+fix redis async_set_cache_pipeline when empty list passed to it (#5962)
+(perf improvement proxy) use one redis set cache to update spend in db (30-40% perf improvement)  (#5960)
+(fix proxy) model_group/info support rerank models (#5955)
+fix use one async async_batch_set_cache (#5956)
+bump: version 1.48.4 → 1.48.5
+LiteLLM Minor Fixes & Improvements (09/27/2024)  (#5938)
+fix(proxy/utils.py): fix create missing views check (#5953)
+fix test_vertexai_multimodal_embedding_base64image_in_input
+bump 1.48.3 -> 1.48.4
+bump: version 1.48.3 → 1.48.4
+bump: version 1.49.0 → 1.49.1
+bump: version 1.48.3 → 1.49.0
+[Vertex Multimodal embeddings] Fixes to work with Langchain OpenAI Embedding  (#5949)
+LiteLLM Minor Fixes & Improvements (09/26/2024)  (#5925) (#5937)
+allow setting LANGFUSE_FLUSH_INTERVAL (#5944)
+[Perf Proxy] parallel request limiter - use one cache update call (#5932)
+docs(vertex.md): fix codestral fim placement (#5946)
+docs - show correct rpm - > tpm conversion for Azure
+docs: resolve imports
+docs(data_security.md): add legal/compliance faq's
+bump: version 1.48.2 → 1.48.3
+handle streaming for azure ai studio error
+[Fix Azure AI Studio]  drop_params_from_unprocessable_entity_error (#5936)
+Upgrade dependencies in dockerfile (#5862)
+[docs] updated langfuse integration guide (#5921)
+[Fix] Perf use only async functions for get cache  (#5930)
+[Fix proxy perf] Use correct cache key when reading from redis cache  (#5928)
+track api key and alias in remaining tokens metric (#5924)
+LiteLLM Minor Fixes & Improvements (09/25/2024)  (#5893)
+LiteLLM Minor Fixes & Improvements (09/24/2024) (#5880)
+build(model_prices_and_context_window.json): add new gemini - google ai studio models
+Update litellm helm envconfigmap (#5872)
+Add Llama 3.2 90b model on Vertex AI. (#5908)
+ci/cd run again
+bump: version 1.48.1 → 1.48.2
+[Perf improvement Proxy] Use Dual Cache for getting key and team objects (#5903)
+build(model_prices_and_context_window.json): add new gemini models
+Add gemini-1.5-pro-002 and gemini-1.5-flash-002 (#5879)
+[Feat] add fireworks llama 3.2 models + cost tracking  (#5905)
+docs service accounts (#5900)
+fix - add stricter type check for OTEL when args[0] is not dict
+[Feat] Improve OTEL Tracking - Require all Redis Cache reads to be logged on OTEL  (#5881)
+[Feat-Router] Allow setting which environment to use a model on  (#5892)
+feat(vertex): Use correct provider for response_schema support check (#5815) (#5829)
+docs show all configs
+docs show relevant litellm_settings
+docs(user_keys.md): add docs on configurable clientside auth credentials
+bump: version 1.48.0 → 1.48.1
+chore - handle case when otel metadata field value is None
+[Perf Fix] Don't always read from Redis by Default  (#5877)
+[Fix] OTEL - Don't log messages when callback settings disable message logging  (#5875)
+LiteLLM Minor Fixes & Improvements (09/23/2024)  (#5842) (#5858)
+add debian fixes to non root image
+ui add deepseek provider (#5857)
+Update the dockerignore to minimise the amount of data transfered to the docker context (#5863)
+bump: version 1.47.3 → 1.48.0
+fix linting
+fix imports
+bump: version 1.47.2 → 1.47.3
+ui new build
+docker - handle debian issue on docker builds (#5752)
+[Feat] Admin UI - Add Service Accounts  (#5855)
+[Feat UI sso] store 'provider' in user metadata (#5856)
+[Feat-Proxy]  add service accounts backend (#5852)
+[Feat] SSO - add `provider` in the OpenID field for custom sso  (#5849)
+ui new build
+ui networking list all teams (#5851)
+[Testing-Proxy] Add E2E Admin UI testing  (#5845)
+testing - nvidia nim api use mock testing
+fix prometheus track input and output tokens (#5780)
+test(test_otel.py): fix test
+ui new build
+docs(virtual_keys.md): add enable/disable virtual keys to docs + refactor sidebar
+bump: version 1.47.1 → 1.47.2
+Cost tracking improvements (#5828)
+LiteLLM Minor Fixes & Improvements (09/21/2024)  (#5819)
+mark test_completion_sagemaker_prompt_template_non_stream as flaky
+handle hf rate limit error
+ci/cd run again
+fix re-add virtual key auth checks on vertex ai pass thru endpoints (#5827)
+bump: version 1.47.0 → 1.47.1
+[fix-sso] Allow internal user viewer to view usage routes  (#5825)
+fix premium user check for tags on keys (#5826)
+[SSO-UI] Set new sso users as internal_view role users  (#5824)
+[Feat] Allow setting custom arize endpoint (#5709)
+mark test_async_completion_azure_caching as flaky
+[Feat] Prometheus - show status code and class type on prometheus  (#5806)
+[Feat] Add testing for prometheus failure metrics  (#5823)
+[Feat] Allow setting `supports_vision` for Custom OpenAI endpoints + Added testing  (#5821)
+Fixed DeepSeek input and output tokens (#5718)
+Correct casing (#5817)
+[Feat] Add fireworks AI embedding (#5812)
+docs(proxy/configs.md): add CONFIG_FILE_PATH tutorial to docs
+bump: version 1.46.8 → 1.47.0
+LiteLLM Minor Fixes & Improvements (09/20/2024)  (#5807)
+refactor: cleanup root of repo (#5813)
+build(schema.prisma): add column 'blocked' for litellm keys
+[Feat-Proxy] Allow using custom sso handler  (#5809)
+use .debug for update_database() (#5810)
+fix model cost map fireworks embeddings
+add fireworks_ai-embedding-models
+add fireworks embedding pricing
+[Fix] Tag Based Routing not work with wildcard routing  (#5805)
+LiteLLM Minor Fixes & Improvements (09/19/2024)  (#5793)
+ui new build
+ui fix correct team not loading (#5804)
+bump: version 1.46.7 → 1.46.8
+ui new build
+[Feat] Add Error Handling for /key/list endpoint (#5787)
+[ Proxy - User Management]: If user assigned to a team don't show Default Team (#5791)
+[Feat] Add proxy level prometheus metrics (#5789)
+test fix test_multiple_deployments_sync
+fix azure gpt-4o test
+fix curl on /get team info (#5792)
+test: replace gpt-3.5-turbo-0613 (deprecated model) (#5794)
+docs docker quick start
+docs fix  link on root page
+docs add docker quickstart to litellm proxy getting started
+bump: version 1.46.6 → 1.46.7
+docs(vertex.md): fix example with GOOGLE_APPLICATION_CREDENTIALS
+fix root of docs page
+[Feat] Add Azure gpt-35-turbo-0301 pricing (#5790)
+LiteLLM Minor Fixes & Improvements (09/18/2024)  (#5772)
+add gemma2 9b it (#5788)
+fix use converse for all llama3 models (#5729)
+feat(prometheus_api.py): support querying prometheus metrics for all-up + key-level spend on UI (#5782)
+set timeout on predibase test
+bump: version 1.46.5 → 1.46.6
+docs fallback/login
+docs add info on `/fallback/login`
+[Chore-Proxy] enforce jwt auth as enterprise feature (#5770)
+[Chore LiteLLM Proxy] enforce prometheus metrics as enterprise feature  (#5769)
+[Feat-Proxy] Add Azure Assistants API - Create Assistant, Delete Assistant Support  (#5777)
+[Prometheus] track requested model (#5774)
+[Feat - GCS Bucket Logger] Use StandardLoggingPayload  (#5771)
+fix(litellm_logging.py): fix merge conflict
+update gcs bucket to use standard logging payload
+docs update what gets logged on gcs buckets
+docs update standard logging object
+docs clarify how virtual key is read from cache / db
+docs(azure_ai.md): add rerank api endpoint to docs
+bump: version 1.46.4 → 1.46.5
+Additional Fixes (09/17/2024)  (#5759)
+LiteLLM Minor Fixes & Improvements (09/17/2024)  (#5742)
+bump: version 1.46.3 → 1.46.4
+bump: version 1.46.2 → 1.46.3
+update datadog docs
+[Feat] Log Request metadata on gcs bucket logging (#5743)
+[Fix] Router/ Proxy - Tag Based routing, raise correct error when no deployments found and tag filtering is on  (#5745)
+[Feat-Proxy-DataDog] Log Redis, Postgres Failure events on DataDog  (#5750)
+[Fix] o1-mini causes pydantic warnings on `reasoning_tokens`  (#5754)
+Bump next from 14.1.1 to 14.2.10 in /ui/litellm-dashboard (#5753)
+Litellm fix router testing (#5748)
+test(test_router_debug_logs.py): move to mock response
+Revert "fix - deal with case when check view exists returns None (#5740)" (#5741)
+fix - deal with case when check view exists returns None (#5740)
+bump: version 1.46.1 → 1.46.2
+LiteLLM Minor Fixes & Improvements (09/16/2024)  (#5723) (#5731)
+fix guardrail linting change
+fix gemini 1.5 flash test
+ci/cd run again
+fix linting
+bump: version 1.46.0 → 1.46.1
+[Feat-Proxy] Slack Alerting - allow using os.environ/ vars for alert to webhook url  (#5726)
+[Fix-Proxy] Azure Key Management - Secret Manager  (#5728)
+fix gemini 1.5 flash supports_response_schema
+fix test_all_model_config
+fix test_all_model_configs
+[Fix-Proxy] log exceptions from azure key vault on verbose_logger.exceptions  (#5719)
+[Feat-Proxy] Add upperbound key duration param (#5727)
+Warning fix for Pydantic 2.0 (#5679) (#5707)
+Add unsupported params. (#5722)
+docs(docker_quick_start.md): update quick start with azure connection error
+build(model_prices_and_context_window.json): bump claude-3-5-sonnet max tokens
+(models): Enable JSON Schema Support for Gemini 1.5 Flash Models (#5708)
+Litellm stable dev (#5711)
+mark test as flaky
+docs
+docs max_completion_tokens
+bump: version 1.45.0 → 1.46.0
+[Feat-Prometheus] Add prometheus metric for tracking cooldown events  (#5705)
+[Feat-Prometheus] Track exception status on `litellm_deployment_failure_responses` (#5706)
+fic otel load test %
+[Fix] Router cooldown logic - use % thresholds instead of allowed fails to cooldown deployments  (#5698)
+sambanova support (#5547) (#5703)
+[Feat] Add `max_completion_tokens` param  (#5691)
+Update model_prices_and_context_window.json (#5700)
+LiteLLM Minor Fixes and Improvements (09/14/2024)  (#5697)
+LiteLLM Minor Fixes and Improvements (09/13/2024)  (#5689)
+(models): Added missing gemini experimental models + fixed pricing for gemini-1.5-pro-exp-0827 (#5693)
+[Feat - Perf Improvement] DataDog Logger 91% lower latency  (#5687)
+[Fix] Performance -  use in memory cache when downloading images from a url  (#5657)
+build: bump from 1.44.28 -> 1.45.0
+LiteLLM Minor Fixes and Improvements (09/12/2024)  (#5658)
+Add o1 models on OpenRouter. (#5676)
+fix(user_dashboard.tsx): don't call /global/spend on startup (#5668)
+fix(proxy/utils.py): auto-update if required view missing from db. raise warning for optional views. (#5675)
+bump: version 1.44.27 → 1.44.28
+[Fix-Router] Don't cooldown when only 1 deployment exists  (#5673)
+docs add o1 to docs
+[Feat-Perf] Use Batching + Squashing  (#5645)
+fix gcs logging
+fix type errors
+fix handle user message
+bump openai to 1.45.0
+fix linting
+fix handle o1 not supporting system message
+bump: version 1.44.26 → 1.44.27
+fix pricing
+add o1 reasoning tests
+Refactor 'check_view_exists' logic  (#5659)
+Fix token and remove dups. (#5662)
+add OpenAI o1 config
+(models): Add o1 pricing. (#5661)
+gpt o1 and o1 mini
+mark test as flaky
+fix config.yml
+ci/cd run again
+fix testing
+ci/cd run again
+make separate assistants testing pipeline
+fix respx
+fix router tests
+fix ci/cd tests
+fix config.yml
+add litellm router testing
+bump: version 1.44.25 → 1.44.26
+LiteLLM Minor Fixes and Improvements (11/09/2024)  (#5634)
+bump: version 1.44.24 → 1.44.25
+fix otel load test
+fix otel tests
+fix langsmith load tests
+fix langsmith load test
+fix load test
+print load test results
+add load tests to ci/cd
+add otel load test
+add langsmith logging test
+fix move logic to custom_batch_logger
+Add the option to specify a schema in the postgres DB, also modify docs (#5640)
+use vars for batch size and flush interval seconds
+fix otel use sensible defaults
+fix vtx test
+fix langsmith tenacity
+fix requirements.txt
+fix testing + req.txt
+use lock to flush events to langsmith
+add better debugging for flush interval
+fix installing litellm
+use tenacity for langsmith
+fix langsmith clear logged queue on success
+LiteLLM Minor Fixes and Improvements (09/10/2024) (#5618)
+Add gemini 1.5 flash exp 0827 (#5636)
+langsmith use batching for logging
+fix langsmith_batch_size
+stash - langsmith use batching for logging
+docs: update ai21 docs
+ci/cd run again
+Bump body-parser and express in /docs/my-website
+Bump serve-static and express in /docs/my-website
+Bump send and express in /docs/my-website
+bump: version 1.44.23 → 1.44.24
+add doc string to vertex llm base
+fix gemini streaming test
+fix test get token url
+fix gemini test
+fix case when gemini is used
+fix vertex use async func to set auth creds
+fix bedrock get async client
+fix types for vertex project id
+fix getting params
+fix vertex only refresh auth when required
+fix linting error
+fix get_async_httpx_client
+fix test
+use get async httpx client
+use get_async_httpx_client for logging httpx
+pass llm provider when creating async httpx clients
+fix rps / rpm values on load testing
+Updating Cohere models, prices, and documentation
+add enum for all llm providers LlmProviders
+rename get_async_httpx_client
+fix vertex ai use _get_async_client
+fix #5614 (#5615)
+add test test_regenerate_key_ui
+fix regen keys when no duration is passed
+bump: version 1.44.22 → 1.44.23
+LiteLLM Minor Fixes and Improvements (09/09/2024)  (#5602)
+LiteLLM Minor Fixes and Improvements (09/07/2024)  (#5580)
+fix test_awesome_otel_with_message_logging_off
+fix otel logging test
+run test in verbose mode
+fix test otel message logging off
+fix team based logging doc
+add test for using success and failure
+Properly use `allowed_fails_policy` when it has fields with a value of 0 (#5604)
+fix log failures for key based logging
+fix otel test
+fix otel defaults
+add doc on redacting otel message / response
+use callback_settings  when intializing otel
+fix init custom logger when init OTEL runs
+use redact_message_input_output_from_custom_logger
+refactor redact_message_input_output_from_custom_logger
+add message_logging on Custom Logger
+update test_default_tagged_deployments
+add "default" tag
+test test_default_tagged_deployments
+support default deployments
+build(deployment.yaml): Fix port + allow setting database url in helm chart (#5587)
+fix taf based routing debugging
+fix debug statements
+fix test_async_prometheus_success_logging_with_callbacks
+fix create script for pre-creating views
+support using "callbacks" for prometheus
+docs architecture
+bump: version 1.44.21 → 1.44.22
+Revert "fix(router.py): return model alias w/ underlying deployment on router.get_model_list()"
+fix(router.py): return model alias w/ underlying deployment on router.get_model_list()
+docs(deploy.md): add published non-root docker image to docs
+add /key/list endpoint
+High Level architecture
+ui new build
+docs add arch diagram
+add arch diagram
+ui allow setting input / output cost per M tokens
+add doc on spend report frequency
+add spend_report_frequency as a general setting
+fix slack alerting allow setting custom spend report frequency
+docs better sidebar
+docs cleanup
+docs organize sidebar
+ui cleanup
+mark test_langfuse_masked_input_output
+add config for setting up redis cluster
+allow setting password for redis cluster
+add test_redis_cache_cluster_init_with_env_vars_unit_test
+fix allow using .env vars for redis cluster
+litellm-helm: fix missing resource definitions in initContainer and missing DBname value for envVars in deployment.yaml (#5562)
+fix missing class object instantiation in custom_llm_server provider documentation's quick start (#5578)
+allow setting REDIS_CLUSTER_NODES in .env
+fix(langsmith.py): support sampling langsmith traces (#5577)
+ Allow client-side credentials to be sent to proxy (accept only if complete credentials are given) (#5575)
+bump: version 1.44.20 → 1.44.21
+bump: version 1.44.19 → 1.44.20
+ui new build
+fix otel set max_queue_size, max_queue_size
+LiteLLM Minor Fixes and Improvements (08/06/2024)  (#5567)
+fix(navbar.tsx): only show 'get enterprise license' if user is not already a premium user (#5568)
+fix otel max batch size
+fix ui type
+fix linting
+fix azure batches test - don't have more quota
+fix linting errors
+fix use view for getting tag usage
+use view for getting tag usage on ui
+add cost tracking for rerank+ test
+fix RerankResponse type
+add cost tracking for rerank
+basic cohere rerank logging
+Clean formatting
+Update backup sheet
+fix datadog log exceptions
+Update pricing and add cohere refresh models
+fix regen keys
+working regen flow
+ui allow rotating keys
+use form correctly
+allow correct fields on regenerate key
+allow passing expiry time to /key/regenerate
+run ci/cd again
+run ci cd again
+fix otel type
+bump: version 1.44.18 → 1.44.19
+LiteLLM Minor Fixes and Improvements  (#5537)
+Update lago.py to accomodate API change (#5495) (#5543)
+LiteLLM Merged PR's (#5538)
+docs add video for key based logging
+ui new build
+ui show when key expires
+fix on /user/info show all keys - even expired ones
+run ci/cd on main
+move prisma test to correct location
+add error message on test
+run ci - cd again
+run ci/cd again
+use requirements txt
+run ci/cd agaiin
+move folder key gen prisma is in
+run test again
+run again
+add step for ui testing
+add test for ui usage endpoints
+add test for internal vs admin user
+fix tests on viewing spend logs
+add ui testing folder
+fix test_call_with_key_over_budget
+ui add a check for isAdminOrAdminViewer
+fix allow internal user to view their own usage
+fix /global/spend/provider
+add global/spend/provider
+allow internal user to view global/spend/models
+allow internal user to view their own spend
+add usage endpoints for internal user
+show /spend/logs for internal users
+fix create view - MonthlyGlobalSpendPerUserPerKey
+use helper functions per endpoint
+add /spend/tags as allowed route for internal user
+fix allow internal user and internal viewer to view usage
+LiteLLM Minor Fixes and Improvements  (#5537)
+Update lago.py to accomodate API change (#5495) (#5543)
+LiteLLM Merged PR's (#5538)
+docs add video for key based logging
+ui new build
+fix log /audio to langfuse
+ui show when key expires
+move prisma test to correct location
+fix typing error on test
+run ci/cd on main
+fix typing error on test
+add error message on test
+run ci - cd again
+run ci/cd on main
+run ci/cd again
+use requirements txt
+fix on /user/info show all keys - even expired ones
+run test again
+run ci/cd agaiin
+move folder key gen prisma is in
+run test again
+docs(configs.md): update to clarify you can use os.environ/ for any config value
+run again
+add step for ui testing
+add test for ui usage endpoints
+fix import
+test(test_function_call_parsing.py): handle anthropic internal server error
+Update utils.py (#5530)
+add test for internal vs admin user
+fix tests on viewing spend logs
+add ui testing folder
+fix test_call_with_key_over_budget
+ui add a check for isAdminOrAdminViewer
+fix allow internal user to view their own usage
+fix /global/spend/provider
+add global/spend/provider
+fix import
+docs(configs.md): update to clarify you can use os.environ/ for any config value
+allow internal user to view global/spend/models
+allow internal user to view their own spend
+add usage endpoints for internal user
+show /spend/logs for internal users
+fix create view - MonthlyGlobalSpendPerUserPerKey
+use helper functions per endpoint
+add /spend/tags as allowed route for internal user
+fix import
+fix import error
+fix import error
+fix allow internal user and internal viewer to view usage
+fix import error
+test(test_function_call_parsing.py): handle anthropic internal server error
+fix linting error
+use correct type hints for audio transcriptions
+Update utils.py (#5530)
+docs(pass_through/bedrock.md): add bedrock agents support
+bump: version 1.44.17 → 1.44.18
+fix(pass_through_endpoints): support bedrock agents via pass through (#5527)
+LiteLLM Minor fixes + improvements (08/04/2024) (#5505)
+mark test_team_logging as flaky
+fix allow general guardrails on free tier
+bump: version 1.44.16 → 1.44.17
+fix /health error
+show more descriptive error messages on /health checks
+return error from /global/spend endpoint
+return error client side from spend endpoints
+show error from /spend/tags
+rename type
+add doc on PassthroughStandardLoggingObject
+feat log request / response on pass through endpoints
+security - Prevent sql injection in `/team/update` query (#5513)
+stream response (#5516)
+fix init presidio guardrail
+allow init guardrails with output parsing logic
+docs(logging.md): fix name in docs
+handle logging_only logic for guardrails
+docs update presidio
+doc setting language per request
+docs new presidio language controls
+fix allow setting language per call to presidio
+fix presidio calling logic
+fix test_proxy_logging_setup
+remove conversational-task
+migrate presidio to new guardrails
+Add azure/gpt-4o-2024-08-06 pricing. (#5510)
+fix get llm provider logic
+test get llm provider
+style: ci/cd run again
+test: skip flaky test
+dual cache use always read redis as True by default
+test for pl obj
+add always read redis test
+ci/cd run again
+LiteLLM Minor fixes + improvements (08/03/2024)  (#5488)
+fix router debug logs
+fix route debug logs
+bump: version 1.44.15 → 1.44.16
+fix req.txt
+bump langfuse sdk version on docker
+docs control routes on proxy
+reset general settings post test
+add test for admin only routes
+add check for admin only routes
+add test for allowed routes
+fix test google secret manager
+allow setting allowed routes on proxy
+Bump pagefind from 1.1.0 to 1.1.1 in /docs/my-website
+mark test as flaky
+docs secret manager link
+test secret manager
+refactor secret managers
+read from .env for secret manager
+refactor get_secret
+add sync_construct_request_headers
+fix(proxy/_types.py): add lago 'charge_by' env var to proxy ui
+docs(bedrock.md): add multimodal embedding support to docs
+docs(batches.md): add loadbalancing multiple azure deployments on batches api to docs
+docs(azure.md): add docs on azure token refresh
+docs(routing.md): add proxy loadbalancing tutorial
+refactor: ci/cd run again
+docs(enterprise.md): clarify how enterprise deployments work
+test: fix test
+docs(json_mode.md): update docs
+fix(router.py): fix inherited type (#5485)
+feat(router.py): Support Loadbalancing batch azure api endpoints (#5469)
+bump: version 1.44.14 → 1.44.15
+fix always read redis
+mark test as flaky
+fix success handler typing
+fix linting errors
+fix linting
+add doc with support imagen models
+fix linting error
+fix linting error
+fix linting error
+add cost tracking for pass through imagen
+fix get llm provider for imagen
+fix get_llm_provider for imagegeneration@006
+track image gen in spend logs
+refactor vtx image gen
+refactor vertex to use spearate image gen folder
+fix lining
+fix linting error
+track /embedding in spendLogs
+code cleanup
+add test for pass through streaming usage tracking
+pass through track usage for streaming endpoints
+use chunk_processort
+new streaming handler fn
+LiteLLM Minor Fixes + Improvements  (#5474)
+Azure Service Principal with Secret authentication workflow. (#5131) (#5437)
+build(model_prices_and_context_window.json): fix token information
+Add pricing for ft:gpt-3.5-turbo-* (#5471)
+fix pass through construct_target_url when vertex_proj is None
+docs add docs on supported params
+docs update ai21 doc
+fix linting
+add ai21 model test
+add streaming test for ai21
+add all ai21 params
+test ai21
+refactor ai21
+add ai21 provider
+add ai21_chat as new provider
+docs - update /health docs to show correct info
+(gemini): Fix Cloudflare AI Gateway typo. (#5429)
+docs(security.md): Adds security.md file to project root
+LiteLLM minor fixes + improvements (31/08/2024)  (#5464)
+fix response_format={'type': 'json_object'} not working for Azure models (#5468)
+Bedrock Embeddings refactor + model support  (#5462)
+Minor LiteLLM Fixes and Improvements (#5456)
+bump: version 1.44.13 → 1.44.14
+add cerebras cost tracking
+mark flaky test as flaky
+docs add cerebras
+test: skip test on end of life model
+anthropic prompt caching cost tracking (#5453)
+test: skip test on end of life model
+anthropic prompt caching cost tracking (#5453)
+skip end of life model in test
+docs add litellm_error_code_metric_total
+test: skip test on end of life model
+anthropic prompt caching cost tracking (#5453)
+feat prometheus add metric for failure / model
+ci/cd run again
+fix test
+add cerebras api
+add cerebras config
+fix cost tracking for vertex ai native
+forget to keep existing search - bring it back
+update canary
+fix /spend logs call
+fix vertex ai test
+mark as async
+bump: version 1.44.12 → 1.44.13
+call spend logs endpoint
+fix tests
+add test for vertex basic pass throgh
+fix use existing custom_auth.py
+allow pass through routes as LLM API routes
+fix test_vertexai_embedding_embedding_latest_input_type
+use helper class for pass through success handler
+add example custom
+ci/cd run again
+docs add task type for vertex ai
+add VertexAITextEmbeddingConfig
+fix map input_type to task_type for vertex ai
+fix dir structure for tts
+fix allow qdrant api key to be optional
+vertex forward all headers from vertex
+update doc
+doc using gcs bucket config.yaml
+add gcs bucket base
+use helper to get_config_file_contents_from_gcs
+add test for test_vertexai_multimodal_embedding_text_input
+- merge - fix TypeError: 'CompletionUsage' object is not subscriptable #5441  (#5448)
+chore: Clarify support-related Exceptions in utils.py (#5447)
+docs(routing.md): add weight-based shuffling to docs
+test: mark flaky tests
+add tests to check ai21 models cost is calculated correct
+Add pricing for Openai ft:gpt-4o
+bump: version 1.44.11 → 1.44.12
+fix: Minor LiteLLM Fixes + Improvements (29/08/2024)  (#5436)
+update docs
+use correct vtx ai21 pricing
+add pricing for vertex ai 21
+show all error types on swagger
+mark test_cost_tracking_with_caching as flaky
+bump: version 1.44.10 → 1.44.11
+fix indentation
+fix auth checks for provider routes
+add docs on pass thtough
+add test for vertex sdk foward headers
+vertex add vertex endpoints
+docs(docker_quick_start.md): add new quick start doc for litellm proxy
+mark test_key_info_spend_values_streaming as flaky
+fix team based tag routing
+docs tag based routing per team
+enable_tag_filtering
+doc Tag Based Routing
+fix missing link on docs
+add test_chat_completion_with_no_tags
+fix get_deployments_for_tag
+add test for tag based routing
+define tags on model list
+add_team_based_tags_to_metadata
+add set / update tags for a team
+allow settings tags per team
+add test_team_tags to set / update tags
+add test for health check
+(bedrock): Add new cross-region inference support for Bedrock.
+add support for fireworks ai health check
+add util to pick_cheapest_model_from_llm_provider
+add fireworks_ai_models
+fix(google_ai_studio): working context caching (#5421)
+re-add TGI
+fix(utils.py): correctly log streaming cache hits (#5417) (#5426)
+bump: version 1.44.9 → 1.44.10
+fix(team_endpoints.py): update to include the budget in the response
+test(test_amazing_vertex_completion.py): fix test
+feat(team_endpoints.py): return team member budgets in /team/info call
+fix(vertex_ai_partner_models.py): fix vertex import
+fix(router.py): fix cooldown check
+bump: version 1.44.8 → 1.44.9
+prometheus - safe update start / end time
+add hook for oauth2 proxy
+fix vertex ai test
+(models): Add gemini-1.5-pro-exp-0827 pricing.
+fix batch creation azure
+fix failing vertex test
+new ui build
+test(test_amazing_vertex_completion.py): ignore experimental gemini models in test
+test(test_amazing_vertex_completion.py): update test to not pick experimental gemini models
+add test_user_api_key_auth_fails_with_prohibited_params
+fix checking request body
+add checks for safe request body
+add check for is_request_body_safe
+docs(reliability.md): cleanup docs
+retry flaky tests 3 times
+doc add ssml usage
+build(model_prices_and_context_window.json): bedrock/llama3 models - region-based pricing
+build(model_prices_and_context_window.json): fix bedrock/llama3-1 pricing
+simpify ssml usage
+update validate_vertex_input
+add ssml support on docs
+use ssml with litellm vertex
+fix(key_management_endpoints.py): expose 'key' param, for setting your own key value
+fix(rds_iam_token.py): support common aws env var's - AWS_ROLE_ARN, AWS_WEB_IDENTITY_TOKEN_FILE
+add vertex ssml test
+add ssml input on vertex tts
+fix(rds_iam_token.py): fix boto3 client init for rds
+test: fix assert string on test
+fix(proxy/utils.py): fix model dump to exclude none values
+fix ui
+ui fixes
+ui fix viewing budget info
+ui show Budget Reset
+Also have pricing details
+Support for gemini experimental models
+test: rename test to run earlier
+test: fix test
+build(model_prices_and_context_window.json): add bedrock mistral small
+fix pass through rerank requests tests
+stash change
+huggingface -> Hugging Face
+update outdated readme
+mark vertex tests as flaky
+docs(vertex_ai.md): fix dead link
+mark test as flaky
+allow editing budget duration
+update cookbook
+test(test_embeddings.py): fix test
+docs: add time.sleep() between streaming calls
+ci/cd run again
+ci/cd run again
+test test_image_generation_azure_dall_e_3
+fix flaky tests
+handle flaky pytests
+test: fix test
+undo chage on config.yaml
+allow running contributor PRs
+def test_get_bearer_token(): fix
+fix(main.py): simplify to just use `/batchEmbedContent`
+skip litellm.Timeout error
+update doc on palm provider
+fix palm api is deactivated by google
+fix(__init__.py): fix import
+test: fix test
+feat(batch_embed_content_transformation.py): support google ai studio /batchEmbedContent endpoint
+fix test_completion_vllm
+feat(embeddings_handler.py): support async gemini embeddings
+add test for rerank on custom api base
+fix(embeddings_handler.py): initial working commit for google ai studio text embeddings /embedContent endpoint
+docs add tg ai rerank docs
+add rerank on cohere docs
+build(deps): bump webpack from 5.93.0 to 5.94.0 in /docs/my-website
+bump: version 1.44.7 → 1.44.8
+docs add rerank api to docs
+fix linting
+add /rerank test
+test(test_exceptions.py): loosen test
+feat - add rerank on proxy
+fix: initial commit
+v0 add rerank on litellm proxy
+fix install on 3.8
+fix(openai.py): fix error re-raising
+add async support for rerank
+feat(vertex_ai_and_google_ai_studio): Support Google AI Studio Embeddings endpoint
+add rerank params
+add rerank api tests
+add tg ai rerank support
+test(test_proxy_exception_mapping): loosen assert
+fix(bedrock_httpx.py): support 'Auth' header as extra_header
+add main cohere ai rerank handler + test
+add basic cohere rerank
+fix(azure_text.py): fix streaming parsing
+test(test_router_debug_logs.py): simplify test
+add mock test for ai21
+fix(router.py): fix aembedding type hints
+fix(openai.py): fix post call error logging for aembedding calls
+add jamba-1.5
+docs(bedrock.md): add doc on passing extra headers + custom api endpoints to bedrock
+use cost per token for jamba
+add doc on using jamba-1.5-large
+docs(anthropic.md): cleanup docs
+add jamba-1.5-mini models
+fix(anthropic.py): support setting cache control headers, automatically
+fix(azure.py): fix raw response dump
+add test for test_partner_models_httpx_ai21
+refactor partner models to include ai21
+fix: fix linting errors
+test: fix test
+docs langfuse link
+fix(sagemaker.py): fix streaming logic
+docs(gemini.md): add context caching on google ai studio to docs
+fix(cooldown_cache.py): fix linting errors
+build(config.yml): bump anyio version
+fix(asyncify.py): fix linting errors
+fix(asyncify.py): fix linting errors
+perf(sagemaker.py): asyncify hf prompt template check
+test: fix test
+fix(factory.py): handle missing 'content' in cohere assistant messages
+fix: fix imports
+fix: fix imports
+fix: fix unbound var
+feat(vertex_ai_context_caching.py): check gemini cache, if key already exists
+feat(vertex_ai_context_caching.py): support making context caching calls to vertex ai in a normal chat completion call (anthropic caching format)
+fix(types/utils.py): map finish reason to openai compatible
+fix: fix imports
+fix(streaming_utils.py): fix generic_chunk_has_all_required_fields
+run ci/cd again
+fix created_at and updated_at not existing error
+fix: fix unbound var
+ci/cd run again
+fix entrypoint
+feat(vertex_ai_context_caching.py): check gemini cache, if key already exists
+build(deps): bump micromatch in /ui/litellm-dashboard
+bump: version 1.44.6 → 1.44.7
+ui new build
+fix regen api key flow
+enforce regenerating keys in enterprise tier
+make regenerating api keys enterprise
+feat(vertex_ai_context_caching.py): support making context caching calls to vertex ai in a normal chat completion call (anthropic caching format)
+regenerate key
+update ui regen key
+update key name when regenerating a key
+ui regenerate an api key
+working regenerate key flow
+allow using hashed api keys on regen key
+test test_regenerate_api_key
+add regenerate_key_fn
+fix schema
+add key_state created at to token
+update schema
+fix refactor cohere
+fix(utils.py): fix message replace
+fix(sagemaker.py): support streaming for messages api
+Add pricing for imagen-3 and imagen-3-fast
+use common folder for cohere
+refactor cohere to be in a folder
+fix(utils.py): support 'PERPLEXITY_API_KEY' in env
+vertex add finetuned models
+docs: fix dead links
+add test for test_completion_fine_tuned_model
+add fine tuned vertex model support
+fix(vertex_httpx.py): use special param
+test(test_function_calling.py): fix test
+fix(utils.py): fix value check
+fix(main.py): fix linting errors
+feat(utils.py): support gemini/vertex ai streaming function param usage
+fix link on getting started
+docs using litellm sdk with litellm proxy
+feat(vertex_httpx.py): support functions param for gemini google ai studio + vertex ai
+docs use litellm proxy with litellm python sdk
+fix qdrant semantic cache
+fix(vertex_httpx.py): return project id, if given
+docs - explain how custom guardrail is mounted
+ci/cd run again
+fix(vertex_httpx.py): use dynamic project id
+fix: fix tests
+fix(utils.py): fix linting errors
+test test_cooldown_same_model_name
+fix(cooldown_cache.py): fix linting errors
+fix(router.py): enable dynamic retry after in exception string
+bump: version 1.44.5 → 1.44.6
+ui new build
+fix linting errors when adding a new team member
+fix allow setting per model tpm rpm limits
+test(test_router.py): add test to ensure retry-after matches received value
+test(test_router.py): skip test - create separate pr to match retry after
+fix(azure.py): add response header coverage for azure models
+fix(main.py): cover openai /v1/completions endpoint
+fix(openai.py): coverage for correctly re-raising exception headers on openai chat completion + embedding endpoints
+ui allow setting tpm / rpm limits on ui
+fix(utils.py): correctly re-raise the headers from an exception, if present
+feat use identity_pool for vertex
+test(test_router.py): add test to ensure error is correctly re-raised
+fix(router.py): don't cooldown on apiconnectionerrors
+fix pynacl error
+fix set Caching Default Off
+fix should_use_cache
+feat(team_endpoints.py): expose 2 new fields - updated_users and updated_team_memberships, on `/team/member_add`
+test caching default on /off
+feat - allow setting cache mode
+fix(huggingface_restapi.py): fix tests
+docs(input.md): update docs on together ai response_format params support
+fix(utils.py): support passing response_format for together ai calls
+docs(aws_sagemaker.md): cleanup sagemaker messages api docs
+fix show user_id on table
+test(test_sagemaker.py): fix test
+fix(proxy_server.py): fix post /v1/batches endpoint
+build(deps): bump micromatch from 4.0.5 to 4.0.8 in /ui
+bump: version 1.44.4 → 1.44.5
+docs tts
+add mock testing for vertex tts
+docs on using vertex tts
+test vertex ai text to speech
+fix(proxy_server.py): support env vars for controlling global max parallel request retry/timeouts
+fix linting
+add example using tts on vertex ai
+docs text to speech
+fix linting errors
+init comit for vtx text to speech
+add test_audio_speech_litellm_vertex
+fix(utils.py): only filter additional properties if gemini/vertex ai
+feat add test for custom guardrails
+fix custom guardrail test
+init custom guardrail class
+feat(sagemaker.py): add sagemaker messages api support
+custom_callbacks
+docs custom guardrails
+doc custom guardrail
+fix use guardrail for pre call hook
+fix(utils.py): handle additionalProperties is False for vertex ai / gemini calls
+add custom guardrail reference
+add the ability to init a custom guardrail
+fix(factory.py): support 'add_generation_prompt' field for hf chat templates
+fix(litellm_pre_call_utils.py): don't override k-v pair sent in spend_logs_metadata by user
+fix prom latency metrics
+docs(caching.md): add redis cluster support to docs
+docs(bedrock.md): add docs on alternating user/assistant messages
+use with base64
+allow load testing sagemaker url
+bump: version 1.44.3 → 1.44.4
+docs fix
+docs moderation
+docs(batches.md): add more examples to docs
+docs move pass thru endpoints
+ci/cd run again
+bump: version 1.44.2 → 1.44.3
+docs(sidebars.js): refactor docs
+add test for test_azure_tenant_id_auth
+test bedrock guardrails
+docs(configs.md): add global_max_parallel_requests to docs
+fix(proxy_server.py): expose flag to disable retries when max parallel request limit is hit
+fix(files_endpoints.py): fix multiple args error
+feat(auth_checks.py): allow team to call all models, when explicitly set via /*
+add async_post_call_success_hook
+doc bedrock guardrails
+fix azure_ad_token_provider
+feat(azure.py): support health checking azure deployments
+add bedrock guardrails support
+fix: fix linting errors
+add types for BedrockMessage
+feat(proxy_server.py): support azure batch api endpoints
+docs(batches.md): add docs on calling azure batches api
+feat(batches): add azure openai batches endpoint support
+add dbally project
+add prom docs for Request Latency Metrics
+update promtheus metric names
+track litellm_request_latency_metric
+track api_call_start_time
+fix init correct prometheus metrics
+docs use entrata id with litellm proxy
+add new litellm params for client_id, tenant_id etc
+docs(azure_ai.md): add azure ai jamba instruct to docs
+docs(utils.py): cleanup docstring
+use azure_ad_token_provider to init clients
+feat(factory.py): enable 'user_continue_message' for interweaving user/assistant messages when provider requires it
+add azure_ad_token_provider as all litellm params
+fix(cohere_chat.py): support passing 'extra_headers'
+fix allow setting LiteLLM license as .env
+fix(ollama_chat.py): fix passing assistant message with tool call param
+fix test_vertexai_multimodal_embedding use magicMock requests
+fix allow setting license in config.yaml
+build(deps): bump hono from 4.2.7 to 4.5.8 in /litellm-js/spend-logs
+add docstring for /embeddings and /completions
+add doc string for /chat/completions swagger
+test(test_custom_callback_input.py): skip flaky ci/cd test
+fix /user/delete doc string
+test(test_custom_callback_input.py): fix test
+test: fix test
+fix: rerun ci/cd
+docs(enterprise.md): add key/team level spend tags to docs
+test(test_function_calling.py): remove redundant gemini test (causing ratelimit errors)
+test(test_image_generation.py): handle azure api error
+test: test_function_calling.py
+docs vertex
+fix team_member_add
+fix test_master_key_hashing
+use litellm proxy with vertex ai sdk
+docs(vertex.md): add vertex global safety settings to doc
+feat(utils.py): support global vertex ai safety settings param
+docs add example using litellm with vertex python sdk
+fix pass through endpoints
+test(test_amazing_vertex_completion.py): handle vertex api instability
+refactor vertex endpoints to pass through all routes
+add test vtx embedding
+docs(logging.md): add standard logging payload to docs
+proxy - print embedding request when recieved
+add docs using litellm multi modal embeddings
+feat(litellm_logging.py): add 'saved_cache_cost' to standard logging payload (s3)
+bump: version 1.44.1 → 1.44.2
+docs(users.md): add doc on setting max budget for internal users
+docs(users.md): add doc on setting max budget for internal users
+docs(custom_llm_server.md): add streaming example for custom llm call
+fix(router.py): fix linting error
+fix test test_vertexai_multimodal_embedding
+fix(vertex_httpx.py): fix json schema call to pass in response_mime_type=="application/json"
+feat add multimodal embeddings on vertex
+add multi modal vtx embedding
+test(test_caching.py): skip local test
+feat(caching.py): redis cluster support
+add initial support for multimodal_embedding vertex
+add VertexMultimodalEmbeddingRequest type
+fix(litellm_pre_call_utils.py): handle dynamic keys via api correctly
+Support LangSmith parent_run_id, trace_id, session_id
+docs semantic caching qdrant
+fix qdrant litellm on proxy
+build(config.yml): pin openai version
+fix(internal_user_endpoints.py): pass in user api key dict value
+fixes for using qdrant with litellm proxy
+feat(proxy_server.py): support disabling storing master key hash in db, for spend tracking
+fix tg ai -deprecated model
+fix qdrant semantic caching test
+fix drant url
+fix(vertex_httpx.py): Fix tool calling with empty param list
+fix(utils.py): support openrouter streaming
+docs - use litellm on gcp cloud run
+fix configmap name in print
+test(test_proxy_server.py): fix test to specify user role
+add checksum annotation
+fix groq/3.1 reasoning model
+feat(litellm_pre_call_utils.py): support passing tags/spend logs metadata from keys/team metadata to request
+test(test_completion.py): fix gemini rate limit error
+test(test_completion.py): fix test
+openrouter/anthropic/claude-3.5-sonnet: supports_assistant_prefill:true
+fix: was missing openrouter beta model from claude sonnet
+docs(caching.md): add doc on enabling caching for just rate limiting features
+fix(litellm_logging.py): add stricter check for special param being non none
+fix(utils.py): ensure consistent cost calc b/w returned header and logged object
+bump: version 1.44.0 → 1.44.1
+enforece guardrails per API Key as enterprise
+fix lakera ai tests
+fix doc guardrails
+fix doc lakera ai
+support lakera ai category thresholds
+refactor(team_endpoints.py): refactor auth checks for team member endpoints to ui team admin to manage it
+docs move lakera to free
+feat(_types.py): allow team admin to delete member from team
+fix(litellm_pre_call_utils.py): only pass api_version if set
+add docker image for non-root
+fix dockerfile
+working lakera ai during call hook
+fix make lakera ai free guardrail
+Fixed code snippet import typo in Structured Output docs
+feat(user_api_key_auth.py): allow team admin to add new members to team
+rename lakera ai
+rename Aporia Guardrail
+test test_using_default_working_fallback
+fix router retries tests
+test router fallbacks test
+run test on sync function too
+fix run sync fallbacks
+fix fallbacks dont recurse on the same fallback
+fix(azure.py): fix optional param elif statement
+fix don't retry errors when no healthy deployments available
+bring back model_prices_and_context_window update yml job
+test + never retry on 404 errors
+fetch-depth=0
+bump: version 1.43.19 → 1.44.0
+feat(ollama.py): support ollama `/api/embed` endpoint
+Delete .github/workflows/auto_update_price_and_context_window.yml
+fix(proxy_server.py): fix invalid login message to not show passed in pwd
+fix(factory.py): fix merging consecutive tool blocks for bedrock converse
+fix test codestral api
+test guardrails with API Key
+feat control guardrails per API Key
+fix(main.py): response_format typing for acompletion
+docs update Aporia Example
+fix test_ollama_chat_function_calling
+Update Huggingface provider to utilize the SSL verification through 'SSL_VERIFY' env var or 'litellm.ssl_verify'.
+Update 'init_bedrock_client' to use 'litellm.ssl_verify' or 'SSL_VERIFY' environment variable.
+Fix using sync 'litellm.client_session' for async calls in azure.py
+Update handling of 'litellm.ssl_verify' in HTTP handlers to allow for custom, self-signed certificates.
+fix(pass_through_endpoints.py): fix query param pass through
+docs(langfuse.md): add doc on pass through
+bump: version 1.43.18 → 1.43.19
+docs fix aporia
+fix(litellm_pre_call_utils.py): handle no query params in request
+fix _get_request_ip_address
+fix import error guardrails
+fix _get_spend_report_for_time_range
+fix importing _ENTERPRISE_Aporia
+fix log to OTEL
+fix test guardrails
+add testing for guardrails
+test_llm_guard_triggered
+add testing for aporia guardrails
+fix aporia typo
+docs aporia
+feat - guardrails v2
+docs fix typo
+doc update typo
+docs updates based on feedback
+doc aporia_w_litellm
+run during_call_hook
+feat - return applied guardrails in response headers
+feat - allow accessing data post success call
+feat run aporia as post call success hook
+feat(langfuse_endpoints.py): support team based logging for langfuse pass-through endpoints
+feat(langfuse_endpoints.py): support langfuse pass through endpoints by default
+test(test_custom_callback.py): add test for message redaction to standard logging object
+fix(proxy_cli.py): support database_host, database_username, database_password, database_name
+docs: add docs on bedrock + cohere pass through endpoints
+fix(user_api_key_auth.py): fix client_ip
+ci/cd run again
+fix import error guardrails
+fix _get_spend_report_for_time_range
+fix importing _ENTERPRISE_Aporia
+fix log to OTEL
+fix test guardrails
+add testing for guardrails
+test_llm_guard_triggered
+add testing for aporia guardrails
+fix aporia typo
+docs aporia
+feat - guardrails v2
+feat(langfuse_endpoints.py): support team based logging for langfuse pass-through endpoints
+feat(langfuse_endpoints.py): support langfuse pass through endpoints by default
+test(test_custom_callback.py): add test for message redaction to standard logging object
+fix(proxy_cli.py): support database_host, database_username, database_password, database_name
+feat(cost_calculator.py): only override base model if custom pricing is set
+docs fix typo
+doc update typo
+docs updates based on feedback
+doc aporia_w_litellm
+docs: add docs on bedrock + cohere pass through endpoints
+feat(azure.py): support dynamic api versions
+run during_call_hook
+added testing for qdrant semantic caching
+feat - return applied guardrails in response headers
+feat - allow accessing data post success call
+feat run aporia as post call success hook
+fix(user_api_key_auth.py): log requester ip address to logs on request rejection
+test(test_caching.py): re-introduce testing for s3 cache w/ streaming
+add 0.2.3 helm
+fix(ollama.py): fix ollama embeddings - pass optional params
+fix(ollama_chat.py): fix sync tool calling
+implemented RestAPI and added support for cloud and local Qdrant clusters
+docs(json_mode.md): add azure openai models to doc
+inly write model tpm/rpm tracking when user set it
+sleep before checi g
+feat(Support-pass-through-for-bedrock-endpoints): Allows pass-through support for bedrock endpoints
+fix test pass through
+docs access groups
+docs virtual key access groups
+feat add model access groups for teams
+feat(pass_through_endpoints.py): add pass-through support for all cohere endpoints
+fix test update tpm / rpm limits for a key
+use model access groups for teams
+feat(azure.py): support 'json_schema' for older models
+docs cleanup
+fix proxy all models test
+docs clean up virtual key access
+bump: version 1.43.17 → 1.43.18
+update tpm / rpm limit per model
+style(vertex_httpx.py): make vertex error string more helpful
+docs rate limits per model per api key
+fix parallel request limiter tests
+fix parallel request limiter
+docs(google_ai_studio.md): add docs on google ai studio pass through endpoints
+docs clean up emojis
+docs cleanup - reduce emojis
+add tpm limits per api key per model
+feat(pass_through_endpoints.py): support streaming requests
+fix async_pre_call_hook in parallel request limiter
+feat return rmng tokens for model for api key
+feat(google_ai_studio_endpoints.py): support pass-through endpoint for all google ai studio requests
+feat - use commong helper for getting model group
+show correct metric
+add litellm-key-remaining-tokens on prometheus
+feat add settings for rpm/tpm limits for a model
+fix(pass_through_endpoints.py): fix returned response headers for pass-through endpoitns
+docs(vertex_ai.md): cleanup docs
+bump: version 1.43.16 → 1.43.17
+track rpm/tpm usage per key+model
+user api key auth rpm_limit_per_model
+docs(langfuse_integration.md): add disable logging for specific calls to docs
+fix(health_check.py): return 'missing mode' error message, if error with health check, and mode is missing
+fix databricks streaming test
+fix(litellm_logging.py): fix price information logging to s3
+Add the "stop" parameter to the mistral API interface, it is now supported
+feat(litellm_logging.py): support logging model price information to s3 logs
+fix predictions image generation response
+skip InternalServerError on vertex test
+docs oauth2
+docs correct link to oauth 2.0
+docs oauh 2.0 enterprise feature
+docs on oauth 2.0
+add debugging for oauth2.0
+allow using oauth2 checks for logging into proxy
+(oidc): Improve docs for unofficial provider.
+add init commit for oauth 2 checks
+(oidc): Add support for loading tokens via a file, environment variable, and from a file path set in an env var.
+ui new build
+fix endpoint name on router
+docs add example on setting temp=0 for sagemaker
+fix(utils.py): fix get_image_dimensions to handle more image types
+docs sagemaker - add example using with proxy
+docs cleanup
+add provider_specific_fields to GenericStreamingChunk
+return traces in bedrock guardrails when enabled
+fix(__init__.py): fix models_by_provider to include cohere_chat models
+refactor: replace .error() with .exception() logging for better debugging on sentry
+pass trace through for bedrock guardrails
+add provider_specific_fields to GenericStreamingChunk
+bump: version 1.43.15 → 1.43.16
+feat(ui): for adding pass-through endpoints
+fix sagemaker old used test
+feat(pass_through_endpoints.py): initial working CRUD endpoints for /pass_through_endoints
+fix test sagemaker config test
+fix using prompt caching on proxy
+bump: version 1.43.14 → 1.43.15
+bump: version 1.43.13 → 1.43.14
+allow index to not exist in sagemaker chunks
+assume index is not always in stream chunk
+feat add support for aws_region_name
+show bedrock, sagemaker creds in verbose mode
+add verbose logging on test
+fix sagemaker tests
+fix sagemaker test
+refactor sagemaker to be async
+fix(litellm_logging.py): wrap function to safely fail
+feat(litellm_logging.py): cleanup payload + add response cost to logged payload
+fix(litellm_logging.py): fix standard payload
+fix(s3.py): fix s3 logging payload to have valid json values
+test sync sagemaker calls
+run mock tests for test_completion_sagemaker
+add non-stream mock tests for sagemaker
+use BaseAWSLLM for bedrock getcredentials
+fix ImportError
+Fixes the `tool_use` chunk mapping
+fix - don't require boto3 on the cli
+litellm always log cache_key on hits/misses
+fix /moderations endpoint
+fix test proxy exception mapping
+refactor use 1 util for llm routing
+simplify logic for routing llm request
+use route_request for making llm call
+Make helm chart listen on IPv6 (and IPv4).
+Use sepecific llama2 and llama3 model names in Ollama
+Fix incorrect message length check in cost calculator
+docs(bedrock.md): add guardrails on config.yaml to docs
+docs(team_logging.md): add key-based logging to docs
+docs(pass_through.md): add doc on using langfuse client sdk w/ litellm proxy
+feat(pass_through_endpoints.py): initial commit of crud endpoints for pass through endpoints
+feat(proxy_server.py): support returning available fields for pass_through_endpoints via `/config/field/list
+fix langfuse log_provider_specific_information_as_span
+bump: version 1.43.12 → 1.43.13
+docs using proxy with context caaching anthropic
+docs add examples with litellm proxy
+docs add examples doing context caching anthropic sdk
+add test for large context in system message for anthropic
+move claude prompt caching to diff file
+add test for caching tool calls
+Use AZURE_API_VERSION as default azure openai version
+fix(factory.py): handle assistant null content
+fix bedrock test
+docs Caching - Continuing Multi-Turn Convo
+pass cache_control in tool call
+test test_anthropic_api_prompt_caching_basic
+test amnthropic prompt caching
+add anthropic cache controls
+docs(model_management.md): add section on adding additional model information to proxy config
+fix(factory.py): support assistant messages as a list of dictionaries - cohere messages api
+test(test_pass_through_endpoints.py): fix langfuse base
+build(model_prices_and_context_window.json): add 'supports_assistant_prefill' to all vertex ai anthropic models
+add testing for test_anthropic_cache_controls_pt
+fix(utils.py): fix is_azure_openai_model helper function
+test passing cache controls through anthropic msg
+fix(utils.py): support calling openai models via `azure_ai/`
+feat - anthropic api context caching v0
+Update prices/context windows for Perplexity Llama 3.1 models
+test(test_pass_through_endpoints.py): correctly reset test
+bump: version 1.43.11 → 1.43.12
+bump: version 1.43.10 → 1.43.11
+vertex_ai/claude-3-5-sonnet@20240620 support prefill
+test(test_function_call_parsing.py): fix test
+test(test_pass_through_endpoints.py): fix test
+allow running as non-root user
+fix use normal prisma
+use litellm_ prefix for new deployment metrics
+docs(sidebar.js): cleanup docs
+log failure calls on gcs + testing
+fix test for gcs bucket
+feat log fail events on gcs
+Mismatch in example fixed
+fix(user_api_key_auth.py): more precisely expand scope to handle 'basic' tokens
+test(test_proxy_server.py): skip local test
+return detailed error message on check_valid_ip
+test(test_proxy_server.py): refactor test to work on ci/cd
+bump: version 1.43.9 → 1.43.10
+fix use s3 get_credentials to get boto3 creds
+fix(bedrock_httpx.py): fix error code for not found provider/model combo to be 404
+fix ci/cd pipeline
+comment on using boto3
+docs - set litellm config as s3 object
+feat(user_api_key_auth.py): support calling langfuse with litellm user_api_key_auth
+feat read config from s3
+add helper to load config from s3
+(models): Add chatgpt-4o-latest.
+Fix not sended json_data_for_triton
+fic docker file to run in non root model
+fix(bedrock_httpx.py): raise bad request error if invalid bedrock model given
+fix prisma issues
+ui new build
+temp set prisma pems
+skip prisma gen step
+ui - handle session expired on ui
+fix make prisma readable
+fix(teams.tsx): add team_id to team table on ui
+Improving the proxy docs for configuring with vllm
+add test for test_check_valid_ip_sent_with_x_forwarded_for
+use _check_valid_ip
+feat log use_x_forwarded_for
+fix(langsmith.py): support langsmith 'extra' field object
+check use_x_forwarded_for
+fix(utils.py): ignore none chunk in stream infinite loop check
+docs(user_keys.md): cleanup instructor docs
+docs(user_keys.md): cleanup docs
+docs control langfuse specific tags
+add langfuse_default_tags
+allow using langfuse_default_tags
+feat allow controlling logged tags on langfuse
+fix(bedrock_httpx.py): handle empty stop string
+fix(bedrock_httpx.py): handle bedrock empty system message
+fix(langfuse.py'): cleanup
+fix(litellm_pre_call_utils.py): support routing to logging project by api key
+docs(team_logging.md): cleanup docs
+refactor(test_users.py): refactor test for user info to use mock endpoints
+fix gcs logging test
+fix gcs test
+tes logging to gcs buckets
+feat log responses in folders
+test gcs logging payload
+feat gcs log user api key metadata
+refactor(test_users.py): refactor test for user info to use mock endpoints
+remove aws_sagemaker_allow_zero_temp from the parameters passed to inference
+fix gcs logging test
+fix(cost_calculator.py): fix cost calc
+fix gcs test
+tes logging to gcs buckets
+feat log responses in folders
+test gcs logging payload
+feat gcs log user api key metadata
+fix(cost_calculator.py): fix cost calc
+fix gcs test
+tes logging to gcs buckets
+fix(utils.py): if openai model, don't check hf tokenizers
+feat log responses in folders
+test gcs logging payload
+feat gcs log user api key metadata
+bump: version 1.43.8 → 1.43.9
+fix(cost_calculator.py): handle openai usage pydantic object
+fix(utils.py): Break out of infinite streaming loop
+bump: version 1.43.7 → 1.43.8
+fix internal user tests to pass
+log new_user, delete user
+send slack alert on team events
+fix doc string for team endpoints
+send alert on all key events
+fix(azure.py): return response headers acompletion + acompletion w/ streaming
+fix(proxy_server.py): add info log when spend logs is skipped because `disable_spend_logs=True`.
+make send_management_endpoint_alert a premium feature
+send management endpoint alert
+use management_endpoint_wrapper for key endpoints
+v0 log KeyCreatedEvent
+fix(user_api_key_auth.py): move warning to debug log
+docs mark oidc as beta
+docs(perplexity.md): show how to get 'return_citations'
+allow setting PROMETHEUS_SELECTED_INSTANCE
+doc new prometheus metrics
+fix(management/utils.py): fix add_member to team when adding user_email
+feat add cron job for sending stats from prometheus
+add slack alerting on proxy_config.yaml
+fix(internal_user_endpoints.py): return all teams if user is admin
+feat - use api to get prometheus api metrics
+add fallback_reports in slack alert types
+feat add prometheus api to get data from endpoint
+add fallback_reports as slack alert
+fix(teams.tsx): reduce network calls to /team/info
+build(model_prices_and_context_window.json): add 'supports_assistant_prefill' to model info map
+bump: version 1.43.6 → 1.43.7
+prometheus log_success_fallback_event
+feat - log fallbacks events on prometheus
+docs(prefix.md): add prefix support to docs
+v0 track fallback events
+v0 add event handlers for logging fallback events
+v0 add helper for loging success/fail fallback events
+docs(custom_llm_server.md): clarify what to use for modifying incoming/outgoing calls
+test for prom metrics
+feat - track latency per llm deployment
+fix(main.py): safely fail stream_chunk_builder calls
+track llm_deployment_success_responses
+fix(openai.py): fix position of invalid_params param
+prometheus add basic testing for success
+refactor prometheus to be a customLogger class
+fix(types/utils.py): handle null completion tokens
+use customLogger for prometheus logger
+feat - refactor prometheus metrics
+Follow redirects
+bump: version 1.43.5 → 1.43.6
+fix _hidden_params is None case
+ci/cd run again
+fix linting error
+fix(litellm_logging.py): fix calling success callback w/ stream_options true
+docs clean sidebar
+docs migration policy
+docs add migration policy
+correctly add modified tool names to cache
+test bedrock tool call names
+init bedrock_tool_name_mappings
+test(test_optional_params.py): use num_retries instead of 'max_retries' if given
+docs(main.py): clarify 'num_retries' usage
+fix(utils.py): set max_retries = num_retries, if given
+fix(utils.py): only return non-null default values
+log provider specific metadata as a span
+test invalid tool namehandling
+bedrock make_valid_bedrock_tool_name
+build(test_completion.py): ci/cd run again
+ui new build
+fix(router.py): fix types
+fix(router.py): fallback on 400-status code requests
+ui add cohere embedding models
+fix cohere / cohere_chat when timeout is None
+add testing for cohere embeddings
+ui allow adding cohere models
+add cohere embed-multilingual-v2.0
+build(deps): bump aiohttp from 3.9.4 to 3.10.2
+fix(huggingface_restapi.py): support passing 'wait_for_model' param on completion calls
+fix(huggingface_restapi.py): fix hf embeddings optional param processing
+docs prometheus metrics
+refactor prom metrics
+feat(vertex_httpx.py): return vertex grounding, citation, and safety results
+fix(huggingface_restapi.py): fixes issue where 'wait_for_model' was not being passed as expected
+doc Grounding vertex ai
+docs fix typo
+docs(self_serve.md): add internal_user_budget_duration to docs
+bump: version 1.43.4 → 1.43.5
+ui new build
+sort providers alphabetical order
+ui add mistral ai
+ui new build
+add groq through admin ui
+ui show litellm model name
+docs vertex context caching
+docs vertex
+docs cachedContent endpoint
+auto update the model in cachedContents request
+add native cachedContents endpoint
+doc on using litellm proxy with vertex ai content caching
+add example using litellm proxy with gemini context caching
+fix(anthropic.py): fix translation from /v1/messages format to openai format
+fix(internal_user_endpoints.py): expose new 'internal_user_budget_duration' flag
+test: skip flaky langsmith tests
+test(test_langsmith.py): fix test
+fix(user_api_key_auth.py): Fixes https://github.com/BerriAI/litellm/issues/5111
+feat: hash prompt when caching
+handle anthropic internal server errors
+testing skip internal server errors
+ci/cd skip ServiceUnavailableError
+ui new build
+sort providers alphabetical order
+ui don't require azure api version
+ui add mistral ai
+ui new build
+add groq through admin ui
+ui show litellm model name
+bump: version 1.43.3 → 1.43.4
+docs vertex context caching
+docs vertex
+docs cachedContent endpoint
+auto update the model in cachedContents request
+add native cachedContents endpoint
+doc on using litellm proxy with vertex ai content caching
+add example using litellm proxy with gemini context caching
+fix(internal_user_endpoints.py): expose new 'internal_user_budget_duration' flag
+test: skip flaky langsmith tests
+test(test_langsmith.py): fix test
+fix(user_api_key_auth.py): Fixes https://github.com/BerriAI/litellm/issues/5111
+fix(anthropic.py): fix translation
+fix log to otel test
+docs vertex context caching
+docs vertex
+docs cachedContent endpoint
+auto update the model in cachedContents request
+add native cachedContents endpoint
+doc on using litellm proxy with vertex ai content caching
+add example using litellm proxy with gemini context caching
+fix(anthropic.py): fix translation from /v1/messages format to openai format
+fix(internal_user_endpoints.py): expose new 'internal_user_budget_duration' flag
+test: skip flaky langsmith tests
+test(test_langsmith.py): fix test
+fix(user_api_key_auth.py): Fixes https://github.com/BerriAI/litellm/issues/5111
+feat: hash prompt when caching
+handle anthropic internal server errors
+testing skip internal server errors
+ci/cd skip ServiceUnavailableError
+ui new build
+sort providers alphabetical order
+ui don't require azure api version
+ui add mistral ai
+ui new build
+add groq through admin ui
+ui show litellm model name
+bump: version 1.43.3 → 1.43.4
+docs vertex context caching
+docs vertex
+docs cachedContent endpoint
+auto update the model in cachedContents request
+add native cachedContents endpoint
+doc on using litellm proxy with vertex ai content caching
+add example using litellm proxy with gemini context caching
+fix(internal_user_endpoints.py): expose new 'internal_user_budget_duration' flag
+test: skip flaky langsmith tests
+test(test_langsmith.py): fix test
+fix(user_api_key_auth.py): Fixes https://github.com/BerriAI/litellm/issues/5111
+fix(anthropic.py): fix translation
+fix log to otel test
+docs vertex context caching
+docs vertex
+docs cachedContent endpoint
+auto update the model in cachedContents request
+add native cachedContents endpoint
+doc on using litellm proxy with vertex ai content caching
+add example using litellm proxy with gemini context caching
+fix(anthropic.py): fix translation from /v1/messages format to openai format
+fix(internal_user_endpoints.py): expose new 'internal_user_budget_duration' flag
+test: skip flaky langsmith tests
+test(test_langsmith.py): fix test
+fix(user_api_key_auth.py): Fixes https://github.com/BerriAI/litellm/issues/5111
+fix(management_helpers/utils.py): use user_default max_budget, budget duration on new user upsert during team member add
+handle anthropic internal server errors
+testing skip internal server errors
+ci/cd skip ServiceUnavailableError
+ui new build
+sort providers alphabetical order
+ui don't require azure api version
+ui add mistral ai
+ui new build
+test(test_proxy_server.py): unit testing to make sure internal user params don't impact admin
+add groq through admin ui
+fix(proxy_server.py): ensure internal_user params only apply to internal_user role
+ui show litellm model name
+build(requirements.txt): pin orjson dep
+bump: version 1.43.3 → 1.43.4
+pin orjson dep on req.txt
+fix(anthropic.py): fix translation
+fix log to otel test
+fix(proxy_server.py): respect internal_user_budget_duration for sso user
+fix(utils.py): handle anthropic overloaded error
+docs vertex context caching
+fix use get_file_check_sum
+fix(factory.py): handle openai function message having tool call id
+docs readme
+docs use (LLM Gateway)  in some places
+docs vertex ai
+add default_vertex_config
+docs vertex
+docs cachedContent endpoint
+auto update the model in cachedContents request
+add native cachedContents endpoint
+doc on using litellm proxy with vertex ai content caching
+add example using litellm proxy with gemini context caching
+add tests to make sure correct vertex ai route is used
+use v1beta1 when using cached_content
+fix handle case when service logger has no attribute prometheusServicesLogger
+fix(anthropic.py): fix translation from /v1/messages format to openai format
+fix(internal_user_endpoints.py): expose new 'internal_user_budget_duration' flag
+test: skip flaky langsmith tests
+test(test_langsmith.py): fix test
+fix(user_api_key_auth.py): Fixes https://github.com/BerriAI/litellm/issues/5111
+fix(utils.py): handle anthropic overloaded error
+docs vertex context caching
+fix(factory.py): handle openai function message having tool call id
+docs readme
+docs use (LLM Gateway)  in some places
+docs vertex ai
+add default_vertex_config
+docs vertex
+docs cachedContent endpoint
+auto update the model in cachedContents request
+fix(anthropic.py): fix translation from /v1/messages format to openai format
+add native cachedContents endpoint
+test: skip flaky langsmith tests
+test: skip flaky langsmith tests
+test(test_langsmith.py): skip flaky test
+fix(internal_user_endpoints.py): expose new 'internal_user_budget_duration' flag
+test(test_langsmith.py): fix test
+feat: set max_internal_budget for user w/ sso
+doc on using litellm proxy with vertex ai content caching
+add example using litellm proxy with gemini context caching
+add tests to make sure correct vertex ai route is used
+use v1beta1 when using cached_content
+fix(user_api_key_auth.py): Fixes https://github.com/BerriAI/litellm/issues/5111
+build(model_prices_and_context_window.json): Fixes https://github.com/BerriAI/litellm/issues/5113
+build: ui - update to include max budget per team
+fix handle case when service logger has no attribute prometheusServicesLogger
+fix: wrong order of arguments for ollama
+fix use get_file_check_sum
+feat: hash prompt when caching
+docs(scheduler.md): cleanup docs to use /chat/completion endpoint
+bump: version 1.43.2 → 1.43.3
+test(test_completion.py): fix merge error
+docs(self_serve.md): cleanup docs on how to onboard new users + teams
+fix: use more descriptive flag
+fix(internal_user_endpoints.py): respect 'max_user_budget' for new internal user's
+image gen catch when predictions not in json response
+run that ci cd again
+test(test_amazing_vertex_completion.py): fix test for json schema validation in openai schema
+run that ci/cd again
+fix(vertex_ai_partner.py): pass model for llama3 param mapping
+fix all optional param tests
+fix test for wildcard routing
+fix test_drop_params_parallel_tool_calls
+fix(vertex_ai_partner.py): pass model for llama3 param mapping
+fix all optional param tests
+feat(router.py): allow using .acompletion() for request prioritization
+fix test for wildcard routing
+fix test_drop_params_parallel_tool_calls
+docs prom
+test(test_completion.py): handle gemini instability
+Add deepseek-coder-v2(-lite), mistral-large, codegeex4 to ollama
+ci/cd run again
+fixinstalling openai on ci/cd
+fix test_team_update_redis
+refactor(user_api_key_auth.py): refactor to replace user_id_information list with pydantic user_obj
+bump: version 1.43.1 → 1.43.2
+fix - someone resolved a merge conflict badly
+fix getting provider_specific_deployment
+fix: fix tests
+docs provider specific wildcard routing
+fix use provider specific routing
+fix(user_api_key_auth.py): respect team budgets over user budget, if key belongs to team
+support provider wildcard routing
+test_router_provider_wildcard_routing
+router use provider specific wildcard routing
+test provider wildcard routing
+add + test provider specific routing
+fix(config.yml): fix build and test
+fix(main.py): fix linting error for python3.8
+fix(utils.py): fix linting error for python3.8
+gemini test skip internal server error
+test: update build requirements
+fix(router.py): add reason for fallback failure to client-side exception string
+docs prom metrics
+docs prometheus
+show warning about prometheus moving to enterprise
+docs link to enteprise pricing
+docs prometheus
+fix logging cool down deployment
+fix(utils.py): support deepseek tool calling
+fix(vertex_ai_partner.py): default vertex ai llama3.1 api to use all openai params
+use router_cooldown_handler
+allow setting outage metrics
+test(test_completion.py): handle internal server error in test
+test: add vertex claude to streaming valid json str test
+Clarifai : Fixed model name
+emit deployment_partial_outage on prometheus
+fix(bedrock_httpx.py): handle empty arguments returned during tool calling streaming
+rename to set_llm_deployment_success_metrics
+add set_remaining_tokens_requests_metric
+fix(anthropic.py): handle scenario where anthropic returns invalid json string for tool call while streaming
+prom svc logger init if it's None
+fix use extra headers for open router
+build(requirements.txt): bump openai version
+Revert "Fix: Add prisma binary_cache_dir specification to pyproject.toml"
+feat add ft:gpt-4o-mini-2024-07-18
+docs(ui.md): add restrict email subdomains w/ sso
+build(model_prices_and_context_window.json): remove duplicate entries
+run ci / cd again
+ci/cd run again
+docs run ui on custom server root path
+test test_basic_passthrough
+fix pass through endpoint tests
+clean up unused func
+feat(utils.py): support validating json schema client-side if user opts in
+feat: Translate openai 'response_format' json_schema to 'response_schema' for vertex ai + google ai studio
+explain ui base path
+docs(json_mode.md): add example of calling openai with pydantic model via litellm
+docs(sidebars.js): cleanup sidebar title
+feat(utils.py): support passing response_format as pydantic model
+fix forward ui requests when base url set
+add redirect_ui_middleware
+build custom ui path docker
+docs(json_mode.md): update json mode docs to show structured output responses
+fix(lakera_ai.py): fix hardcoded prompt_injection string in lakera integration
+update alerting settings on ui
+add error when trying to send emails
+fix email health checks
+add debug statements on docker
+feat(lakera_ai.py): support lakera custom thresholds + custom api base
+use file size _ name to get file check sum
+docs(deploy.md): add iam-based auth to rds
+bump: version 1.43.0 → 1.43.1
+use file_checksum
+caching use file_checksum
+feat(proxy_server.py): allow restricting allowed email domains for the UI
+readme - clarify helm is community maintained
+fix(utils.py): fix types
+test pass through endpoint
+doc forward_headers
+init pass through endpoints
+docs on gpt-4o-2024-08-06
+fix pricing
+add gpt-4o-2024-08-06
+fix(encrypt_decrypt_utils.py): add helper line, explaining why there might be a key decryption error
+use helper to forward headers from request
+docs(prod.md): add litellm salt key to prod docs
+fix(utils.py): fix dynamic api base
+use prints
+feat(utils.py): check env var for api base for openai-compatible endpoints
+ci/cd run again
+fix: fix test
+test(test_router_init.py): cleanup tests
+forward headers from request
+fix: fix test to specify allowed_fails
+fix(main.py): log hidden params for text completion calls
+ci/cd run again
+fix test cache_key
+fix cache_key check
+fix(rds_iam_token.py): support sts based auth
+use safe init_verbose_loggers
+fix(user_api_key_auth.py): fix _get_user_role
+test(test_key_generate_prisma.py): cleanup test
+otel log failures
+otel log service errors
+otel fix async_service_failure_hook
+run ci/cd again
+log event_metadata on otel
+otel log event_metadata
+build(config.yml): pin prisma version
+use otel callbacks
+build(config.yml): pin prisma version
+build(config.yml): pin prisma version
+log event_metadata on otel service loggers
+test: improve debugging for test
+add debugging utils to print when connecting to prisma
+add debug statements when connected to prisma db
+feat(proxy_cli.py): support iam-based auth to rds
+run ci/cd again
+fix(__init__.py): bump default allowed fails
+build ui on custom path
+use correct build paths
+set PROXY_BASE_URL when server root path set
+working sh script
+Revert "[FIX] allow setting UI BASE path"
+fix get_request_route
+add get_request_route
+build ui on custom path
+use correct build paths
+set PROXY_BASE_URL when server root path set
+working sh script
+Revert "[FIX] allow setting UI BASE path"
+fix edit docker file ui base path
+fix allow setting UI _BASE path
+fix test fine tuning api azure
+fix get_request_route
+test proxy server routes
+use get_request_route
+add get_request_route
+fix: bump default allowed_fails + reduce default db pool limit
+fix: cleanup test
+fix(init.py): rename feature_flag
+feat(caching.py): enable caching on provider-specific optional params
+fix test fine tuning api azure
+fix get_request_route
+test proxy server routes
+use get_request_route
+add get_request_route
+fix(types/router.py): remove model_info pydantic field
+docs(azure.md): cleanup docs
+docs: cleanup docs
+fix(ollama_chat.py): fix passing auth headers to ollama
+build(model_prices_and_context_window.json): update gpt-4o-mini max_output_tokens
+add sample spec to model cost map
+docs show fields logged on gcs bucket
+fix(user_api_key_auth.py): handle older user_role's
+test gcs bucket
+fix linting errors
+simplify GCS payload
+add ALL_LITELLM_RESPONSE_TYPES
+use util convert_litellm_response_object_to_dict
+docs(gemini.md): add json mode, response schema, supported openai params to gemini docs
+feat(vertex_httpx.py): Support gemini 'response_schema' param
+bump: version 1.42.12 → 1.43.0
+docs(sidebar.js): cleanup
+fix(anthropic_adapter.py): fix sync streaming
+test: fix test
+feat(anthropic_adapter.py): support streaming requests for `/v1/messages` endpoint
+docs add when to use litellm
+fix fine tune api tests
+ci/cd run again
+fix fine tuning tests
+fix test test_aimage_generation_vertex_ai
+bump: version 1.42.11 → 1.42.12
+docs default vertex
+docs - fix merge conflicts
+docs tuning api
+docs add example curl command
+docs link to vertex ai endpoints
+docs add vertex ai endpoints
+add vertex ai countTokens endpoint
+add vertex embeddings endpoints
+add vertex generateContent
+working code for vertex ai routes
+use native endpoints
+set native vertex endpoints
+docs secret manager
+fix(vertex_httpx.py): fix linting error
+docs - use consistent name for LiteLLM proxy server
+organize docs
+docs clean up organization
+docs supported models / providers
+docs secret manager
+fix(vertex_httpx.py): fix linting error
+fix(router.py): move deployment cooldown list message to error log, not client-side
+docs - use consistent name for LiteLLM proxy server
+organize docs
+docs(proxy/reliability.md): add docs on testing if loadbalancing is working as expected
+docs clean up organization
+feat(router.py): add flag for mock testing loadbalancing for rate limit errors
+docs supported models / providers
+fix(utils.py): parse out aws specific params from openai call
+Use correct key name
+docs native vertex ft endpoint
+fix(types/utils.py): fix linting errors
+add support for pass through vertex ai ft jobs
+support v1/projects/tuningJobs
+fix(bedrock.py): fix response format for bedrock image generation response
+fix ft api test
+docs create fine tuning jobs
+docs(github.md): cleanup docs
+docs: add github provider to docs
+feat(utils.py): Add github as a provider
+docs - vtx ft api
+fix vertex ai
+build(model_prices_and_context_window.json): add deepseek cache hit pricing
+fix linting errors
+test translating to vertex ai params
+fix vertex credentials
+add vertex example on config.yaml
+test vertex ft jobs
+Add unit test
+fix typing
+fix typing
+add vertex ai ft on proxy
+add support for sync vertex ft
+fix translating response
+convert response obj from vertex ai
+test ft response vertex ai
+translate response from vertex to openai
+fix(utils.py): handle scenario where model="azure/*" and custom_llm_provider="azure"
+example vertex ai.jsonl
+test vertex ft
+add vertex ft support
+add vertex FT spec
+add fine tuning for vertex
+add vertex_credentials in router param
+fix(user_api_key_auth.py): fix linting errors
+build(ui): allow admin_viewer to view teams tab
+docs caching
+docs call types
+docs supported call types
+fix test
+test whisper
+return cache hit True on cache hits
+use file name when getting cache key
+log correct file name on langfuse
+Fix tool call coalescing
+fix(main.py): Handle bedrock tool calling in stream_chunk_builder
+use regular ci/cd pipeline
+ci/cd run again
+fix config.yaml
+fix config
+bump: version 1.42.10 → 1.42.11
+temp testing ci/cd
+queue stable release testing after new GH release
+fix(anthropic.py): fix linting error
+refactor(openai/azure.py): move to returning openai/azure response headers by default
+fix(types/utils.py): support passing prompt cache usage stats in usage object
+test: handle anthropic rate limit error
+qdrant semantic caching added
+add step to ghcr deploy
+fix(utils.py): fix codestral streaming
+fix langfuse hardcoded public key
+fix(bedrock_httpx.py): fix ai21 streaming
+bump: version 1.42.9 → 1.42.10
+fix(langfuse.py): cleanup
+docs spend tracking enteprrise
+fix(langfuse.py): cleanup
+ci/cd run again
+fix test traceloop.py
+feat(litellm_logging.py): log exception response headers to langfuse
+Update prompt_injection.md
+ci/cd - anyscale discontinued their API endoints - skip test
+fix model prices formatting
+Add new model for gemini-1.5-pro-exp-0801.
+bump: version 1.42.8 → 1.42.9
+fix test_traceparent_not_added_by_default
+docs dbrx
+docs add new dbrx models
+add correct context window
+add new dbrx models
+docs gcs buckets
+update helm chart
+enforce premium user cheks on gcs bucket
+docs logging to GCS
+docs setting service accounts
+init gcs using gcs_bucket
+docs using gcs
+fix type errors
+delete object from gcs
+test writing logs to GCS bucket
+feat gcs bucket log payload
+add better debugging statements for vertex logging
+basic gcs logging test
+fix(vertex_ai_partner.py): add /chat/completion codestral support
+fix(google.py): fix cost tracking for vertex ai mistral models
+build(model_prices_and_context_window.json): add mistral nemo latest to model cost map
+fix(databricks.py): fix error handling
+fix: add type hints for APIError and AnthropicError status codes
+fix(cost_calculator.py): respect litellm.suppress_debug_info for cost calc
+testing fix - skip rate limit errors from anthropic api
+docs enterprise
+docs enterprise feature
+docs enterprise feature
+docs - team based logging
+fix _handle_failure for otel
+forward_traceparent_to_llm_provider
+test_traceparent_not_added_by_default
+docs add info on forward_traceparent_to_llm_provider
+use itellm.forward_traceparent_to_llm_provider
+ui new build
+ui fix entering custom model names for azure
+feat(litellm_logging.py): log exception response headers to langfuse
+Update prompt_injection.md
+ci/cd - anyscale discontinued their API endoints - skip test
+fix model prices formatting
+Add new model for gemini-1.5-pro-exp-0801.
+bump: version 1.42.8 → 1.42.9
+fix test_traceparent_not_added_by_default
+docs dbrx
+docs add new dbrx models
+add correct context window
+add new dbrx models
+docs gcs buckets
+update helm chart
+enforce premium user cheks on gcs bucket
+docs logging to GCS
+docs setting service accounts
+init gcs using gcs_bucket
+docs using gcs
+fix type errors
+delete object from gcs
+test writing logs to GCS bucket
+feat gcs bucket log payload
+add better debugging statements for vertex logging
+basic gcs logging test
+feat(litellm_logging.py): log exception response headers to langfuse
+Update prompt_injection.md
+ci/cd - anyscale discontinued their API endoints - skip test
+fix model prices formatting
+Add new model for gemini-1.5-pro-exp-0801.
+bump: version 1.42.8 → 1.42.9
+fix test_traceparent_not_added_by_default
+docs dbrx
+docs add new dbrx models
+add correct context window
+add new dbrx models
+docs gcs buckets
+update helm chart
+enforce premium user cheks on gcs bucket
+docs logging to GCS
+docs setting service accounts
+init gcs using gcs_bucket
+docs using gcs
+fix type errors
+delete object from gcs
+test writing logs to GCS bucket
+feat gcs bucket log payload
+add better debugging statements for vertex logging
+basic gcs logging test
+fix(vertex_ai_partner.py): add /chat/completion codestral support
+fix(google.py): fix cost tracking for vertex ai mistral models
+build(model_prices_and_context_window.json): add mistral nemo latest to model cost map
+fix(databricks.py): fix error handling
+fix: add type hints for APIError and AnthropicError status codes
+feat(litellm_logging.py): log exception response headers to langfuse
+Update prompt_injection.md
+ci/cd - anyscale discontinued their API endoints - skip test
+fix: fix linting errors
+fix(main.py): fix linting error
+fix(litellm_logging.py): fix linting erros
+fix model prices formatting
+docs(vertex.md): add docs on calling codestral via vertex for FIM tasks
+bump: version 1.42.8 → 1.42.9
+fix test_traceparent_not_added_by_default
+feat(vertex_ai_partner.py): add vertex ai codestral FIM support
+docs dbrx
+docs add new dbrx models
+add correct context window
+add new dbrx models
+docs gcs buckets
+enforce premium user cheks on gcs bucket
+docs logging to GCS
+fix(vertex_ai_partner.py): add /chat/completion codestral support
+docs setting service accounts
+init gcs using gcs_bucket
+docs using gcs
+fix(google.py): fix cost tracking for vertex ai mistral models
+Add new model for gemini-1.5-pro-exp-0801.
+build(model_prices_and_context_window.json): add mistral nemo latest to model cost map
+fix(databricks.py): fix error handling
+fix: add type hints for APIError and AnthropicError status codes
+fix(utils.py): fix togetherai streaming cost calculation
+fix type errors
+fix(utils.py): fix anthropic streaming usage calculation
+delete object from gcs
+test writing logs to GCS bucket
+feat gcs bucket log payload
+add better debugging statements for vertex logging
+basic gcs logging test
+fix(cost_calculator.py): respect litellm.suppress_debug_info for cost calc
+testing fix - skip rate limit errors from anthropic api
+docs enterprise
+docs enterprise feature
+docs enterprise feature
+docs - team based logging
+fix _handle_failure for otel
+fix(litellm_logging.py): use 1 cost calc function across response headers + logging integrations
+ui new build
+ui fix entering custom model names for azure
+build(model_prices_and_context_window.json): add azure gpt-4o-mini regional + global standard pricing to model cost map
+forward_traceparent_to_llm_provider
+test_traceparent_not_added_by_default
+fix(anthropic.py): respect timeouts
+docs add info on forward_traceparent_to_llm_provider
+use itellm.forward_traceparent_to_llm_provider
+bump: version 1.42.7 → 1.42.8
+feat(ui): add ability to enable traceloop + langsmith via ui
+update helm chart
+feat(ui): add braintrust logging to ui
+test: handle predibase api failures
+fix(_types.py): fix finetuning endpoints
+update
+fix(utils.py): fix special keys list for provider-specific items in response object
+try / except rate limit errors
+fix: support vertex path
+docs ft api
+docs ft api
+ft api docs
+link to ft api
+docs ft api
+docs ft api
+docs ft api
+docs add example doing ft
+add link to fine tuning api
+docs fine tuning
+fix setup for endpoints
+bump: version 1.42.6 → 1.42.7
+fix fine tuning endpoint postion on swagger
+enforce ft endpoints as premium feature
+fix mark fine tuning endpoints as enteprrise
+fix routes order
+fix linting errors
+fix POST files
+fix reading files/ft config
+fix cancel ft job route
+add ft jobs in list of allowed routes
+test cancel ft jobs
+add cancel endpoint
+add GET fine_tuning/jobs
+fix(utils.py): return additional kwargs from openai-like response body
+add test for ft endpoints on azure
+add examples on config
+allow setting files config
+fix(utils.py): map cohere timeout error
+fix(http_handler.py): correctly re-raise timeout exception
+feat support azure ft create endpoint
+fix test_completion_function_plus_pdf
+add /fine_tuning/jobs routes
+validation for passing config file
+read ft config
+fix endpoint to create fine tuning jobs
+fix pydantic obj for FT endpoints
+feat add POST /v1/fine_tuning/jobs
+test: fix testing
+fix test_team_disable_guardrails
+fix test_team_disable_guardrails
+(test_bedrock_completion.py) - Use FIPS endpoints for testing.
+(bedrock_httpx.py) - Add support for custom STS endpoints, e.g. for FIPS.
+fix predibase mock test
+fix: fix linting errors
+ci/cd run again
+use timeouts for predibase - never use them in prod !
+fix predibase timeout exceptions
+fix predibase tests
+support timeouts on http handler
+fix timeouts for predibase - they are unstable af
+test: cleanup duplicate tests + add error handling for backend api errors
+test(test_completion.py): handle gemini internal server error
+test(test_streaming.py): fix streaming test
+ci cd run again
+fix test proxy routes check
+fix test proxy routes
+fix(utils.py): fix linting errors
+fix(user_api_key_cache): fix check to not raise error if team object is missing
+fix(utils.py): fix model registeration to model cost map
+handle predibase failing streaming tests
+fix(auth_checks.py): fix redis usage for team cached objects
+ci/cd run again
+fix create ft jobs api test
+fix linting checks
+fix custom auth test
+test azure fine tune job create
+feat FT cancel and LIST endpoints for Azure
+test - fine tuning apis
+add azure files api
+add azure fine tuning apis
+add support for fine tuning azure
+add azure ft test file
+test(test_streaming.py): move to mock implementation for sagemaker streaming tests
+test(test_streaming.py): handle predibase instability
+fix(router.py): gracefully handle scenario where completion response doesn't have total tokens
+fix(ollama.py): correctly raise ollama streaming error
+fix(cohere.py): support async cohere embedding calls
+fix(huggingface_restapi.py): fix linting errors
+fix(utils.py): fix cost tracking for vertex ai partner models
+fix(main.py): fix linting error
+style(cohere.py): point to cohere_chat docs for updated doc info
+docs(supported_embedding.md): add specifying input_type for huggingface embedding calls
+rename fine tuning apis
+ui new build
+feat(huggingface_restapi.py): Support multiple hf embedding types + async hf embeddings
+switch off prod logs on ui
+swithc off console log in prod
+fix linting errors
+add docs on status code from exceptions
+return ProxyException code as str
+docs(input.md): update docs to show ollama tool calling
+docs LIST batches
+test batches endpoint on proxy
+test - list batches
+feat add support for alist_batches
+bump: version 1.42.5 → 1.42.6
+fix(cohere_chat.py): handle tool_result + user message being passed in
+ui new build
+docs(scheduler.md): update docs with request timeout
+fix inc langfuse flish time
+fix type errors
+fix type errors
+fix linting
+test - async ft jobs
+test - list_fine_tuning_jobs
+add list fine tune endpoints
+docs(deploy.md): support running litellm docker container without internet connection
+async cancel ft job
+fix doc string
+test cancel cancel_fine_tuning_job
+feat - add cancel_fine_tuning_job
+add test_create_fine_tune_job
+add types for FineTuningJobCreate OpenAI
+add acreate_fine_tuning_job
+add create_fine_tuning
+add litellm.create_fine_tuning_job
+fix(factory.py): handle special keys for mistral chat template
+fix linting error - cohere_chat
+check litellm header in login on ui
+better debugging for custom headers
+ui use setGlobalLitellmHeaderName
+ui - allow entering custom model names
+docs(main.py): update acompletion_with_retries docstring
+build(model_prices_and_context_window.json): update model info for llama3.1 on bedrock - supports tool calling, not tool choice
+build(deps): bump fast-xml-parser in /docs/my-website
+docs guardrailConfig
+Update cohere_chat.py
+fixes: #4947 Bedrock context exception does not have a response
+Update cohere_chat.py
+proxy server
+docs - Bedrock Guardrails
+test - bedrock guardrailConfig
+feat - support guardrailConfig
+types add GuardrailConfigBlock
+fix(utils.py): fix trim_messages to handle tool calling
+build(pre-commit.yaml): update
+fix(utils.py): correctly re-raise azure api connection error
+Fix: #4942. Remove verbose logging when exception can be handled
+fix(exceptions.py): use correct status code for content policy exceptions
+fix(utils.py): check if tools is iterable before indexing into it
+log output from /audio on langfuse
+fix(caching.py): support /completion caching by default
+test - logging litellm-atranscription
+fix default input/output values for /audio/trancription logging
+log file_size_in_mb in metadata
+fix(auth_checks.py): handle writing team object to redis caching correctly
+Allow zero temperature for Sagemaker models based on config
+docs(vertex.md): add mistral api to docs
+fix(factory.py): support mistral ai prefix:true in messages
+fix: utils.py
+feat(databricks.py): support vertex mistral cost tracking
+fix checking mode on health checks
+allow setting max request / response size on admin UI
+set max_response_size_mb
+feat check check_response_size_is_safe
+feat - check max response size
+fix(databricks.py): handle DONE chunk from databricks
+docs(user_keys.md): improve openai migration docs
+docs set max_request_size
+build: cookbook on migrating to litellm proxy from openai/azure sdk
+security - check max request size
+fix(utils.py): support fireworks ai finetuned models
+fix(utils.py): support fireworks ai finetuned models
+feat(utils.py): fix openai-like streaming
+fix otel test
+fix(databricks.py): fix client used
+fix(utils.py): add exception mapping for databricks errors
+feat(vertex_ai_partner.py): initial working commit for calling vertex ai mistral
+fix otel logging
+test otel for batch_write_to_db
+use common helpers for writing to otel
+refactor use common helper
+add new BATCH_WRITE_TO_DB type for service logger
+use _get_parent_otel_span_from_kwargs
+move _get_parent_otel_span_from_kwargs to otel.py
+feat - use log_to_opentelemetry for _PROXY_track_cost_callback
+build(model_prices_and_context_window.json): add mistral nemo + codestral pricing
+build(model_prices_and_context_window.json): add mistral-large on vertex ai pricing
+feat - clearly show version litellm enterprise
+fix update public key
+docs(debugging.md): cleanup docs
+bump: version 1.42.4 → 1.42.5
+Fix Datadog JSON serialization
+fix
+docs(ollama.md): add ollama tool calling to docs
+feat(ollama_chat.py): support ollama tool calling
+bump: version 1.42.3 → 1.42.4
+docs fix link https://models.litellm.ai/
+feat link to model cost map on swagger
+add litellm_header_name endpoint
+feat(vertex_httpx.py): support logging citation metadata
+feat(vertex_httpx.py): support logging vertex ai safety results to langfuse
+fix(utils.py): fix cache hits for streaming
+docs batches
+docs batches API
+use correct link on  http://localhost:4000
+docs batches api
+test get batches by id
+add verbose_logger.debug to retrieve batch
+fix for GET /v1/batches{batch_id:path}
+test - batches endpoint
+fix batches inserting metadata
+fix /v1/batches POST
+fix raise better error when crossing tpm / rpm limits
+Better JSON serialization for Datadog logs
+Use milliseconds for response_time in Datadog logs
+Use underscores
+fix(proxy_server.py): fix get secret for environment_variables
+docs(stream.md): add streaming token usage info to docs
+fix(bedrock_httpx.py): fix streaming error message
+docs(docusaurus.config.js): add llm model cost map to docs
+docs(config.md): update wildcard docs
+feat(proxy_server.py): handle pydantic mockselvar error
+remove ui shift on reload
+fix import and add fallback
+wrap existing search bar
+update to latest
+docs(custom_llm_server.md): cleanup docs
+fix(vertex_ai_llama3.py): Fix llama3 streaming issue
+bump: version 1.42.2 → 1.42.3
+fix(litellm_cost_calc/google.py): support meta llama vertex ai cost tracking
+bump: version 1.42.1 → 1.42.2
+Update README.md
+update lock
+read me link to using litellm
+deploy link to using litellm
+improvements
+docs using litellm proxy
+test(test_router.py): handle azure api instability
+docs -quick start
+fix(utils.py): don't raise error on openai content filter during streaming - return as is
+example mistral sdk
+add mistral sdk usage
+Add mistral.mistral-large-2407-v1:0 on Amazon Bedrock.
+fix: now supports single tokens prediction
+fix(custom_llm.py): pass input params to custom llm
+feat(proxy_server.py): support custom llm handler on proxy
+docs(custom_llm_server.md): add calling custom llm server to docs
+feat(utils.py): support async streaming for custom llm provider
+feat(utils.py): support sync streaming for custom llm provider
+fix(custom_llm.py): support async completion calls
+feat(custom_llm.py): initial working commit for writing your own custom LLM handler
+docs - add info about routing strategy on load balancing docs
+feat  support audio health checks for azure
+docs add example on using text to speech models
+feat - support health check audio_speech
+fix whisper health check with litellm
+fix(router.py): add support for diskcache to router
+fix(proxy_server.py): check if input list > 0 before indexing into it
+Check for converse support first.
+Support tool calling for Llama 3.1 on Amazon bedrock.
+Add Llama 3.1 405b for Bedrock
+docs(enterprise.md): cleanup docs
+docs(enterprise.md): cleanup docs
+docs(caching.md): update caching docs to include ttl info
+fix(main.py): fix calling openai gpt-3.5-turbo-instruct via /completions
+fix(internal_user_endpoints.py): support updating budgets for `/user/update`
+docs add mistral api large 2
+feat - add mistral large 2
+bump: version 1.42.0 → 1.42.1
+docs groq models
+feat - add groq/llama-3.1
+test: cleanup testing
+feat(auth_check.py): support using redis cache for team objects
+fix using pass_through_all_models
+fix logfire - don't load_dotenv
+docs on pass through support
+fix(custom_llm.py): pass input params to custom llm
+docs - anthropic
+test proxy all model
+support using */*
+customize
+eject default UI
+install canary (default UI)
+add ANTHROPIC_API_KEY on build and test
+router support setting pass_through_all_models
+router support setting pass_through_all_models
+feat(proxy_server.py): support custom llm handler on proxy
+docs(custom_llm_server.md): add calling custom llm server to docs
+docs - add info about routing strategy on load balancing docs
+feat  support audio health checks for azure
+docs add example on using text to speech models
+feat - support health check audio_speech
+fix whisper health check with litellm
+feat(utils.py): support async streaming for custom llm provider
+feat(utils.py): support sync streaming for custom llm provider
+fix(custom_llm.py): support async completion calls
+feat(custom_llm.py): initial working commit for writing your own custom LLM handler
+fix(router.py): add support for diskcache to router
+fix(proxy_server.py): check if input list > 0 before indexing into it
+Check for converse support first.
+Support tool calling for Llama 3.1 on Amazon bedrock.
+Add mistral.mistral-large-2407-v1:0 on Amazon Bedrock.
+Add Llama 3.1 405b for Bedrock
+anthropic gateway fixes
+docs(enterprise.md): cleanup docs
+docs(enterprise.md): cleanup docs
+fix: now supports single tokens prediction
+docs(caching.md): update caching docs to include ttl info
+fix(main.py): fix calling openai gpt-3.5-turbo-instruct via /completions
+fix(internal_user_endpoints.py): support updating budgets for `/user/update`
+docs add mistral api large 2
+feat - add mistral large 2
+bump: version 1.42.0 → 1.42.1
+docs groq models
+feat - add groq/llama-3.1
+test: cleanup testing
+support dynamic api base
+add support for friendli dedicated endpoint
+test(test_completion.py): update azure extra headers
+feat(auth_check.py): support using redis cache for team objects
+tab
+tools_call to Helicone
+Update README.md
+Allow not displaying feedback box
+fix(key_management_endpoints.py): if budget duration set, set budget_reset_at
+doc example using litellm proxy with groq
+test(test_embedding.py): add simple azure embedding ad token test
+test(test_completion.py): add basic test to confirm azure ad token flow works as expected
+fix(bedrock_httpx.py): fix async client check
+test UnsupportedParamsError
+add UnsupportedParamsError to litellm exceptions
+feat use UnsupportedParamsError as litellm error type
+build(docker-compose.yml): add prometheus scraper to docker compose
+(test_embedding.py) - Re-enable embedding test with Azure OIDC.
+Fix test_prompt_factory flake8 warning
+(test_secret_manager.py) - Improve and add CircleCI v1 test with Amazon.
+update azure_ai llamav31 prices with sources
+(tests) - Skip embedding Azure AD test for now.
+(tests) - Try azure AD auth directly.
+test(test_embedding.py): fix base url
+test - logging langsmith tags
+docs - logging langsmith tags
+langsmith - support logging tags
+Add Llama 3.1 for Bedrock.
+Check existence of multiple views in 1 query
+bump: version 1.41.28 → 1.42.0
+fix(anthropic.py): support openai system message being a list
+fix(__init__.py): update init
+build(model_prices_and_context_window.json): add model pricing for vertex ai llama 3.1 api
+feat(vertex_ai_llama.py): vertex ai llama3.1 api support
+bump: version 1.41.27 → 1.41.28
+fix DB accept null values for api_base, user, etc
+feat - add azure_ai llama v3.1 8B 70B and 405B
+docs(guardrails.md): add team-based controls to guardrails
+Pass litellm proxy specific metadata
+fix add better debugging _PROXY_track_cost_callback
+test_anthropic_completion_input_translation_with_metadata
+(test - azure): Add test for Azure OIDC auth.
+fix(utils.py): support raw response headers for streaming requests
+docs(raw_request_response.md): show how to get openai headers from response
+feat(utils.py): support passing openai response headers to client, if enabled
+doc alert_to_webhook_url
+fix triton linting
+doc - using anthropic with litellm proxy server
+docs(sidebar.js): add oidc to left nav
+docs alerting
+feat alert_to_webhook_url
+feat - set alert_to_webhook_url
+update alert_to_webhook_url
+docs - alert to webhook_url
+docs - slack alerting
+docs Debugging / Troubleshooting
+(docs): Make it more obvious where the group name is set in the example.
+(docs): Add OIDC doc.
+feat - add success_Callback per request
+add debug logging for team callback settings
+add endpoint to disable logging for a team
+test: re-run ci/cd
+docs: cleanup docs
+fix(init_callbacks.py): fix presidio optional param
+fix(proxy/utils.py): add stronger typing for litellm params in failure call logging
+docs - team logging endpoints
+bump: version 1.41.26 → 1.41.27
+doc - team based logging
+docs - control team logging
+feat(redact_messages.py): allow remove sensitive key information before passing to logging integration
+GET endpoint to get team callbacks
+only allow unique callbacks for team callbacks
+fix(main.py): check if anthropic api base ends with required url
+feat add return types on team/callback
+feat(lakera_ai.py): support running prompt injection detection lakera check pre-api call
+feat(lakera_ai.py): control running prompt injection between pre-call and in_parallel
+control team callbacks using API
+feat - return team_metadata in user_api_key_auth
+feat - add endpoint to set team callbacks
+fix(openai.py): check if error body is a dictionary before indexing in
+types - AddTeamCallback
+test(test_braintrust.py): add testing for braintrust integration
+docs(braintrust.md): add braintrust.md to docs
+feat(braintrust_logging.py): working braintrust logging for successful calls
+test - openai content policy errors
+fix raise correct provider on content policy violation
+fix checking if _known_custom_logger_compatible_callbacks
+set _known_custom_logger_compatible_callbacks in _init
+fix using arize as success callback
+docs - langsmith
+feat(braintrust.py): initial commit for braintrust integration
+add test for anthropic routes
+update tests
+check is_llm_api_route
+track anthropic_routes
+doc arize ai
+fix(vertex_httpx.py): Change non-blocking vertex error to warning
+feat - arize ai log llm i/o
+otel - log to arize ai
+test - arize ai basic logging
+add arize.py
+feat - arize ai open inference types
+feat - add support to init arize ai
+Fix errors with docker-compose file
+Revert "Fix: use Bedrock region from environment variables before other region definitions"
+feat(auth_checks.py): Allow admin to disable team from turning on/off guardrails.
+Add support for Triton streaming & triton async completions
+Update utils.py
+Update model_prices_and_context_window.json
+remove unused env var
+skip helm build for dev builds
+remove fetch-depth
+use git describe to find latest tag
+move helm after build and use litellm for chart_name
+refactor(main.py): migrate vertex gemini calls to vertex_httpx
+fix edit docker file ui base path
+fix allow setting UI _BASE path
+#added type ignore for httpx and requests
+#Fixed mypy errors. The requests package and stubs need to be imported - waiting to hear from Ishaan/Krrish before changing requirements.txt
