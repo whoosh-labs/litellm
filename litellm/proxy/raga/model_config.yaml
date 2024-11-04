@@ -1,0 +1,34 @@
+model_list:
+  - model_name: "gpt-*"
+    litellm_params:
+      model: openai/*
+      api_key: os.environ/OPENAI_API_KEY
+  - model_name: "azure*"
+    litellm_params:
+      model: azure/*
+      api_key: os.environ/AZURE_API_KEY
+      api_base: os.environ/AZURE_API_BASE
+      api_version: os.environ/AZURE_API_VERSION
+  - model_name: "groq*"
+    litellm_params:
+      model: groq/*
+      api_key: os.environ/GROQ_API_KEY
+  - model_name: "gemini*"
+    litellm_params:
+      model: gemini/*
+      api_key: os.environ/GEMINI_API_KEY
+  - model_name: "claude*"
+    litellm_params:
+      model: anthropic/*
+      api_key: os.environ/ANTHROPIC_API_KEY
+  - model_name: "mistral*"
+    litellm_params:
+      model: mistral/*
+      api_key: os.environ/MISTRAL_API_KEY
+  - model_name: "command*"
+    litellm_params:
+      model: cohere/*
+      api_key: os.environ/COHERE_API_KEY
+
+
+
