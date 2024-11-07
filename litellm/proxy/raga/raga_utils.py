@@ -35,7 +35,7 @@ def set_api_keys_from_vault(data):
     vault_secrets = vault.get_api_keys(data['user_id'])
 
     model_name = data["model"]
-    if model_name.startswith("gpt"):
+    if model_name.startswith("gpt") or model_name.startswith("openai"):
         validate_api_keys(vault_secrets, model_name, [OPENAI_API_KEY])
         data[API_KEY] = vault_secrets.get(OPENAI_API_KEY)
 
@@ -64,6 +64,8 @@ def set_api_keys_from_vault(data):
     elif model_name.startswith("command"):
         validate_api_keys(vault_secrets, model_name, [COHERE_API_KEY])
         data[API_KEY] = vault_secrets.get(COHERE_API_KEY)
+    else:
+        raise Exception(f"Model {model_name} is not supported")
 
 
 def validate_api_keys(vault_secrets, model_name, required_keys):
