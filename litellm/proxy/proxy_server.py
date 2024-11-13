@@ -3192,6 +3192,7 @@ async def chat_completion(  # noqa: PLR0915
             "Request received by LiteLLM:\n{}".format(json.dumps(data, indent=4)),
         )
 
+        litellm.drop_params = True
         # handle workday gateway
         if data.get("model", "") == "workday_gateway":
             from litellm.proxy.raga.workday_gateway import call_workday_gateway
