@@ -56,7 +56,7 @@ def set_api_keys_from_vault(data):
         validate_api_keys(vault_secrets, model_name, [GEMINI_API_KEY])
         data[API_KEY] = vault_secrets.get(GEMINI_API_KEY)
 
-    elif model_name.startswith("claude"):
+    elif model_name.startswith("claude") or model_name.startswith("anthropic"):
         validate_api_keys(vault_secrets, model_name, [ANTHROPIC_API_KEY])
         data[API_KEY] = vault_secrets.get(ANTHROPIC_API_KEY)
 
@@ -64,7 +64,7 @@ def set_api_keys_from_vault(data):
         validate_api_keys(vault_secrets, model_name, [MISTRAL_API_KEY])
         data[API_KEY] = vault_secrets.get(MISTRAL_API_KEY)
 
-    elif model_name.startswith("command"):
+    elif model_name.startswith("command") or model_name.startswith("cohere"):
         validate_api_keys(vault_secrets, model_name, [COHERE_API_KEY])
         data[API_KEY] = vault_secrets.get(COHERE_API_KEY)
     else:
