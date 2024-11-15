@@ -153,7 +153,12 @@ def completion(
     headers = validate_environment(api_key, headers=headers)
     completion_url = api_base
     model = model
-    prompt = " ".join(message["content"] for message in messages)
+    prompt = ""
+    for message in messages:
+        if isinstance(message["content"], str):
+            prompt = prompt + " " + message["content"]
+        else:
+            prompt = prompt + "\n" + " ".join(item.get("text") for item in message["content"])
 
     ## Load Config
     config = litellm.CohereConfig.get_config()

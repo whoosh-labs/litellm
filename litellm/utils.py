@@ -5252,7 +5252,7 @@ def validate_environment(  # noqa: PLR0915
                 keys_in_environment = True
             else:
                 missing_keys.append("ANTHROPIC_API_KEY")
-        elif custom_llm_provider == "cohere":
+        elif custom_llm_provider == "cohere" or custom_llm_provider == "cohere_chat":
             if "COHERE_API_KEY" in os.environ:
                 keys_in_environment = True
             else:
