@@ -23,6 +23,11 @@ def temporary_environ(new_env):
         os.environ.update(original_env)
 
 
+def get_model_keys(model_name: str):
+    with temporary_environ({}):
+        return lm.validate_environment(model_name).get("missing_keys", [])
+
+
 def get_provider_keys(provider_name: str):
     with temporary_environ({}):
         return lm.validate_environment(f"{provider_name}/").get("missing_keys", [])

@@ -4,7 +4,7 @@ from typing import Generic, List, Optional, TypeVar
 
 from fastapi import APIRouter, HTTPException, Request
 
-from .data import get_params, provider_data, raw_data
+from .data import get_params, get_provider_keys, provider_data, raw_data
 
 T = TypeVar("T")
 
@@ -35,6 +35,16 @@ async def get_keys_by_provider(request: Request) -> RagaApiResponse:
         raise HTTPException(status_code=400, detail="provider not supported")
 
     return RagaApiResponse(True, {"keys": provider_data.get(provider_name, {}).get("keys")}, None)
+
+
+@router.post("/providers/keys/native")
+async def get_native_keys_by_provider(request: Request) -> RagaApiResponse:
+    body = json.loads((await request.body()).decode())
+    provider_name = body.get("provider")
+    if provider_name is None:
+        raise HTTPException(status_code=400, detail="provider is required")
+
+    return RagaApiResponse(True, {"keys": get_provider_keys(provider_name)}, None)
 
 
 @router.post("/providers/models")
