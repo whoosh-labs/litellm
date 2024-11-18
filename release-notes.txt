@@ -2741,3 +2741,9 @@ fix edit docker file ui base path
 fix allow setting UI _BASE path
 #added type ignore for httpx and requests
 #Fixed mypy errors. The requests package and stubs need to be imported - waiting to hear from Ishaan/Krrish before changing requirements.txt
+
+2.1.5-24-11-18 / 2024-11-18 12:30:56
+Handled model
+handled provoider
+add model in error info
+throw exception if API Keys are not in UI
