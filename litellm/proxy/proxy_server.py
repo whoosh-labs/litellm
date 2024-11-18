@@ -3203,7 +3203,6 @@ async def chat_completion(  # noqa: PLR0915
         data, err = modify_user_request(data)
         if err is not None:
             return err
-        print(f"final payload: {json.dumps(data)}")
         data = await add_litellm_data_to_request(
             data=data,
             request=request,
