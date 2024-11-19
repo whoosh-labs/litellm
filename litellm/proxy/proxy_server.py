@@ -3194,7 +3194,7 @@ async def chat_completion(  # noqa: PLR0915
 
         litellm.drop_params = True
         # handle workday gateway
-        if data.get("model", "") == "workday_gateway":
+        if "workday_gateway" in data.get("model", ""):
             from litellm.proxy.raga.workday_gateway import call_workday_gateway
             return await call_workday_gateway(data)
 
