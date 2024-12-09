@@ -2747,3 +2747,330 @@ Handled model
 handled provoider
 add model in error info
 throw exception if API Keys are not in UI
+
+2.1.6-24-12-09 / 2024-12-09 12:20:58
+update openai package version
+Updated config.yml
+bump: version 1.53.1 → 1.53.2
+LiteLLM Minor Fixes & Improvements (11/29/2024)  (#6965)
+fix(key_management_endpoints.py): support 'tags' param on `/key/update` (#6945)
+(feat) Allow disabling ErrorLogs written to the DB  (#6940)
+fix doc string
+(fix) tag merging / aggregation logic   (#6932)
+(feat) add enforcement for unique key aliases on /key/update and /key/generate  (#6944)
+(docs + fix) Add docs on Moderations endpoint, Text Completion  (#6947)
+Revert "Revert "(feat) Allow using include to include external YAML files in a config.yaml (#6922)""
+(fix) handle json decode errors for DD exception logging (#6934)
+(bug fix) /key/update was not storing `budget_duration` in the DB  (#6941)
+docs: update the docs (#6923)
+LiteLLM Minor Fixes & Improvements (11/27/2024) (#6943)
+LiteLLM Minor Fixes & Improvements (11/26/2024)  (#6913)
+Revert "(feat) Allow using include to include external YAML files in a config.yaml (#6922)"
+bump: version 1.53.0 → 1.53.1
+build(ui/): update ui build
+(feat) dd logger - set tags according to the values set by those env vars  (#6933)
+bump: version 1.52.16 → 1.53.
+(feat) Allow using include to include external YAML files in a config.yaml (#6922)
+(feat) log proxy auth errors on datadog  (#6931)
+(feat) DataDog Logger - Add Failure logging + use Standard Logging payload (#6929)
+sonnet supports pdf, haiku does not (#6928)
+(feat) pass through llm endpoints - add `PATCH` support (vertex context caching requires for update ops)  (#6924)
+fix(key_management_endpoints.py): fix user-membership check when creating team key (#6890)
+run ci/cd again for new release
+test: temporarily comment out doc test - fix ci/cd issue in separate pr
+test: fix test
+test: fix documentation tests
+bump: version 1.52.15 → 1.52.16
+(docs) Simplify `/vertex_ai/` pass through docs   (#6910)
+docs(router_architecture.md): add router architecture docs
+(redis fix) - fix `AbstractConnection.__init__() got an unexpected keyword argument 'ssl'` (#6908)
+(fix) pass through endpoints - run logging async + use thread pool executor for sync logging callbacks  (#6907)
+ui new build
+(UI fix) UI does not reload when you login / open a new tab (#6909)
+(feat) Add support for using @google/generative-ai JS with LiteLLM Proxy  (#6899)
+feat - allow sending `tags` on vertex pass through requests  (#6876)
+(feat) - provider budget improvements - ensure provider budgets work with multiple proxy instances + improve latency to ~90ms  (#6886)
+(QOL improvement) Provider budget routing - allow using 1s, 1d, 1mo, 2mo etc  (#6885)
+update doc title
+build(ui/): update ui build
+docs - have 1 section for routing +load balancing (#6884)
+bump: version 1.52.14 → 1.52.15
+build: update ui build
+Litellm dev 11 23 2024 (#6881)
+fix e2e ui testing, only run e2e ui testing in playwright
+fix e2e ui testing
+fix e2e ui testing deps
+fix playwright e2e ui test
+LiteLLM Minor Fixes & Improvements (11/23/2024)  (#6870)
+(Perf / latency improvement) improve pass through endpoint latency to ~50ms (before PR was 400ms)  (#6874)
+Bump cross-spawn from 7.0.3 to 7.0.6 in /ui/litellm-dashboard (#6865)
+fix tests (#6875)
+(feat) use `@google-cloud/vertexai` js sdk with litellm  (#6873)
+fix coverage
+add pass_through_unit_testing
+test: skip flaky test
+test - also try diff host for langfuse
+fix test_aaateam_logging
+fix doc format
+bump: version 1.52.13 → 1.52.14
+ci/cd run again
+test_langfuse_masked_input_output
+test_langfuse_masked_input_output
+test_langfuse_masked_input_output
+test_langfuse_logging_audio_transcriptions
+fix test_aaateam_logging
+fix test_aaapass_through_endpoint_pass_through_keys_langfuse
+test_team_logging
+test_aaalangfuse_logging_metadata
+docs - Send `litellm_metadata` (tags)
+(Feat) Allow passing `litellm_metadata` to pass through endpoints + Add e2e tests for /anthropic/ usage tracking  (#6864)
+(feat) Add usage tracking for streaming `/anthropic` passthrough routes (#6842)
+(fix) add linting check to ban creating `AsyncHTTPHandler` during LLM calling  (#6855)
+fix latency issues on google ai studio (#6852)
+docs: update json mode docs
+bump: version 1.52.12 → 1.52.13
+Litellm dev 11 21 2024 (#6837)
+(fix) passthrough - allow internal users to access /anthropic  (#6843)
+test: cleanup mistral model
+(fix) don't block proxy startup if license check fails & using prometheus  (#6839)
+(testing) - add e2e tests for anthropic pass through endpoints  (#6840)
+(feat) add usage / cost tracking for Anthropic passthrough routes (#6835)
+(refactor) anthropic -  move _process_response in transformation.py  (#6834)
+Litellm dev 11 20 2024 (#6838)
+build: update ui build
+bump: version 1.52.11 → 1.52.12
+Litellm dev 11 20 2024 (#6831)
+Add gpt-4o-2024-11-20. (#6832)
+LiteLLM Minor Fixes & Improvements (11/19/2024)  (#6820)
+build: run new build
+Feat/provider apis (#4)
+test: fix test
+ci/cd run again
+use correct name for test file
+fix test_prometheus_metric_tracking
+(feat) provider budget routing improvements  (#6827)
+(Feat) Add provider specific budget routing (#6817)
+build: fix test
+Litellm stable pr 10 30 2024 (#6821)
+feat - add qwen2p5-coder-32b-instruct (#6818)
+(Proxy) add support for DOCS_URL and REDOC_URL (#6806)
+docs(gemini.md): add embeddings as a supported endpoint for gemini models
+bump: version 1.52.10 → 1.52.11
+Litellm lm studio embedding params (#6746)
+(docs) add docstrings for all /key, /user, /team, /customer endpoints  (#6804)
+Docs -  use 1 page for all logging integrations on proxy + add logging features at top level  (#6805)
+Bump cross-spawn from 7.0.3 to 7.0.5 in /ui (#6779)
+(docs) simplify left nav names + use a section for `making llm requests`  (#6799)
+(docs improvement) remove emojis, use `guides` section, categorize uncategorized docs  (#6796)
+(fix) httpx handler - bind to ipv4 for httpx handler  (#6785)
+build: add gemini-exp-1114 (#6786)
+handle vertex ServiceUnavailableError for codestral
+vertex_ai/codestral@2405 is very unstable - handle their instability in our tests
+handle codestral@2405 instability
+bump: version 1.52.9 → 1.52.10
+new ui build
+(fix) Azure AI Studio - using `image_url` in content with both text and image_url  (#6774)
+(patch) using image_urls with `vertex/anthropic` models  (#6775)
+fix test_completion_codestral_fim_api_stream
+(docs) add doc string for /key/update  (#6778)
+(UI) fix - allow editing key alias on Admin UI  (#6776)
+(Admin UI) - Remain on Current Tab when user clicks refresh  (#6777)
+(Doc) Add section on what is stored in the DB + Add clear section on key/team based logging  (#6769)
+Update routing references (#6758)
+add openrouter/qwen/qwen-2.5-coder-32b-instruct (#6731)
+(feat) Use `litellm/` prefix when storing virtual keys in AWS secret manager  (#6765)
+(fix) Fix - don't allow `viewer` roles to create virtual keys  (#6764)
+(Feat) Add Vertex Model Garden llama 3.1 models  (#6763)
+feat - add us.llama 3.1 models (#6760)
+LiteLLM Minor Fixes & Improvements (11/13/2024)  (#6729)
+bump: version 1.52.8 → 1.52.9
+(feat) Vertex AI - add support for fine tuned embedding models  (#6749)
+fix imagegeneration output_cost_per_image on model cost map (#6752)
+fix: import audio check (#6740)
+[Feature]: json_schema in response support for Anthropic  (#6748)
+[Feature]: Stop swallowing up AzureOpenAi exception responses in litellm's implementation for a BadRequestError (#6745)
+(feat) add bedrock/stability.stable-image-ultra-v1:0 (#6723)
+docs(logging.md): add 'trace_id' param to standard logging payload
+docs(reliability.md): add tutorial on disabling fallbacks per key
+docs: add docs on jina ai rerank support
+bump: version 1.52.7 → 1.52.8
+LiteLLM Minor Fixes & Improvement (11/14/2024)  (#6730)
+(Feat) Add support for storing virtual keys in AWS SecretManager  (#6728)
+mark Helm PreSyn as BETA
+fix test_supports_response_schema
+Update prefix.md (#6734)
+Update code blocks huggingface.md (#6737)
+(docs) add instructions on how to contribute to docker image
+test - handle eol model claude-2, use claude-2.1 instead
+fix prisma migration
+fix migration job
+fix migrations-job.yaml
+update doc on pre sync hook
+fix migration job
+fix yaml on migrations job
+use existing spec for migrations job
+fix DATABASE_URL
+fix migration job.yaml
+docs helm pre sync hook
+helm run DISABLE_SCHEMA_UPDATE
+docs proxy_budget_rescheduler_min_time
+bump: version 1.52.6 → 1.52.7
+Litellm key update fix (#6710)
+(build) helm db sync hook
+(build) helm db pre sync hook
+(build) update db helm hook
+fix remove dup test (#6718)
+(feat) Add cost tracking for Azure Dall-e-3 Image Generation  + use base class to ensure basic image generation tests pass  (#6716)
+(fix) using Anthropic `response_format={"type": "json_object"}`  (#6721)
+Fix: Update gpt-4o costs to that of gpt-4o-2024-08-06 (#6714)
+(fix proxy redis) Add redis sentinel support  (#6154)
+doc fix Using Http/2 with Hypercorn
+fix migration job
+fix db migration helm hook
+fix argo cd annotations
+handle standalone DB on helm hook
+fix migrations job.yml
+(feat) helm hook to sync db schema  (#6715)
+bump: version 1.52.5 → 1.52.6
+LiteLLM Minor Fixes & Improvements (11/12/2024)  (#6705)
+add defaults used for GCS logging
+bump: version 1.52.4 → 1.52.5
+fix raise correct error 404 when /key/info is called on non-existent key  (#6653)
+(feat) add cost tracking stable diffusion 3 on Bedrock  (#6676)
+(docs) add benchmarks on 1K RPS  (#6704)
+add xAI on Admin UI (#6680)
+(fix) OpenAI's optional messages[].name  does not work with Mistral API  (#6701)
+(Feat) Add langsmith key based logging (#6682)
+Add docs to export logs to Laminar (#6674)
+add clear doc string for GCS bucket logging
+Litellm dev 11 11 2024 (#6693)
+bump: version 1.52.3 → 1.52.4
+(Feat) 273% improvement GCS Bucket Logger - use Batched Logging (#6679)
+fix model cost map stability.sd3-large-v1:0
+(feat) Add Bedrock Stability.ai Stable Diffusion 3 Image Generation models  (#6673)
+(feat) Add support for logging to GCS Buckets with folder paths  (#6675)
+move image gen testing
+added async support for bedrock image gen
+add bedrock image gen async support
+bump: version 1.52.2 → 1.52.3
+(pricing): Fix multiple mistakes in Claude pricing, and also increase context length allowed for Claude 3.5 Sonnet v2 on Bedrock. (#6666)
+Litellm dev 11 08 2024 (#6658)
+Litellm dev 11 07 2024 (#6649)
+ci(conftest.py): reset conftest.py for local_testing/ (#6657)
+build: update backup model prices map
+Update several Azure AI models in model cost map (#6655)
+(feat) log error class, function_name on prometheus service failure hook + only log DB related failures on DB service hook  (#6650)
+(QOL improvement) add unit testing for all static_methods in litellm_logging.py  (#6640)
+Update gpt-4o-2024-08-06, and o1-preview, o1-mini models in model cost map  (#6654)
+chore: comment for maritalk (#6607)
+fix(pattern_match_deployments.py): default to user input if unable to… (#6632)
+fix(pattern_match_deployments.py): default to user input if unable to map based on wildcards (#6646)
+fix code quality check
+fix test_get_gcs_logging_config_without_service_account
+(feat) Allow failed DB connection requests to allow virtual keys with `allow_failed_db_requests`  (#6605)
+Update team_budgets.md (#6611)
+fix test_get_gcs_logging_config_without_service_account
+(fix) ProxyStartup - Check that prisma connection is healthy when starting an instance of LiteLLM  (#6627)
+Update opentelemetry_integration.md - Fix typos (#6618)
+(feat) GCS Bucket logging. Allow using IAM auth for logging to GCS  (#6628)
+bump: version 1.52.0 → 1.52.1
+LiteLLM Minor Fixes & Improvements (11/06/2024) (#6624)
+LiteLLM Minor Fixes & Improvements (11/05/2024) (#6590)
+ci: remove redundant lint.yml workflow (#6622)
+fix flake8 checks
+doc fix team based logging with langfuse
+docs fix clarify team_id on team based logging
+LiteLLM Minor Fixes & Improvements (11/04/2024)  (#6572)
+(DB fix) don't run apply_db_fixes on startup (#6604)
+test: handle anthropic api instability
+test: mark flaky test
+fix(lowest_tpm_rpm_routing.py): fix parallel rate limit check (#6577)
+bump: version 1.51.5 → 1.52.0
+(fix) Vertex Improve Performance when using `image_url`  (#6593)
+(feat) add `Predicted Outputs` for OpenAI  (#6594)
+testing fix bedrock deprecated cohere.command-text-v14
+fix allow using 15 seconds for premium license check
+(fix) litellm.text_completion raises a non-blocking error on simple usage (#6546)
+fix ImageObject conversion (#6584)
+build: fix json for model map
+build: fix map
+build: fix map
+Litellm perf improvements 3 (#6573)
+Add 3.5 haiku (#6588)
+(proxy fix) - call connect on prisma client when running setup (#6534)
+docs(virtual_keys.md): update Dockerfile reference (#6554)
+build(deps): bump cookie and express in /docs/my-website (#6566)
+bump: version 1.51.4 → 1.51.5
+Litellm dev 11 02 2024 (#6561)
+bump: version 1.51.3 → 1.51.4
+docs(lm_studio.md): add tutorial on finding supported params
+docs(lm_studio.md): add doc on lm studio support
+LiteLLM Minor Fixes & Improvements (11/01/2024)  (#6551)
+bump: version 1.51.2 → 1.51.3
+LiteLLM Minor Fixes & Improvements (10/30/2024) (#6519)
+(feat) add XAI ChatCompletion Support  (#6373)
+(fix) slack alerting - don't spam the failed cost tracking alert for the same model  (#6543)
+Add retry strat (#6520)
+ui new build
+(UI) Fix viewing members, keys in a team + added testing  (#6514)
+test: refactor gemini test to use mock, prevent ratelimit error
+(UI) fix + test displaying number of keys an internal user owns  (#6507)
+fix ui check when budget is 0 (#6506)
+fix: fix linting error
+bump: version 1.51.1 → 1.51.2
+Litellm router max depth (#6501)
+Litellm dev 10 29 2024 (#6502)
+LiteLLM Minor Fixes & Improvements (10/28/2024)  (#6475)
+(perf) Litellm redis router fix - ~100ms improvement (#6483)
+Update utils.py (#6468)
+Add `azure/gpt-4o-mini-2024-07-18` to model_prices_and_context_window.json (#6477)
+bump: version 1.51.0 → 1.51.1
+(fix) `PrometheusServicesLogger` `_get_metric` should return metric in Registry  (#6486)
+(fix) proxy - fix when `STORE_MODEL_IN_DB` should be set (#6492)
+(router_strategy/) ensure all async functions use async cache methods (#6489)
+docs clarify vertex vs gemini
+(fix) Prometheus - Log Postgres DB latency, status on prometheus  (#6484)
+redis otel tracing + async support for latency routing (#6452)
+(Testing) Add unit testing for DualCache - ensure in memory cache is used when expected  (#6471)
+Litellm dev 10 26 2024 (#6472)
+LiteLLM Minor Fixes & Improvements (10/24/2024) (#6441)
+add pricing for amazon.titan-embed-image-v1 (#6444)
+(Feat) New Logging integration - add Datadog LLM Observability support  (#6449)
+(testing) increase prometheus.py test coverage to 90%  (#6466)
+(UI) Delete Internal Users on Admin UI  (#6442)
+LiteLLM Minor Fixes & Improvements (10/24/2024) (#6421)
+bump: version 1.50.4 → 1.51.0
+ui new build
+fix linting
+fix type error
+fix test audit logs
+unit testing test_create_audit_log_in_db
+fix code quality
+fix create_audit_log_for_update
+fix StandardLoggingMetadata with user_api_key_org_id
+fix LitellmTableNames type
+use separate file for create_audit_log_for_update
+add unit testing for non_proxy_admin_allowed_routes_check
+fix typing on StandardLoggingMetadata
+fix RouteChecks  test
+unit test route checks
+fix name of tests on config
+test_is_ui_route_allowed
+use helper for _route_matches_pattern
+use static methods for Routechecks
+add key/{token_id}/regenerate to internal user routes
+ui show created at date
+feat(litellm_pre_call_utils.py): support 'add_user_information_to_llm… (#6390)
+feat(proxy_server.py): check if views exist on proxy server startup +… (#6360)
+allow configuring httpx hooks for AsyncHTTPHandler (#6290) (#6415)
+add created_at, updated_at for verification token
+track created, updated at virtual keys
+LiteLLM Minor Fixes & Improvements (10/23/2024) (#6407)
+feat(litellm_logging.py): refactor standard_logging_payload function … (#6388)
+perf: remove 'always_read_redis' - adding +830ms on each llm call (#6414)
+bump: version 1.50.3 → 1.50.4
+(code cleanup) remove unused and undocumented logging integrations - litedebugger, berrispend  (#6406)
+(refactor) router - use static methods for client init utils  (#6420)
+(refactor) prometheus async_log_success_event to be under 100 LOC  (#6416)
+fix comment
+add code cov checks
