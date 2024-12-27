@@ -1,3 +1,5 @@
+import os
+
 from fastapi import HTTPException
 
 API_KEY = "api_key"
@@ -31,11 +33,18 @@ def modify_user_request(data):
 
 def set_api_keys_from_vault(data):
     print(f"getting api keys for user: {data['user_id']}")
+
+    model_name = data["model"]
+    if model_name.startswith("bedrock"):
+        data["aws_access_key_id"] = os.getenv(AWS_ACCESS_KEY_ID)
+        data["aws_secret_access_key"] = os.getenv(AWS_SECRET_ACCESS_KEY)
+        data["aws_region_name"] = os.getenv(AWS_REGION_NAME)
+        print(f"bedrock keys: {data}")
+        return
     import litellm.proxy.raga.vault as vault
 
     vault_secrets = vault.get_api_keys(data["user_id"])
 
-    model_name = data["model"]
     if model_name.startswith("azure"):
         validate_api_keys(vault_secrets, model_name, [AZURE_API_KEY, AZURE_API_BASE, AZURE_API_VERSION])
         data[API_KEY] = vault_secrets.get(AZURE_API_KEY)
