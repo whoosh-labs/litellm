@@ -3074,3 +3074,8 @@ bump: version 1.50.3 → 1.50.4
 (refactor) prometheus async_log_success_event to be under 100 LOC  (#6416)
 fix comment
 add code cov checks
+
+2.1.7-25-01-06 / 2025-01-06 07:02:17
+fix: :bug: fixed response structure (#12)
+feat: :sparkles: raise 401 if required keys not present (#11)
+Added json validation in config
