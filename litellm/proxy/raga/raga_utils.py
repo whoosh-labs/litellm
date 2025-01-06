@@ -1,3 +1,5 @@
+from fastapi import HTTPException
+
 API_KEY = "api_key"
 API_BASE = "api_base"
 API_VERSION = "api_version"
@@ -20,9 +22,11 @@ def modify_user_request(data):
         if "user_id" in data:
             set_api_keys_from_vault(data)
             del data["user_id"]
-        return data, None
+        return data
+    except HTTPException as e:
+        raise e
     except Exception as e:
-        return None, {"error": {"message": f"Error: {str(e)}", "code": 400}}
+        return HTTPException(status_code=500, detail=e)
 
 
 def set_api_keys_from_vault(data):
@@ -63,4 +67,4 @@ def validate_api_keys(vault_secrets, model_name, required_keys):
             not_set_keys.append(key)
 
     if len(not_set_keys) > 0:
-        raise Exception(f"Required API Keys are not set for {model_name}: {not_set_keys}")
+        raise HTTPException(status_code=401, detail=f"Required API Keys are not set for {model_name}: {not_set_keys}")

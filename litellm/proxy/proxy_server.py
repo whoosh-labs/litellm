@@ -3306,9 +3306,7 @@ async def chat_completion(  # noqa: PLR0915
 
         # add api keys to request based on model and user_id
         from litellm.proxy.raga.raga_utils import modify_user_request
-        data, err = modify_user_request(data)
-        if err is not None:
-            return err
+        data = modify_user_request(data)
         data = await add_litellm_data_to_request(
             data=data,
             request=request,
