@@ -3079,3 +3079,6 @@ add code cov checks
 fix: :bug: fixed response structure (#12)
 feat: :sparkles: raise 401 if required keys not present (#11)
 Added json validation in config
+
+2.1.8-25-01-09 / 2025-01-09 13:12:31
+fixed (#13)
