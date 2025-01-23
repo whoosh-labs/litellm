@@ -3082,3 +3082,6 @@ Added json validation in config
 
 2.1.8-25-01-09 / 2025-01-09 13:12:31
 fixed (#13)
+
+2.1.9-25-01-23 / 2025-01-23 12:46:08
+No new changes in the release
