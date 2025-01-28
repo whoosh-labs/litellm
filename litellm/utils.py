@@ -4932,7 +4932,7 @@ def validate_environment(  # noqa: PLR0915
                 keys_in_environment = True
             else:
                 missing_keys.append("ANTHROPIC_API_KEY")
-        elif custom_llm_provider == "cohere":
+        elif custom_llm_provider == "cohere" or custom_llm_provider == "cohere_chat":
             if "COHERE_API_KEY" in os.environ:
                 keys_in_environment = True
             else:
@@ -4986,11 +4986,13 @@ def validate_environment(  # noqa: PLR0915
             if (
                 "AWS_ACCESS_KEY_ID" in os.environ
                 and "AWS_SECRET_ACCESS_KEY" in os.environ
+                and "AWS_REGION_NAME" in os.environ
             ):
                 keys_in_environment = True
             else:
                 missing_keys.append("AWS_ACCESS_KEY_ID")
                 missing_keys.append("AWS_SECRET_ACCESS_KEY")
+                missing_keys.append("AWS_REGION_NAME")
         elif custom_llm_provider in ["ollama", "ollama_chat"]:
             if "OLLAMA_API_BASE" in os.environ:
                 keys_in_environment = True
