@@ -3085,3 +3085,6 @@ fixed (#13)
 
 2.1.9-25-01-23 / 2025-01-23 12:46:08
 No new changes in the release
+
+2.2.0-25-02-06 / 2025-02-06 11:16:43
+No new changes in the release
