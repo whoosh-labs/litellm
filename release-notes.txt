@@ -3088,3 +3088,6 @@ No new changes in the release
 
 2.2.0-25-02-06 / 2025-02-06 11:16:43
 No new changes in the release
+
+2.3.0-25-02-12 / 2025-02-12 12:19:16
+No new changes in the release
