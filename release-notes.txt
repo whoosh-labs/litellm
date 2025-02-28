@@ -3100,3 +3100,6 @@ No new changes in the release
 
 2.6.0-25-02-17 / 2025-02-17 06:09:27
 No new changes in the release
+
+2.7.0-25-02-28 / 2025-02-28 09:23:08
+No new changes in the release
