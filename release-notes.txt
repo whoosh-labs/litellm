@@ -3103,3 +3103,6 @@ No new changes in the release
 
 2.7.0-25-02-28 / 2025-02-28 09:23:08
 No new changes in the release
+
+2.8.0-25-03-04 / 2025-03-04 13:39:37
+No new changes in the release
