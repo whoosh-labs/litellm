@@ -3288,7 +3288,7 @@ async def chat_completion(  # noqa: PLR0915
     try:
         body = await request.body()
         body_str = body.decode()
-        print(f"request body: {body_str}")
+        logging.info(f"request body: {body_str}")
         try:
             data = ast.literal_eval(body_str)
         except Exception:
