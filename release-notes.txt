@@ -3112,3 +3112,7 @@ No new changes in the release
 
 2.10.0-25-03-19 / 2025-03-19 07:26:26
 No new changes in the release
+
+2.11.0-25-03-31 / 2025-03-31 09:07:18
+handle output schema
+api gateway changes
