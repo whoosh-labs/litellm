@@ -3116,3 +3116,6 @@ No new changes in the release
 2.11.0-25-03-31 / 2025-03-31 09:07:18
 handle output schema
 api gateway changes
+
+2.11.1-25-04-03 / 2025-04-03 11:44:46
+No new changes in the release
