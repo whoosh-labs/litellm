@@ -54,8 +54,8 @@ async def route_request(
     Common helper to route the request
     """
     router_model_names = llm_router.model_names if llm_router is not None else []
-    if "api_key" in data or "api_base" in data:
-        return getattr(llm_router, f"{route_type}")(**data)
+    if "api_key" in data or "api_base" in data or 'aws_access_key_id' in data:
+        return getattr(litellm, f"{route_type}")(**data)
 
     elif "user_config" in data:
         router_config = data.pop("user_config")
