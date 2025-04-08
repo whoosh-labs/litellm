@@ -3119,3 +3119,6 @@ api gateway changes
 
 2.11.1-25-04-03 / 2025-04-03 11:44:46
 No new changes in the release
+
+2.11.2-25-04-08 / 2025-04-08 08:58:29
+No new changes in the release
