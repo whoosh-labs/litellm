@@ -17,7 +17,10 @@ RUN apk update && \
 
 
 RUN pip install --upgrade pip && \
-    pip install build
+    pip install build && pip install wheel==0.45.1
+
+RUN pip list
+
 
 # Copy the current directory contents into the container at /app
 COPY . .
@@ -64,6 +67,7 @@ RUN ls -la /app
 COPY --from=builder /app/dist/*.whl .
 COPY --from=builder /wheels/ /wheels/
 
+RUN pip install wheel==0.45.1
 # Install the built wheel using pip; again using a wildcard if it's the only file
 RUN pip install *.whl /wheels/* --no-index --find-links=/wheels/ && rm -f *.whl && rm -rf /wheels
 
