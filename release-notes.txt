@@ -5444,3 +5444,6 @@ No new changes in the release
 
 2.15.0-25-06-02 / 2025-06-02 10:33:11
 No new changes in the release
+
+2.16.0-25-06-06 / 2025-06-06 08:32:37
+No new changes in the release
