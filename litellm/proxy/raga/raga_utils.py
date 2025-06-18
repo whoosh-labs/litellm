@@ -75,6 +75,7 @@ def set_api_keys_from_vault(data):
         from litellm.proxy.raga.data import get_model_keys
 
         keys = get_model_keys(model_name)
+        print(f"keys: {keys}")
         if len(keys) == 1:
             validate_api_keys(vault_secrets, model_name, keys)
             data[API_KEY] = vault_secrets.get(keys[0])
