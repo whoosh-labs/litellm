@@ -31,54 +31,14 @@ VERTEXAI_PROJECT = "VERTEXAI_PROJECT"
 VERTEXAI_LOCATION = "VERTEXAI_LOCATION"
 
 
-def vertex_ai_completion_bypass(data, vault_secrets):
-    """
-    Bypass function for Vertex AI that uses litellm.completion directly
-    """
-    from litellm import completion
-    
-    # Load service account JSON
-    with open('./creds.json', 'r') as f:
-        credentials = json.load(f)
-    
-    credentials_json = json.dumps(credentials)
-    
-    # Extract the messages from the data
-    messages = data.get("messages", [])
-    model = data["model"]
-    
-    # Use litellm completion directly
-    response = completion(
-        model=model,
-        messages=messages,
-        vertex_credentials=credentials_json,
-        vertex_project="mcp-api-460410",
-        vertex_location="us-central1",
-        **{k: v for k, v in data.items() if k not in ["messages", "model", "user_id"]}  # Pass any additional parameters
-    )
-    
-    return response
-
-
 def modify_user_request(data):
     try:
         if "provider" in data:
             data["model"] = data["provider"] + "/" + data["model"]
             del data["provider"]
         if "user_id" in data:
-            # Check if this is a vertex_ai request and use bypass
-            if data["model"].startswith("vertex_ai"):
-                import litellm.proxy.raga.vault as vault
-                vault_secrets = vault.get_api_keys(data["user_id"])
-                
-                # Use the bypass function
-                response = vertex_ai_completion_bypass(data, vault_secrets)
-                
-                # Return the response directly - this will bypass the normal flow
-                return {"bypass_response": response}
-            else:
-                set_api_keys_from_vault(data)
-                del data["user_id"]
+            set_api_keys_from_vault(data)
+            del data["user_id"]
         return data
     except Exception as e:
         print(f"exception in getting api keys: {str(e)}")
