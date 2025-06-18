@@ -3566,13 +3566,15 @@ async def chat_completion(  # noqa: PLR0915
     if data.get("model", "").startswith("vertex_ai"):
         from litellm import completion
         import json
+        if not any(message.get("role") == "user" for message in data.get("messages", [])):
+            raise ValueError("Messages must contain a user role")
         
         credentials = json.loads(data.get("VERTEXAI_CREDENTIALS"))
         print(f"credentials: {credentials}")
         credentials_json = json.dumps(credentials)
         response = completion(
             model=data.get("model"),
-            messages=json.dumps(data.get("messages", [])),
+            messages=data.get("messages", []),
             vertex_credentials=credentials_json,
             vertex_project=data.get("VERTEXAI_PROJECT"),
             vertex_location=data.get("VERTEXAI_LOCATION")
