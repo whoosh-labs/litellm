@@ -16,7 +16,7 @@ AWS_REGION_NAME = "AWS_REGION_NAME"
 OLLAMA_API_BASE = "OLLAMA_API_BASE"
 
 # VERTEX_AI
-VERTEX_CREDENTIALS = "VERTEX_CREDENTIALS"
+VERTEXAI_CREDENTIALS = "VERTEXAI_CREDENTIALS"
 VERTEXAI_PROJECT = "VERTEXAI_PROJECT"
 VERTEXAI_LOCATION = "VERTEXAI_LOCATION"
 
@@ -53,9 +53,9 @@ def set_api_keys_from_vault(data):
         data["aws_secret_access_key"] = vault_secrets.get(AWS_SECRET_ACCESS_KEY)
         data["aws_region_name"] = vault_secrets.get(AWS_REGION_NAME)
     elif model_name.startswith("vertex_ai"):
-        validate_api_keys(vault_secrets, model_name, [VERTEX_CREDENTIALS, VERTEXAI_LOCATION, VERTEXAI_PROJECT])
+        validate_api_keys(vault_secrets, model_name, [VERTEXAI_CREDENTIALS, VERTEXAI_LOCATION, VERTEXAI_PROJECT])
         data[VERTEXAI_PROJECT] = vault_secrets.get(VERTEXAI_PROJECT)
-        data[VERTEX_CREDENTIALS] = vault_secrets.get(VERTEX_CREDENTIALS)
+        data[VERTEXAI_CREDENTIALS] = vault_secrets.get(VERTEXAI_CREDENTIALS)
         data[VERTEXAI_LOCATION] = vault_secrets.get(VERTEXAI_LOCATION)
     elif model_name.startswith("ollama"):
         validate_api_keys(vault_secrets, model_name, [OLLAMA_API_BASE])
