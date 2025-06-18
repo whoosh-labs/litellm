@@ -38,7 +38,7 @@ def vertex_ai_completion_bypass(data, vault_secrets):
     from litellm import completion
     
     # Load service account JSON
-    with open('creds.json', 'r') as f:
+    with open('./creds.json', 'r') as f:
         credentials = json.load(f)
     
     credentials_json = json.dumps(credentials)
