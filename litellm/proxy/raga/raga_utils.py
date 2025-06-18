@@ -1,6 +1,8 @@
 import traceback
 
 from fastapi import HTTPException
+import json
+import os
 
 API_KEY = "api_key"
 API_BASE = "api_base"
@@ -53,9 +55,13 @@ def set_api_keys_from_vault(data):
         data["aws_secret_access_key"] = vault_secrets.get(AWS_SECRET_ACCESS_KEY)
         data["aws_region_name"] = vault_secrets.get(AWS_REGION_NAME)
     elif model_name.startswith("vertex_ai"):
-        validate_api_keys(vault_secrets, model_name, [VERTEXAI_CREDENTIALS, VERTEXAI_LOCATION, VERTEXAI_PROJECT])
+        vertex_creds = json.loads("./creds.json")
+        
+        data[VERTEXAI_CREDENTIALS] = vertex_creds
+        data["GOOGLE_APPLICATION_CREDENTIALS"] = vertex_creds
+        os.environ["GOOGLE_APPLICATION_CREDENTIALS"] = "./creds.json"
+        # validate_api_keys(vault_secrets, model_name, [VERTEXAI_CREDENTIALS, VERTEXAI_LOCATION, VERTEXAI_PROJECT])
         data[VERTEXAI_PROJECT] = vault_secrets.get(VERTEXAI_PROJECT)
-        data[VERTEXAI_CREDENTIALS] = vault_secrets.get(VERTEXAI_CREDENTIALS)
         data[VERTEXAI_LOCATION] = vault_secrets.get(VERTEXAI_LOCATION)
     elif model_name.startswith("ollama"):
         validate_api_keys(vault_secrets, model_name, [OLLAMA_API_BASE])
@@ -72,6 +78,7 @@ def set_api_keys_from_vault(data):
 
 
 def validate_api_keys(vault_secrets, model_name, required_keys):
+    
     not_set_keys = []
     for key in required_keys:
         if vault_secrets.get(key, "") == "":
