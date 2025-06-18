@@ -5120,6 +5120,7 @@ def validate_environment(  # noqa: PLR0915
             model in litellm.vertex_chat_models
             or model in litellm.vertex_text_models
             or model in litellm.models_by_provider["vertex_ai"]
+            or model in litellm.vertex_ai_models
         ):
             if (
                 "VERTEXAI_PROJECT" in os.environ
