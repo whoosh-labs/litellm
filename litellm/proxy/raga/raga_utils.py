@@ -17,8 +17,8 @@ OLLAMA_API_BASE = "OLLAMA_API_BASE"
 
 # VERTEX_AI
 VERTEX_CREDENTIALS = "vertex_credentials"
-VERTEX_PROJECT = "vertex_project"
-VERTEX_LOCATION = "vertex_location"
+VERTEXAI_PROJECT = "vertex_project"
+VERTEXAI_LOCATION = "vertex_location"
 
 def modify_user_request(data):
     try:
@@ -53,10 +53,10 @@ def set_api_keys_from_vault(data):
         data["aws_secret_access_key"] = vault_secrets.get(AWS_SECRET_ACCESS_KEY)
         data["aws_region_name"] = vault_secrets.get(AWS_REGION_NAME)
     elif model_name.startswith("vertex_ai"):
-        validate_api_keys(vault_secrets, model_name, [VERTEX_CREDENTIALS, VERTEX_LOCATION, VERTEX_PROJECT])
-        data[VERTEX_PROJECT] = vault_secrets.get(VERTEX_PROJECT)
+        validate_api_keys(vault_secrets, model_name, [VERTEX_CREDENTIALS, VERTEXAI_LOCATION, VERTEXAI_PROJECT])
+        data[VERTEXAI_PROJECT] = vault_secrets.get(VERTEXAI_PROJECT)
         data[VERTEX_CREDENTIALS] = vault_secrets.get(VERTEX_CREDENTIALS)
-        data[VERTEX_LOCATION] = vault_secrets.get(VERTEX_LOCATION)
+        data[VERTEXAI_LOCATION] = vault_secrets.get(VERTEXAI_LOCATION)
     elif model_name.startswith("ollama"):
         validate_api_keys(vault_secrets, model_name, [OLLAMA_API_BASE])
         data[API_BASE] = vault_secrets.get(OLLAMA_API_BASE)

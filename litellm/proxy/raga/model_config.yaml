@@ -32,9 +32,9 @@ model_list:
   - model_name: "vertex_ai*"
     litellm_params:
       model: vertex_ai/*
-      api_key: os.environ/VERTEX_PROJECT
-      api_base: os.environ/VERTEX_LOCATION
-      api_version: os.environ/VERTEX_CREDENTIALS
+      api_key: os.environ/VERTEXAI_PROJECT
+      api_base: os.environ/VERTEXAI_LOCATION
+      api_version: os.environ/VERTEXAI_CREDENTIALS
 
 litellm_settings:
   enable_json_schema_validation: True
