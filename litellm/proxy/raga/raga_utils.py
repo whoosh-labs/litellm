@@ -56,10 +56,9 @@ def set_api_keys_from_vault(data):
         data["aws_region_name"] = vault_secrets.get(AWS_REGION_NAME)
     elif model_name.startswith("vertex_ai"):
         vertex_creds = json.loads("./creds.json")
-        
         data[VERTEXAI_CREDENTIALS] = vertex_creds
-        data["GOOGLE_APPLICATION_CREDENTIALS"] = vertex_creds
         os.environ["GOOGLE_APPLICATION_CREDENTIALS"] = "./creds.json"
+        print(f"os.environ: {os.environ}")
         # validate_api_keys(vault_secrets, model_name, [VERTEXAI_CREDENTIALS, VERTEXAI_LOCATION, VERTEXAI_PROJECT])
         data[VERTEXAI_PROJECT] = vault_secrets.get(VERTEXAI_PROJECT)
         data[VERTEXAI_LOCATION] = vault_secrets.get(VERTEXAI_LOCATION)
