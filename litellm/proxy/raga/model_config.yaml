@@ -29,6 +29,12 @@ model_list:
     litellm_params:
       model: cohere/*
       api_key: os.environ/COHERE_API_KEY
+  - model_name: "vertex_ai*"
+    litellm_params:
+      model: vertex_ai/*
+      api_key: os.environ/VERTEX_PROJECT
+      api_base: os.environ/VERTEX_LOCATION
+      api_version: os.environ/VERTEX_CREDENTIALS
 
 litellm_settings:
   enable_json_schema_validation: True
