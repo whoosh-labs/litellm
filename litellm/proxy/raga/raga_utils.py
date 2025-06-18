@@ -37,24 +37,11 @@ def vertex_ai_completion_bypass(data, vault_secrets):
     """
     from litellm import completion
     
-    # Validate required keys
-    required_keys = [VERTEXAI_PROJECT, VERTEXAI_LOCATION, VERTEXAI_CREDENTIALS]
-    validate_api_keys(vault_secrets, data["model"], required_keys)
+    # Load service account JSON
+    with open('creds.json', 'r') as f:
+        credentials = json.load(f)
     
-    # Get credentials and prepare them
-    creds_value = vault_secrets.get(VERTEXAI_CREDENTIALS)
-    vertex_project = vault_secrets.get(VERTEXAI_PROJECT)
-    vertex_location = vault_secrets.get(VERTEXAI_LOCATION)
-    
-    # Handle credentials - can be either file path or JSON content
-    if creds_value.startswith('{') and creds_value.endswith('}'):
-        # It's JSON content, use directly
-        credentials_json = creds_value
-    else:
-        # It's a file path, load the JSON
-        with open(creds_value, 'r') as f:
-            credentials = json.load(f)
-        credentials_json = json.dumps(credentials)
+    credentials_json = json.dumps(credentials)
     
     # Extract the messages from the data
     messages = data.get("messages", [])
@@ -65,8 +52,8 @@ def vertex_ai_completion_bypass(data, vault_secrets):
         model=model,
         messages=messages,
         vertex_credentials=credentials_json,
-        vertex_project=vertex_project,
-        vertex_location=vertex_location,
+        vertex_project="mcp-api-460410",
+        vertex_location="us-central1",
         **{k: v for k, v in data.items() if k not in ["messages", "model", "user_id"]}  # Pass any additional parameters
     )
     
