@@ -3568,18 +3568,17 @@ async def chat_completion(  # noqa: PLR0915
         import json
         
         credentials = json.loads(data.get("VERTEXAI_CREDENTIALS"))
-        
+        print(f"credentials: {credentials}")
         credentials_json = json.dumps(credentials)
-        
         response = completion(
             model=data.get("model"),
-            messages=data.get("messages", []),
+            messages=json.dumps(data.get("messages", [])),
             vertex_credentials=credentials_json,
             vertex_project=data.get("VERTEXAI_PROJECT"),
             vertex_location=data.get("VERTEXAI_LOCATION")
+            
         )
         return response
-        print(f"response: {response}")
     # === End of raga custom code ===
 
     base_llm_response_processor = ProxyBaseLLMRequestProcessing(data=data)
