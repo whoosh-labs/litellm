@@ -712,6 +712,7 @@ models_by_provider: dict = {
     "assemblyai": assemblyai_models,
     "jina_ai": jina_ai_models,
     "snowflake": snowflake_models,
+    "vertex_ai": vertex_ai_models,
 }
 
 # mapping for those models which have larger equivalents
