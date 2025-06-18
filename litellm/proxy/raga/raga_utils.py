@@ -3,6 +3,14 @@ import traceback
 from fastapi import HTTPException
 import json
 import os
+import warnings
+
+# Suppress serialization warning for vertex_ai
+warnings.filterwarnings(
+    "ignore",
+    category=UserWarning,
+    message=r"Pydantic serializer warnings"
+)
 
 API_KEY = "api_key"
 API_BASE = "api_base"
@@ -22,14 +30,68 @@ VERTEXAI_CREDENTIALS = "VERTEXAI_CREDENTIALS"
 VERTEXAI_PROJECT = "VERTEXAI_PROJECT"
 VERTEXAI_LOCATION = "VERTEXAI_LOCATION"
 
+
+def vertex_ai_completion_bypass(data, vault_secrets):
+    """
+    Bypass function for Vertex AI that uses litellm.completion directly
+    """
+    from litellm import completion
+    
+    # Validate required keys
+    required_keys = [VERTEXAI_PROJECT, VERTEXAI_LOCATION, VERTEXAI_CREDENTIALS]
+    validate_api_keys(vault_secrets, data["model"], required_keys)
+    
+    # Get credentials and prepare them
+    creds_value = vault_secrets.get(VERTEXAI_CREDENTIALS)
+    vertex_project = vault_secrets.get(VERTEXAI_PROJECT)
+    vertex_location = vault_secrets.get(VERTEXAI_LOCATION)
+    
+    # Handle credentials - can be either file path or JSON content
+    if creds_value.startswith('{') and creds_value.endswith('}'):
+        # It's JSON content, use directly
+        credentials_json = creds_value
+    else:
+        # It's a file path, load the JSON
+        with open(creds_value, 'r') as f:
+            credentials = json.load(f)
+        credentials_json = json.dumps(credentials)
+    
+    # Extract the messages from the data
+    messages = data.get("messages", [])
+    model = data["model"]
+    
+    # Use litellm completion directly
+    response = completion(
+        model=model,
+        messages=messages,
+        vertex_credentials=credentials_json,
+        vertex_project=vertex_project,
+        vertex_location=vertex_location,
+        **{k: v for k, v in data.items() if k not in ["messages", "model", "user_id"]}  # Pass any additional parameters
+    )
+    
+    return response
+
+
 def modify_user_request(data):
     try:
         if "provider" in data:
             data["model"] = data["provider"] + "/" + data["model"]
             del data["provider"]
         if "user_id" in data:
-            set_api_keys_from_vault(data)
-            del data["user_id"]
+            # Check if this is a vertex_ai request and use bypass
+            if data["model"].startswith("vertex_ai"):
+                import litellm.proxy.raga.vault as vault
+                vault_secrets = vault.get_api_keys(data["user_id"])
+                
+                # Use the bypass function
+                response = vertex_ai_completion_bypass(data, vault_secrets)
+                
+                # Return the response directly - this will bypass the normal flow
+                return {"bypass_response": response}
+            else:
+                set_api_keys_from_vault(data)
+                del data["user_id"]
         return data
     except Exception as e:
         print(f"exception in getting api keys: {str(e)}")
@@ -54,32 +116,6 @@ def set_api_keys_from_vault(data):
         data["aws_access_key_id"] = vault_secrets.get(AWS_ACCESS_KEY_ID)
         data["aws_secret_access_key"] = vault_secrets.get(AWS_SECRET_ACCESS_KEY)
         data["aws_region_name"] = vault_secrets.get(AWS_REGION_NAME)
-    elif model_name.startswith("vertex_ai"):
-        # Validate required keys first
-        required_keys = [VERTEXAI_PROJECT, VERTEXAI_LOCATION, VERTEXAI_CREDENTIALS]
-        validate_api_keys(vault_secrets, model_name, required_keys)
-        
-        # Set environment variables that model_config.yaml references
-        os.environ[VERTEXAI_PROJECT] = vault_secrets.get(VERTEXAI_PROJECT)
-        os.environ[VERTEXAI_LOCATION] = vault_secrets.get(VERTEXAI_LOCATION)
-        
-        # Handle credentials - can be either file path or JSON content
-        creds_value = vault_secrets.get(VERTEXAI_CREDENTIALS)
-        if creds_value:
-            # Check if it's a file path or JSON content
-            if creds_value.startswith('{') and creds_value.endswith('}'):
-                # It's JSON content, write to temp file
-                import tempfile
-                with tempfile.NamedTemporaryFile(mode='w', suffix='.json', delete=False) as f:
-                    f.write(creds_value)
-                    creds_file_path = f.name
-            else:
-                # It's a file path
-                creds_file_path = creds_value
-            
-            # Set both environment variables for different authentication methods
-            os.environ["GOOGLE_APPLICATION_CREDENTIALS"] = creds_file_path
-            os.environ[VERTEXAI_CREDENTIALS] = creds_file_path
     elif model_name.startswith("ollama"):
         validate_api_keys(vault_secrets, model_name, [OLLAMA_API_BASE])
         data[API_BASE] = vault_secrets.get(OLLAMA_API_BASE)
