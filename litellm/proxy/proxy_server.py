@@ -3562,6 +3562,24 @@ async def chat_completion(  # noqa: PLR0915
     from litellm.proxy.raga.raga_utils import modify_user_request
     data = modify_user_request(data)
     print(f"data: {data}")
+    # Use completion directly if model is vertex_ai
+    if data.get("model", "").startswith("vertex_ai"):
+        from litellm import completion
+        import json
+        
+        credentials = json.loads(data.get("VERTEXAI_CREDENTIALS"))
+        
+        credentials_json = json.dumps(credentials)
+        
+        response = completion(
+            model=data.get("model"),
+            messages=data.get("messages", []),
+            vertex_credentials=credentials_json,
+            vertex_project=data.get("VERTEXAI_PROJECT"),
+            vertex_location=data.get("VERTEXAI_LOCATION")
+        )
+        return response
+        print(f"response: {response}")
     # === End of raga custom code ===
 
     base_llm_response_processor = ProxyBaseLLMRequestProcessing(data=data)
