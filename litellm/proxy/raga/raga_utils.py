@@ -55,13 +55,31 @@ def set_api_keys_from_vault(data):
         data["aws_secret_access_key"] = vault_secrets.get(AWS_SECRET_ACCESS_KEY)
         data["aws_region_name"] = vault_secrets.get(AWS_REGION_NAME)
     elif model_name.startswith("vertex_ai"):
-        vertex_creds = json.loads("./creds.json")
-        data[VERTEXAI_CREDENTIALS] = vertex_creds
-        os.environ["GOOGLE_APPLICATION_CREDENTIALS"] = "./creds.json"
-        print(f"os.environ: {os.environ}")
-        # validate_api_keys(vault_secrets, model_name, [VERTEXAI_CREDENTIALS, VERTEXAI_LOCATION, VERTEXAI_PROJECT])
-        data[VERTEXAI_PROJECT] = vault_secrets.get(VERTEXAI_PROJECT)
-        data[VERTEXAI_LOCATION] = vault_secrets.get(VERTEXAI_LOCATION)
+        # Validate required keys first
+        required_keys = [VERTEXAI_PROJECT, VERTEXAI_LOCATION, VERTEXAI_CREDENTIALS]
+        validate_api_keys(vault_secrets, model_name, required_keys)
+        
+        # Set environment variables that model_config.yaml references
+        os.environ[VERTEXAI_PROJECT] = vault_secrets.get(VERTEXAI_PROJECT)
+        os.environ[VERTEXAI_LOCATION] = vault_secrets.get(VERTEXAI_LOCATION)
+        
+        # Handle credentials - can be either file path or JSON content
+        creds_value = vault_secrets.get(VERTEXAI_CREDENTIALS)
+        if creds_value:
+            # Check if it's a file path or JSON content
+            if creds_value.startswith('{') and creds_value.endswith('}'):
+                # It's JSON content, write to temp file
+                import tempfile
+                with tempfile.NamedTemporaryFile(mode='w', suffix='.json', delete=False) as f:
+                    f.write(creds_value)
+                    creds_file_path = f.name
+            else:
+                # It's a file path
+                creds_file_path = creds_value
+            
+            # Set both environment variables for different authentication methods
+            os.environ["GOOGLE_APPLICATION_CREDENTIALS"] = creds_file_path
+            os.environ[VERTEXAI_CREDENTIALS] = creds_file_path
     elif model_name.startswith("ollama"):
         validate_api_keys(vault_secrets, model_name, [OLLAMA_API_BASE])
         data[API_BASE] = vault_secrets.get(OLLAMA_API_BASE)
