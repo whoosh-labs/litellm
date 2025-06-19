@@ -3573,9 +3573,7 @@ async def chat_completion(  # noqa: PLR0915
         response = completion(
             model=data.get("model"),
             messages=data.get("messages", []),
-            vertex_credentials=credentials_json,
-            vertex_project=data.get("VERTEXAI_PROJECT"),
-            vertex_location=data.get("VERTEXAI_LOCATION")
+            vertex_credentials=credentials_json
             
         )
         return response

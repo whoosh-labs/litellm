@@ -32,8 +32,6 @@ model_list:
   - model_name: "vertex_ai*"
     litellm_params:
       model: vertex_ai/*
-      vertex_project: os.environ/VERTEXAI_PROJECT
-      vertex_location: os.environ/VERTEXAI_LOCATION
       vertex_credentials: os.environ/VERTEXAI_CREDENTIALS
 
 litellm_settings:

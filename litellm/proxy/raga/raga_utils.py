@@ -65,10 +65,8 @@ def set_api_keys_from_vault(data):
         validate_api_keys(vault_secrets, model_name, [OLLAMA_API_BASE])
         data[API_BASE] = vault_secrets.get(OLLAMA_API_BASE)
     elif model_name.startswith("vertex_ai"):
-        validate_api_keys(vault_secrets, model_name, [VERTEXAI_CREDENTIALS, VERTEXAI_PROJECT, VERTEXAI_LOCATION])
+        validate_api_keys(vault_secrets, model_name, [VERTEXAI_CREDENTIALS])
         data[VERTEXAI_CREDENTIALS] = vault_secrets.get(VERTEXAI_CREDENTIALS)
-        data[VERTEXAI_PROJECT] = vault_secrets.get(VERTEXAI_PROJECT)
-        data[VERTEXAI_LOCATION] = vault_secrets.get(VERTEXAI_LOCATION)
     else:
         from litellm.proxy.raga.data import get_model_keys
 
