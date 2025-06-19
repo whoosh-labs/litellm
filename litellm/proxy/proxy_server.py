@@ -3567,7 +3567,8 @@ async def chat_completion(  # noqa: PLR0915
         import json
         if not any(message.get("role") == "user" for message in data.get("messages", [])):
             # Return a 400 error
-            return JSONResponse(status_code=400, content={"error": "Messages must contain a user role"})
+            fastapi_response.status_code = 400
+            return {"error": "Messages must contain a user role"}
         
         credentials = json.loads(data.get("VERTEXAI_CREDENTIALS"))
         credentials_json = json.dumps(credentials)
