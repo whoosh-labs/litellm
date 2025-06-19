@@ -4,6 +4,7 @@ from fastapi import HTTPException
 import json
 import os
 import warnings
+import tempfile
 
 # Suppress serialization warning for vertex_ai
 warnings.filterwarnings(
@@ -71,6 +72,9 @@ def set_api_keys_from_vault(data):
         data[VERTEXAI_CREDENTIALS] = vault_secrets.get(VERTEXAI_CREDENTIALS)
         data[VERTEXAI_PROJECT] = vault_secrets.get(VERTEXAI_PROJECT)
         data[VERTEXAI_LOCATION] = vault_secrets.get(VERTEXAI_LOCATION)
+        with tempfile.NamedTemporaryFile(mode="w+", delete=False) as temp_file:
+            temp_file.write(vault_secrets.get(VERTEXAI_CREDENTIALS))
+            os.environ["GOOGLE_APPLICATION_CREDENTIALS"] = os.path.abspath(temp_file.name)
     else:
         from litellm.proxy.raga.data import get_model_keys
 
