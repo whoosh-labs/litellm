@@ -3561,6 +3561,24 @@ async def chat_completion(  # noqa: PLR0915
     # add api keys to request based on model and user_id
     from litellm.proxy.raga.raga_utils import modify_user_request
     data = modify_user_request(data)
+    # Use completion directly if model is vertex_ai
+    if data.get("model", "").startswith("vertex_ai"):
+        from litellm import completion
+        import json
+        if not any(message.get("role") == "user" for message in data.get("messages", [])):
+            # Return a 400 error
+            fastapi_response.status_code = 400
+            return {"error": "Messages must contain a user role"}
+        
+        credentials = json.loads(data.get("VERTEXAI_CREDENTIALS"))
+        credentials_json = json.dumps(credentials)
+        response = completion(
+            model=data.get("model"),
+            messages=data.get("messages", []),
+            vertex_credentials=credentials_json
+            
+        )
+        return response
     # === End of raga custom code ===
 
     base_llm_response_processor = ProxyBaseLLMRequestProcessing(data=data)

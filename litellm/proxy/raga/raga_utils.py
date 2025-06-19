@@ -1,6 +1,14 @@
 import traceback
 
 from fastapi import HTTPException
+import warnings
+
+# Suppress serialization warning for vertex_ai
+warnings.filterwarnings(
+    "ignore",
+    category=UserWarning,
+    message=r"Pydantic serializer warnings"
+)
 
 API_KEY = "api_key"
 API_BASE = "api_base"
@@ -14,6 +22,11 @@ AWS_ACCESS_KEY_ID = "AWS_ACCESS_KEY_ID"
 AWS_SECRET_ACCESS_KEY = "AWS_SECRET_ACCESS_KEY"
 AWS_REGION_NAME = "AWS_REGION_NAME"
 OLLAMA_API_BASE = "OLLAMA_API_BASE"
+
+# VERTEX_AI
+VERTEXAI_CREDENTIALS = "VERTEXAI_CREDENTIALS"
+VERTEXAI_PROJECT = "VERTEXAI_PROJECT"
+VERTEXAI_LOCATION = "VERTEXAI_LOCATION"
 
 
 def modify_user_request(data):
@@ -51,10 +64,14 @@ def set_api_keys_from_vault(data):
     elif model_name.startswith("ollama"):
         validate_api_keys(vault_secrets, model_name, [OLLAMA_API_BASE])
         data[API_BASE] = vault_secrets.get(OLLAMA_API_BASE)
+    elif model_name.startswith("vertex_ai"):
+        validate_api_keys(vault_secrets, model_name, [VERTEXAI_CREDENTIALS])
+        data[VERTEXAI_CREDENTIALS] = vault_secrets.get(VERTEXAI_CREDENTIALS)
     else:
         from litellm.proxy.raga.data import get_model_keys
 
         keys = get_model_keys(model_name)
+        print(f"keys: {keys}")
         if len(keys) == 1:
             validate_api_keys(vault_secrets, model_name, keys)
             data[API_KEY] = vault_secrets.get(keys[0])
@@ -63,6 +80,7 @@ def set_api_keys_from_vault(data):
 
 
 def validate_api_keys(vault_secrets, model_name, required_keys):
+    
     not_set_keys = []
     for key in required_keys:
         if vault_secrets.get(key, "") == "":
