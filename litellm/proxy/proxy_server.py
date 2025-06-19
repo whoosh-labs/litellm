@@ -3566,7 +3566,8 @@ async def chat_completion(  # noqa: PLR0915
         from litellm import completion
         import json
         if not any(message.get("role") == "user" for message in data.get("messages", [])):
-            raise ValueError("Messages must contain a user role")
+            # Return a 400 error
+            return JSONResponse(status_code=400, content={"error": "Messages must contain a user role"})
         
         credentials = json.loads(data.get("VERTEXAI_CREDENTIALS"))
         credentials_json = json.dumps(credentials)
