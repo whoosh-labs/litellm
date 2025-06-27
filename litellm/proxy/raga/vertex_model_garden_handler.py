@@ -142,12 +142,6 @@ class VertexModelGardenHandler:
             data["api_key"] = oauth_token
             data["max_tokens"] = data.get("max_tokens", 100)
             
-            verbose_logger.debug(f"api_base: {api_base}")
-            verbose_logger.debug(f"deployment_name: {deployment_name}")
-            verbose_logger.debug(f"project_id: {project_id}")
-            verbose_logger.debug(f"location: {location}")
-            verbose_logger.debug(f"credentials: {credentials}")
-            
             # Clean up
             data.pop("vertex_project", None)
             data.pop("vertex_location", None)
