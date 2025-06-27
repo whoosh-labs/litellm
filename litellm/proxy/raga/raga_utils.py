@@ -84,7 +84,6 @@ def set_api_keys_from_vault(data):
 def handle_vertex_ai_model(data, vault_secrets, model_name):
     """Handle Vertex AI model configuration"""
     vertex_creds = vault_secrets.get(VERTEXAI_CREDENTIALS)
-    print(f"messages: {data['messages']}")
     if "messages" in data:
         for message in data["messages"]:
             if message.get("name") is None:
