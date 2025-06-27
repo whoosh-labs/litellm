@@ -4912,7 +4912,7 @@ def validate_environment(  # noqa: PLR0915
                 keys_in_environment = True
             else:
                 missing_keys.append("ANTHROPIC_API_KEY")
-        elif custom_llm_provider == "cohere":
+        elif custom_llm_provider == "cohere" or custom_llm_provider == "cohere_chat":
             if "COHERE_API_KEY" in os.environ:
                 keys_in_environment = True
             else:
@@ -4928,10 +4928,15 @@ def validate_environment(  # noqa: PLR0915
             else:
                 missing_keys.append("OPENROUTER_API_KEY")
         elif custom_llm_provider == "vertex_ai":
-            if "VERTEXAI_PROJECT" in os.environ and "VERTEXAI_LOCATION" in os.environ:
+            if (
+                "VERTEXAI_PROJECT" in os.environ
+                and "VERTEXAI_LOCATION" in os.environ
+                and "VERTEXAI_CREDENTIALS" in os.environ
+                and "API_BASE" in os.environ
+            ):
                 keys_in_environment = True
             else:
-                missing_keys.extend(["VERTEXAI_PROJECT", "VERTEXAI_LOCATION"])
+                missing_keys.extend(["VERTEXAI_PROJECT", "VERTEXAI_LOCATION", "VERTEXAI_CREDENTIALS", "API_BASE"])
         elif custom_llm_provider == "huggingface":
             if "HUGGINGFACE_API_KEY" in os.environ:
                 keys_in_environment = True
@@ -4966,11 +4971,13 @@ def validate_environment(  # noqa: PLR0915
             if (
                 "AWS_ACCESS_KEY_ID" in os.environ
                 and "AWS_SECRET_ACCESS_KEY" in os.environ
+                and "AWS_REGION_NAME" in os.environ
             ):
                 keys_in_environment = True
             else:
                 missing_keys.append("AWS_ACCESS_KEY_ID")
                 missing_keys.append("AWS_SECRET_ACCESS_KEY")
+                missing_keys.append("AWS_REGION_NAME")
         elif custom_llm_provider in ["ollama", "ollama_chat"]:
             if "OLLAMA_API_BASE" in os.environ:
                 keys_in_environment = True
@@ -5114,11 +5121,16 @@ def validate_environment(  # noqa: PLR0915
             model in litellm.vertex_chat_models
             or model in litellm.vertex_text_models
             or model in litellm.models_by_provider["vertex_ai"]
+            or model in litellm.vertex_ai_models
         ):
-            if "VERTEXAI_PROJECT" in os.environ and "VERTEXAI_LOCATION" in os.environ:
+            if (
+                "VERTEXAI_PROJECT" in os.environ
+                and "VERTEXAI_LOCATION" in os.environ
+                and "VERTEXAI_CREDENTIALS" in os.environ
+            )   :
                 keys_in_environment = True
             else:
-                missing_keys.extend(["VERTEXAI_PROJECT", "VERTEXAI_LOCATION"])
+                missing_keys.extend(["VERTEXAI_PROJECT", "VERTEXAI_LOCATION", "VERTEXAI_CREDENTIALS"])
         ## huggingface
         elif model in litellm.huggingface_models:
             if "HUGGINGFACE_API_KEY" in os.environ:
