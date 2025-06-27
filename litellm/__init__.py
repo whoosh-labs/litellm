@@ -421,6 +421,7 @@ galadriel_models: List = []
 sambanova_models: List = []
 assemblyai_models: List = []
 snowflake_models: List = []
+vertex_ai_models: List = []
 
 
 def is_bedrock_pricing_only_model(key: str) -> bool:
@@ -478,6 +479,9 @@ def add_known_models():
             empower_models.append(key)
         elif value.get("litellm_provider") == "openrouter":
             openrouter_models.append(key)
+        # vertex_ai models
+        elif value.get("litellm_provider") == "vertex_ai":
+            vertex_ai_models.append(key)
         elif value.get("litellm_provider") == "vertex_ai-text-models":
             vertex_text_models.append(key)
         elif value.get("litellm_provider") == "vertex_ai-code-text-models":
@@ -651,6 +655,7 @@ model_list = (
     + assemblyai_models
     + jina_ai_models
     + snowflake_models
+    + vertex_ai_models
 )
 
 model_list_set = set(model_list)
@@ -707,6 +712,7 @@ models_by_provider: dict = {
     "assemblyai": assemblyai_models,
     "jina_ai": jina_ai_models,
     "snowflake": snowflake_models,
+    "vertex_ai": vertex_ai_models,
 }
 
 # mapping for those models which have larger equivalents

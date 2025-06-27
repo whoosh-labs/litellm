@@ -3559,8 +3559,10 @@ async def chat_completion(  # noqa: PLR0915
         return await call_api_gateway(data)
 
     # add api keys to request based on model and user_id
-    from litellm.proxy.raga.raga_utils import modify_user_request
+    from litellm.proxy.raga.raga_utils import modify_user_request    
     data = modify_user_request(data)
+    
+    print("modified data", data)
     # === End of raga custom code ===
 
     base_llm_response_processor = ProxyBaseLLMRequestProcessing(data=data)
