@@ -99,12 +99,6 @@ def handle_vertex_ai_model(data, vault_secrets, model_name):
             
             # Set vertex parameters
             data["vertex_credentials"] = vertex_creds
-        elif os.environ.get("GOOGLE_APPLICATION_CREDENTIALS"):
-            credentials = json.loads(os.environ.get("GOOGLE_APPLICATION_CREDENTIALS"))
-            with tempfile.NamedTemporaryFile(mode='w', suffix='.json', delete=False) as f:
-                json.dump(credentials, f)
-                temp_file_path = f.name
-            data["vertex_credentials"] = temp_file_path
         
         data["vertex_project"] = vault_secrets.get(VERTEXAI_PROJECT)
         data["vertex_location"] = vault_secrets.get(VERTEXAI_LOCATION)
@@ -118,13 +112,6 @@ def handle_vertex_ai_model(data, vault_secrets, model_name):
         if vertex_creds and vertex_creds.strip():
             validate_api_keys(vault_secrets, model_name, [VERTEXAI_CREDENTIALS])
             credentials = json.loads(vertex_creds)
-            with tempfile.NamedTemporaryFile(mode='w', suffix='.json', delete=False) as f:
-                json.dump(credentials, f)
-                temp_file_path = f.name
-            data["vertex_credentials"] = temp_file_path
-            
-        elif os.environ.get("GOOGLE_APPLICATION_CREDENTIALS"):
-            credentials = json.loads(os.environ.get("GOOGLE_APPLICATION_CREDENTIALS"))
             with tempfile.NamedTemporaryFile(mode='w', suffix='.json', delete=False) as f:
                 json.dump(credentials, f)
                 temp_file_path = f.name
