@@ -85,11 +85,11 @@ def handle_vertex_ai_model(data, vault_secrets, model_name):
     """Handle Vertex AI model configuration"""
     vertex_creds = vault_secrets.get(VERTEXAI_CREDENTIALS)
     if "messages" in data:
-                for message in data["messages"]:
-                    if message.get("name") is None:
-                        message.pop("name", None)
-                    if message.get("function_call") is None:
-                        message.pop("function_call", None)
+        for message in data["messages"]:
+            if message.get("name") is None:
+                message.pop("name", None)
+            if message.get("function_call") is None:
+                message.pop("function_call", None)
     
     if "vertex_ai/openai/" in model_name:
         # Model Garden endpoint
