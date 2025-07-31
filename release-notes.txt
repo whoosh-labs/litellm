@@ -5453,3 +5453,6 @@ Feat/add vertexai support (#19)
 
 2.17.1-25-07-01 / 2025-07-02 09:29:34
 No new changes in the release
+
+2.18.0-25-07-31 / 2025-07-31 09:53:15
+No new changes in the release
