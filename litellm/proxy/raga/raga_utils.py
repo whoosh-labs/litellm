@@ -21,6 +21,9 @@ AZURE_API_KEY = "AZURE_API_KEY"
 AZURE_API_BASE = "AZURE_API_BASE"
 AZURE_API_VERSION = "AZURE_API_VERSION"
 
+GEMINI_API_KEY = "GEMINI_API_KEY"
+GOOGLE_API_KEY = "GOOGLE_API_KEY"
+
 AWS_ACCESS_KEY_ID = "AWS_ACCESS_KEY_ID"
 AWS_SECRET_ACCESS_KEY = "AWS_SECRET_ACCESS_KEY"
 AWS_REGION_NAME = "AWS_REGION_NAME"
@@ -59,6 +62,15 @@ def set_api_keys_from_vault(data):
         data[API_KEY] = vault_secrets.get(AZURE_API_KEY)
         data[API_BASE] = vault_secrets.get(AZURE_API_BASE)
         data[API_VERSION] = vault_secrets.get(AZURE_API_VERSION)
+    elif model_name.startswith("gemini"):
+        gemini_api_key = vault_secrets.get(GEMINI_API_KEY)
+        google_api_key = vault_secrets.get(GOOGLE_API_KEY)
+        if gemini_api_key is not None:
+            data[API_KEY] = gemini_api_key
+        elif google_api_key is not None:
+            data[API_KEY] = google_api_key
+        else:
+            print("Api Key not set for gemini provider")
     elif model_name.startswith("bedrock"):
         validate_api_keys(vault_secrets, model_name, [AWS_ACCESS_KEY_ID, AWS_SECRET_ACCESS_KEY, AWS_REGION_NAME])
         data["aws_access_key_id"] = vault_secrets.get(AWS_ACCESS_KEY_ID)
