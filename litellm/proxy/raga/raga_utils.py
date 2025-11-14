@@ -38,7 +38,7 @@ def modify_user_request(data):
             data["model"] = data["provider"] + "/" + data["model"]
             del data["provider"]
         if "user_id" in data:
-            set_api_keys_from_vault(data)
+            # set_api_keys_from_vault(data)
             del data["user_id"]
         return data
     except Exception as e:
@@ -90,24 +90,23 @@ def handle_vertex_ai_model(data, vault_secrets, model_name):
                 message.pop("name", None)
             if message.get("function_call") is None:
                 message.pop("function_call", None)
-    
+
     if "vertex_ai/openai/" in model_name:
         # Model Garden endpoint
         if vertex_creds and vertex_creds.strip():
             validate_api_keys(vault_secrets, model_name, [VERTEXAI_CREDENTIALS])
-        
-            
+
             # Set vertex parameters
             data["vertex_credentials"] = vertex_creds
-        
+
         data["vertex_project"] = vault_secrets.get(VERTEXAI_PROJECT)
         data["vertex_location"] = vault_secrets.get(VERTEXAI_LOCATION)
-            # Transform using simple handler
+        # Transform using simple handler
         from litellm.proxy.raga.vertex_model_garden_handler import VertexModelGardenHandler
         handler = VertexModelGardenHandler()
         handler.transform_request(data)
     else:
-        
+
         # Standard Vertex AI model
         if vertex_creds and vertex_creds.strip():
             validate_api_keys(vault_secrets, model_name, [VERTEXAI_CREDENTIALS])
@@ -116,15 +115,13 @@ def handle_vertex_ai_model(data, vault_secrets, model_name):
                 json.dump(credentials, f)
                 temp_file_path = f.name
             data["vertex_credentials"] = temp_file_path
-        
+
         data["vertex_project"] = vault_secrets.get(VERTEXAI_PROJECT)
         data["vertex_location"] = vault_secrets.get(VERTEXAI_LOCATION)
         data["api_key"] = "dummy-vertex"
-        
 
 
 def validate_api_keys(vault_secrets, model_name, required_keys):
-    
     not_set_keys = []
     for key in required_keys:
         if vault_secrets.get(key, "") == "":
