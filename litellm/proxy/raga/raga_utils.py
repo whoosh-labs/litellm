@@ -84,6 +84,8 @@ def set_api_keys_from_vault(data):
         else:
             raise Exception(f"Model {model_name} is not supported")
 
+    del data['encrypted_secrets_map']
+
 
 def handle_vertex_ai_model(data, vault_secrets, model_name):
     """Handle Vertex AI model configuration"""
@@ -125,10 +127,12 @@ def handle_vertex_ai_model(data, vault_secrets, model_name):
         data["api_key"] = "dummy-vertex"
 
 
-def validate_api_keys(vault_secrets, model_name, required_keys):
+def validate_api_keys(secrets, model_name, required_keys):
+    print(f"secrets: {secrets}")
+    print(f"req secrets: {required_keys}")
     not_set_keys = []
     for key in required_keys:
-        if vault_secrets.get(key, "") == "":
+        if secrets.get(key, "") == "":
             not_set_keys.append(key)
 
     if len(not_set_keys) > 0:
