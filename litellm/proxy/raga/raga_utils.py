@@ -5,6 +5,9 @@ import warnings
 import os
 import json
 import tempfile
+from base64 import b64decode
+from Crypto.Cipher import AES
+from Crypto.Util.Padding import unpad
 
 # Suppress serialization warning for vertex_ai
 warnings.filterwarnings(
@@ -31,14 +34,16 @@ VERTEXAI_CREDENTIALS = "VERTEXAI_CREDENTIALS"
 VERTEXAI_PROJECT = "VERTEXAI_PROJECT"
 VERTEXAI_LOCATION = "VERTEXAI_LOCATION"
 
+AES_KEY = os.getenv("AES_ENCRYPTION_KEY")
+
 
 def modify_user_request(data):
     try:
         if "provider" in data:
             data["model"] = data["provider"] + "/" + data["model"]
             del data["provider"]
-        if "user_id" in data:
-            # set_api_keys_from_vault(data)
+        if "encrypted_secrets_map" in data:
+            set_api_keys_from_vault(data)
             del data["user_id"]
         return data
     except Exception as e:
@@ -49,34 +54,33 @@ def modify_user_request(data):
 
 def set_api_keys_from_vault(data):
     print(f"getting api keys for user: {data['user_id']}")
-    import litellm.proxy.raga.vault as vault
 
-    vault_secrets = vault.get_api_keys(data["user_id"])
+    secrets = decrypt_secrets_map(data["encrypted_secrets_map"], AES_KEY)
 
     model_name = data["model"]
     if model_name.startswith("azure"):
-        validate_api_keys(vault_secrets, model_name, [AZURE_API_KEY, AZURE_API_BASE, AZURE_API_VERSION])
-        data[API_KEY] = vault_secrets.get(AZURE_API_KEY)
-        data[API_BASE] = vault_secrets.get(AZURE_API_BASE)
-        data[API_VERSION] = vault_secrets.get(AZURE_API_VERSION)
+        validate_api_keys(secrets, model_name, [AZURE_API_KEY, AZURE_API_BASE, AZURE_API_VERSION])
+        data[API_KEY] = secrets.get(AZURE_API_KEY)
+        data[API_BASE] = secrets.get(AZURE_API_BASE)
+        data[API_VERSION] = secrets.get(AZURE_API_VERSION)
     elif model_name.startswith("bedrock"):
-        validate_api_keys(vault_secrets, model_name, [AWS_ACCESS_KEY_ID, AWS_SECRET_ACCESS_KEY, AWS_REGION_NAME])
-        data["aws_access_key_id"] = vault_secrets.get(AWS_ACCESS_KEY_ID)
-        data["aws_secret_access_key"] = vault_secrets.get(AWS_SECRET_ACCESS_KEY)
-        data["aws_region_name"] = vault_secrets.get(AWS_REGION_NAME)
+        validate_api_keys(secrets, model_name, [AWS_ACCESS_KEY_ID, AWS_SECRET_ACCESS_KEY, AWS_REGION_NAME])
+        data["aws_access_key_id"] = secrets.get(AWS_ACCESS_KEY_ID)
+        data["aws_secret_access_key"] = secrets.get(AWS_SECRET_ACCESS_KEY)
+        data["aws_region_name"] = secrets.get(AWS_REGION_NAME)
     elif model_name.startswith("ollama"):
-        validate_api_keys(vault_secrets, model_name, [OLLAMA_API_BASE])
-        data[API_BASE] = vault_secrets.get(OLLAMA_API_BASE)
+        validate_api_keys(secrets, model_name, [OLLAMA_API_BASE])
+        data[API_BASE] = secrets.get(OLLAMA_API_BASE)
     elif model_name.startswith("vertex_ai"):
-        handle_vertex_ai_model(data, vault_secrets, model_name)
+        handle_vertex_ai_model(data, secrets, model_name)
     else:
         from litellm.proxy.raga.data import get_model_keys
 
         keys = get_model_keys(model_name)
         print(f"keys: {keys}")
         if len(keys) == 1:
-            validate_api_keys(vault_secrets, model_name, keys)
-            data[API_KEY] = vault_secrets.get(keys[0])
+            validate_api_keys(secrets, model_name, keys)
+            data[API_KEY] = secrets.get(keys[0])
         else:
             raise Exception(f"Model {model_name} is not supported")
 
@@ -129,3 +133,22 @@ def validate_api_keys(vault_secrets, model_name, required_keys):
 
     if len(not_set_keys) > 0:
         raise HTTPException(status_code=401, detail=f"Required API Keys are not set for {model_name}: {not_set_keys}")
+
+
+def decrypt_secrets_map(secrets_map: dict, encryption_key: str) -> dict:
+    key = encryption_key.encode()
+    cipher = AES.new(key, AES.MODE_ECB)
+
+    decrypted_map = {}
+
+    for k, v in secrets_map.items():
+        if v is None:
+            decrypted_map[k] = None
+            continue
+
+        decrypted_bytes = cipher.decrypt(b64decode(v))
+        decrypted_value = unpad(decrypted_bytes, AES.block_size).decode()
+
+        decrypted_map[k] = decrypted_value
+
+    return decrypted_map
