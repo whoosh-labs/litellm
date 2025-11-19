@@ -43,8 +43,9 @@ def modify_user_request(data):
             data["model"] = data["provider"] + "/" + data["model"]
             del data["provider"]
         if "encrypted_secrets_map" in data:
-            set_api_keys_from_vault(data)
-            del data["user_id"]
+            set_api_keys(data)
+            if data['user_id']:
+                del data["user_id"]
         return data
     except Exception as e:
         print(f"exception in getting api keys: {str(e)}")
@@ -52,9 +53,7 @@ def modify_user_request(data):
         raise e
 
 
-def set_api_keys_from_vault(data):
-    print(f"getting api keys for user: {data['user_id']}")
-
+def set_api_keys(data):
     secrets = decrypt_secrets_map(data["encrypted_secrets_map"], AES_KEY)
 
     model_name = data["model"]
