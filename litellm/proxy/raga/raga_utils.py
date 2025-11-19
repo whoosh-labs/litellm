@@ -44,8 +44,7 @@ def modify_user_request(data):
             del data["provider"]
         if "encrypted_secrets_map" in data:
             set_api_keys(data)
-            if data['user_id']:
-                del data["user_id"]
+            data.pop("user_id", None)
         return data
     except Exception as e:
         print(f"exception in getting api keys: {str(e)}")
