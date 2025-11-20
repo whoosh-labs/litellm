@@ -45,6 +45,7 @@ def modify_user_request(data):
         if "encrypted_secrets_map" in data:
             set_api_keys(data)
             data.pop("user_id", None)
+        print(f"data: {data}")
         return data
     except Exception as e:
         print(f"exception in getting api keys: {str(e)}")
@@ -126,8 +127,6 @@ def handle_vertex_ai_model(data, vault_secrets, model_name):
 
 
 def validate_api_keys(secrets, model_name, required_keys):
-    print(f"secrets: {secrets}")
-    print(f"req secrets: {required_keys}")
     not_set_keys = []
     for key in required_keys:
         if secrets.get(key, "") == "":
