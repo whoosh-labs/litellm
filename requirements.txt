@@ -55,3 +55,4 @@ websockets==13.1.0 # for realtime API
 ####
 
 hvac==2.3.0
+pycryptodome==3.23.0
