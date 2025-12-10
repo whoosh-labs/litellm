@@ -1,8 +1,8 @@
 # Base image for building
-ARG LITELLM_BUILD_IMAGE=cgr.dev/chainguard/python:latest-dev
+ARG LITELLM_BUILD_IMAGE=cgr.dev/chainguard/python:latest-dev@sha256:62dce7cededa1d3e50394d30b33e059a3b7c3d21187fea35bab4419abb245420
 
 # Runtime image
-ARG LITELLM_RUNTIME_IMAGE=cgr.dev/chainguard/python:latest-dev
+ARG LITELLM_RUNTIME_IMAGE=cgr.dev/chainguard/python:latest-dev@sha256:62dce7cededa1d3e50394d30b33e059a3b7c3d21187fea35bab4419abb245420
 # Builder stage
 FROM $LITELLM_BUILD_IMAGE AS builder
 
@@ -13,7 +13,7 @@ USER root
 
 # Install build dependencies
 RUN apk update && \
-    apk add --no-cache bash gcc py3-pip python3.13-dev openssl openssl-dev
+    apk add --no-cache bash gcc py3-pip python3-dev openssl openssl-dev
 
 
 RUN pip install --upgrade pip && \
