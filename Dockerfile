@@ -13,7 +13,7 @@ USER root
 
 # Install build dependencies
 RUN apk update && \
-    apk add --no-cache bash gcc py3-pip python3 python3-dev openssl openssl-dev
+    apk add --no-cache bash gcc py3-pip python3.13-dev openssl openssl-dev
 
 
 RUN pip install --upgrade pip && \
