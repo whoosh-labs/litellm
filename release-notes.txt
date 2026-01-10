@@ -5474,3 +5474,18 @@ No new changes in the release
 
 2.22.0-25-11-17 / 2025-11-17 11:36:00
 No new changes in the release
+
+2.23.0-26-01-10 / 2026-01-10 09:35:12
+Update Dockerfile to use specific image digest
+Change to python3.13
+Add bash and py3-pip to Dockerfile dependencies
+PR changes phase -1
+AES encryption key env add
+logging change
+User id correction logic
+Small change on user_id deletion
+Requirements change, unwanted requirements removed
+Deleting encrypted secrets from model payload
+Hardcoding the AES_KEY for testing
+Changes on api key, we're now sending while secrets map
+Removing vault dependency
