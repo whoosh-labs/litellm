@@ -5489,3 +5489,6 @@ Deleting encrypted secrets from model payload
 Hardcoding the AES_KEY for testing
 Changes on api key, we're now sending while secrets map
 Removing vault dependency
+
+2.24.0-26-01-13 / 2026-01-13 14:22:26
+No new changes in the release
