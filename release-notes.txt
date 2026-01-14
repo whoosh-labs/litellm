@@ -5492,3 +5492,6 @@ Removing vault dependency
 
 2.24.0-26-01-13 / 2026-01-13 14:22:26
 No new changes in the release
+
+2.24.1-26-01-14 / 2026-01-14 11:55:13
+No new changes in the release
