@@ -8,7 +8,6 @@ import tempfile
 from base64 import b64decode
 from Crypto.Cipher import AES
 from Crypto.Util.Padding import unpad
-import logging
 
 # Suppress serialization warning for vertex_ai
 warnings.filterwarnings(
@@ -46,7 +45,7 @@ def modify_user_request(data):
         if "encrypted_secrets_map" in data:
             set_api_keys(data)
             data.pop("user_id", None)
-            logging.info(f"call to llm, payload: {data}")
+            print(f"call to llm, payload: {data}")
         return data
     except Exception as e:
         print(f"exception in getting api keys: {str(e)}")
