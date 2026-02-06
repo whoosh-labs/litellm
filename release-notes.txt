@@ -5501,3 +5501,6 @@ No new changes in the release
 
 2.24.2-26-01-15 / 2026-01-15 09:07:50
 No new changes in the release
+
+2.25.0-26-02-06 / 2026-02-06 14:23:27
+No new changes in the release
