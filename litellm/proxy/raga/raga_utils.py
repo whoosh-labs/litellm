@@ -1,3 +1,4 @@
+import hashlib
 import traceback
 
 from fastapi import HTTPException
@@ -35,6 +36,11 @@ VERTEXAI_PROJECT = "VERTEXAI_PROJECT"
 VERTEXAI_LOCATION = "VERTEXAI_LOCATION"
 
 AES_KEY = os.getenv("AES_ENCRYPTION_KEY")
+
+# Cache for Vertex AI credentials to avoid redundant temp file creation
+# and to detect credential changes for singleton reset
+_vertex_creds_hash = None
+_vertex_creds_temp_file = None
 
 
 def modify_user_request(data):
@@ -85,6 +91,48 @@ def set_api_keys(data):
     del data['encrypted_secrets_map']
 
 
+def _get_or_update_vertex_creds_file(vertex_creds: str) -> str:
+    """
+    Returns the path to a temp file containing the Vertex AI credentials JSON.
+    If the credentials haven't changed since the last call, reuses the existing temp file.
+    If they have changed, writes a new temp file, cleans up the old one, and resets
+    the VertexLLM singleton so it reloads credentials on the next request.
+    """
+    global _vertex_creds_hash, _vertex_creds_temp_file
+
+    new_hash = hashlib.sha256(vertex_creds.encode()).hexdigest()
+
+    if new_hash == _vertex_creds_hash and _vertex_creds_temp_file and os.path.exists(_vertex_creds_temp_file):
+        return _vertex_creds_temp_file
+
+    # Credentials changed — clean up old temp file
+    if _vertex_creds_temp_file and os.path.exists(_vertex_creds_temp_file):
+        try:
+            os.unlink(_vertex_creds_temp_file)
+        except OSError:
+            pass
+
+    # Write new temp file
+    credentials = json.loads(vertex_creds)
+    with tempfile.NamedTemporaryFile(mode='w', suffix='.json', delete=False) as f:
+        json.dump(credentials, f)
+        _vertex_creds_temp_file = f.name
+
+    _vertex_creds_hash = new_hash
+
+    # Reset the VertexLLM singleton so it picks up the new credentials
+    # Only vertex_chat_completion caches credentials on the instance;
+    # vertex_partner_models and vertex_model_garden create new VertexLLM() per call.
+    try:
+        from litellm.main import vertex_chat_completion
+        vertex_chat_completion.reset_credentials()
+        print("Vertex AI credentials changed — reset VertexLLM singleton")
+    except Exception as e:
+        print(f"Warning: could not reset VertexLLM singleton: {e}")
+
+    return _vertex_creds_temp_file
+
+
 def handle_vertex_ai_model(data, vault_secrets, model_name):
     """Handle Vertex AI model configuration"""
     vertex_creds = vault_secrets.get(VERTEXAI_CREDENTIALS)
@@ -114,11 +162,7 @@ def handle_vertex_ai_model(data, vault_secrets, model_name):
         # Standard Vertex AI model
         if vertex_creds and vertex_creds.strip():
             validate_api_keys(vault_secrets, model_name, [VERTEXAI_CREDENTIALS])
-            credentials = json.loads(vertex_creds)
-            with tempfile.NamedTemporaryFile(mode='w', suffix='.json', delete=False) as f:
-                json.dump(credentials, f)
-                temp_file_path = f.name
-            data["vertex_credentials"] = temp_file_path
+            data["vertex_credentials"] = _get_or_update_vertex_creds_file(vertex_creds)
 
         data["vertex_project"] = vault_secrets.get(VERTEXAI_PROJECT)
         data["vertex_location"] = vault_secrets.get(VERTEXAI_LOCATION)
