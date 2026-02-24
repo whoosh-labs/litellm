@@ -31,6 +31,12 @@ class VertexBase(BaseLLM):
         self.project_id: Optional[str] = None
         self.async_handler: Optional[AsyncHTTPHandler] = None
 
+    def reset_credentials(self) -> None:
+        """Reset cached credentials to force reload on next request."""
+        self._credentials = None
+        self.access_token = None
+        self.project_id = None
+
     def get_vertex_region(self, vertex_region: Optional[str]) -> str:
         return vertex_region or "us-central1"
 
