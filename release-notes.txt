@@ -5519,3 +5519,6 @@ No new changes in the release
 
 2.25.8-26-02-24 / 2026-02-24 10:08:41
 fix: avoid stale Vertex AI credentials by detecting key changes and resetting singleton
+
+2.25.9-26-02-25 / 2026-02-25 07:56:45
+No new changes in the release
