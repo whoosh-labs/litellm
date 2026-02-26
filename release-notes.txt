@@ -5525,3 +5525,6 @@ No new changes in the release
 
 2.25.10-26-02-26 / 2026-02-26 08:20:45
 No new changes in the release
+
+2.25.11-26-02-26 / 2026-02-26 12:08:04
+No new changes in the release
